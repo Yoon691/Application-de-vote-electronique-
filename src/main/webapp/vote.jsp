@@ -13,6 +13,8 @@
 <%@ page import="fr.univlyon1.m1if.m1if03.cherbal.classes.Candidat" %>
 <%@ page import="java.util.List" %>
 <jsp:useBean id="bulletins" type="java.util.List" beanName="bulletins" scope="application"/>
+<jsp:useBean id="bulletins" type="java.util.List" beanName="bulletins" scope="application"/>
+
 <html>
 <head>
     <title>Page de Vote</title>
@@ -43,15 +45,21 @@
             for (String nomCandidat : ((Map<String, Candidat>) application.getAttribute("candidats")).keySet()) {
                 votes.put(nomCandidat, 0);
             }
+
+//            for (Candidat nomCandidat : ((Map<String, Candidat>) application.getAttribute("candidats")).get(candidat)) {
+//                votes.put(nomCandidat, 0);
+//            }
 //            for (Bulletin bulletin : (List<Bulletin>) bulletins) {
 //                int score = ((Map<String, Integer>) votes).get(bulletin.getCandidat().getNom());
 //                votes.put(bulletin.getCandidat().getNom(), ++score);
 //            }
         %>
     <form method="post" action="vote">
-        <label for="candidats-select">Sélectionnez un candidat :</label>
+        <label>Sélectionnez un candidat :
 
-        <select name="candidats" id="candidats-select">
+        </label>
+
+        <select name="candidat-choisi" >
                 <option value="">--Choisez un candidat --</option>
                 <c:forEach items="<%= votes.keySet()%>" var="nomCandidat">
                 <option value="${nomCandidat}"><c:out value="${nomCandidat}"/></option>

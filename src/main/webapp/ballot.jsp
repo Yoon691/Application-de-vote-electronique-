@@ -13,6 +13,8 @@
 <%@ page import="fr.univlyon1.m1if.m1if03.cherbal.classes.Candidat" %>
 <%@ page import="java.util.List" %>
 <jsp:useBean id="bulletins" type="java.util.List" beanName="bulletins" scope="application"/>
+<jsp:useBean id="ballots" type="java.util.Map" beanName="ballots" scope="application"/>
+
 <html>
 <head>
     <title>Preuve de Vote</title>
@@ -49,7 +51,7 @@
 <%--//            }--%>
 <%--        %>--%>
         <form method="post" action="vote">
-            <label>Sélectionnez un candidat : <c:out value="${nomCandidat}"/> </label>
+            <label>Votre Vote : <c:out value="${sessionScope.candidatVoter.nom}"/>  <c:out value="${sessionScope.candidatVoter.prenom}"/> </label>
 
             <p>
                 <input type="submit" name="action" value="supprimer">
