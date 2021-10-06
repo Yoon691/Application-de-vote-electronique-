@@ -1,6 +1,6 @@
-package utils;
+package fr.univlyon1.m1if.m1if03.cherbal.utils;
 
-import classes.Candidat;
+import fr.univlyon1.m1if.m1if03.cherbal.classes.Candidat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 //import fr.univlyon1.m1if.m1if03.classes.Candidat;

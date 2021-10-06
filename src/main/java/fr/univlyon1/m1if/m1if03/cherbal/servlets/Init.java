@@ -1,15 +1,15 @@
-package servlets;
+package fr.univlyon1.m1if.m1if03.cherbal.servlets;
 
-import classes.Ballot;
-import classes.Bulletin;
-import classes.Candidat;
-import classes.User;
+import fr.univlyon1.m1if.m1if03.cherbal.classes.Ballot;
+import fr.univlyon1.m1if.m1if03.cherbal.classes.Bulletin;
+import fr.univlyon1.m1if.m1if03.cherbal.classes.Candidat;
+import fr.univlyon1.m1if.m1if03.cherbal.classes.User;
 //import fr.univlyon1.m1if.m1if03.classes.Ballot;
 //import fr.univlyon1.m1if.m1if03.classes.Bulletin;
 //import fr.univlyon1.m1if.m1if03.classes.Candidat;
 //import fr.univlyon1.m1if.m1if03.classes.User;
 //import fr.univlyon1.m1if.m1if03.utils.CandidatListGenerator;
-import utils.CandidatListGenerator;
+import fr.univlyon1.m1if.m1if03.cherbal.utils.CandidatListGenerator;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;

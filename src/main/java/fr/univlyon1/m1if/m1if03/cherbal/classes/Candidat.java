@@ -1,4 +1,4 @@
-package classes;
+package fr.univlyon1.m1if.m1if03.cherbal.classes;
 
 public class Candidat {
     String prenom, nom;

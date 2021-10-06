@@ -15,7 +15,7 @@
 <jsp:useBean id="bulletins" type="java.util.List" beanName="bulletins" scope="application"/>
 <html>
 <head>
-    <title>Vote</title>
+    <title>Preuve de Vote</title>
     <link rel="stylesheet" type="text/css" href="static/vote.css">
 </head>
 <body>
@@ -23,7 +23,7 @@
     <c:if test="${sessionScope.user != null}">
         <p class="header-user"> Bonjour ${sessionScope.user.nom}</p>
     </c:if>
-    <h1 class="header-titre">Résultats actuels de l'élection</h1>
+    <h1 class="header-titre">Votre preuve de vote</h1>
 </header>
 <main id="contenu" class="wrapper">
     <aside class="menu">
@@ -36,24 +36,25 @@
         </ul>
     </aside>
     <article class="contenu">
-        <h2>Voici le résultat courant de l'élection</h2>
+        <%--        <h2>Sélectionnez un candidat : </h2>--%>
         <%-- jsp:useBean id="votes" scope="request" class="java.util.HashMap" /--%>
-        <%
-            Map<String, Integer> votes = new HashMap<>();
-            for (String nomCandidat : ((Map<String, Candidat>) application.getAttribute("candidats")).keySet()) {
-                votes.put(nomCandidat, 0);
-            }
-            for (Bulletin bulletin : (List<Bulletin>) bulletins) {
-                int score = ((Map<String, Integer>) votes).get(bulletin.getCandidat().getNom());
-                votes.put(bulletin.getCandidat().getNom(), ++score);
-            }
-        %>
+<%--        <%--%>
+<%--            Map<String, Integer> votes = new HashMap<>();--%>
+<%--            for (String nomCandidat : ((Map<String, Candidat>) application.getAttribute("candidats")).keySet()) {--%>
+<%--                votes.put(nomCandidat, 0);--%>
+<%--            }--%>
+<%--//            for (Bulletin bulletin : (List<Bulletin>) bulletins) {--%>
+<%--//                int score = ((Map<String, Integer>) votes).get(bulletin.getCandidat().getNom());--%>
+<%--//                votes.put(bulletin.getCandidat().getNom(), ++score);--%>
+<%--//            }--%>
+<%--        %>--%>
+        <form method="post" action="vote">
+            <label>Sélectionnez un candidat : <c:out value="${nomCandidat}"/> </label>
 
-        <ul>
-            <c:forEach items="<%= votes.keySet()%>" var="nomCandidat">
-                <li><c:out value="${nomCandidat}"/> : <%= votes.get((String)pageContext.getAttribute("nomCandidat")) %> vote(s)</li>
-            </c:forEach>
-        </ul>
+            <p>
+                <input type="submit" name="action" value="supprimer">
+            </p>
+        </form>
     </article>
 </main>
 </body>
