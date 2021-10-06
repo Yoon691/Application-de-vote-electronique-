@@ -6,7 +6,7 @@
 
   <groupId>fr.univlyon1.m1if.m1if03.cherbal</groupId>
   <artifactId>server</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.4</version>
   <packaging>war</packaging>
 
   <name>server Maven Webapp</name>
@@ -37,6 +37,16 @@
       <artifactId>jstl</artifactId>
       <version>1.2</version>
     </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.11.4</version>
+    </dependency>
+    <!--    <dependency>-->
+<!--      <groupId>com.fasterxml.jakson.core</groupId>-->
+<!--      <artifactId>jackson-databind</artifactId>-->
+<!--      <version>2.13.0</version>-->
+<!--    </dependency>-->
   </dependencies>
 
   <build>
@@ -71,6 +81,16 @@
         <plugin>
           <artifactId>maven-deploy-plugin</artifactId>
           <version>2.8.2</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.tomcat.maven</groupId>
+          <artifactId>tomcat7-maven-plugin</artifactId>
+          <version>2.2</version>
+          <configuration>
+            <url>http://localhost:8080/manager/text</url>
+            <server>TomcatServer</server>
+            <path>/myapp</path>
+          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>
