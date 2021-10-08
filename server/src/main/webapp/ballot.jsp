@@ -21,12 +21,7 @@
     <link rel="stylesheet" type="text/css" href="static/vote.css">
 </head>
 <body>
-<header>
-    <c:if test="${sessionScope.user != null}">
-        <p class="header-user"> Bonjour ${sessionScope.user.nom}</p>
-    </c:if>
-    <h1 class="header-titre">Votre preuve de vote</h1>
-</header>
+<jsp:include page="WEB-INF/components/header.jsp"/>
 <main id="contenu" class="wrapper">
     <aside class="menu">
         <h2>Menu</h2>
@@ -61,5 +56,7 @@
         </form>
     </article>
 </main>
+
+<jsp:include page="WEB-INF/components/footer.html"/>
 </body>
 </html>
