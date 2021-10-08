@@ -50,9 +50,11 @@
 <%--//                votes.put(bulletin.getCandidat().getNom(), ++score);--%>
 <%--//            }--%>
 <%--        %>--%>
-        <form method="post" action="vote">
-            <label>Votre Vote : <c:out value="${sessionScope.candidatVoter.nom}"/>  <c:out value="${sessionScope.candidatVoter.prenom}"/> </label>
-
+        <form method="post" action="DeleteVote">
+            <label>Votre Vote :
+                <c:if test="${applicationScope.ballots.containsKey(sessionScope.user.login)}">
+                   <c:out value="${sessionScope.candidatVoter.nom}"/>  <c:out value="${sessionScope.candidatVoter.prenom}"/> </label>
+                </c:if>
             <p>
                 <input type="submit" name="action" value="supprimer">
             </p>

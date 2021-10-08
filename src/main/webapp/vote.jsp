@@ -12,8 +12,9 @@
 <%@ page import="fr.univlyon1.m1if.m1if03.cherbal.classes.Bulletin" %>
 <%@ page import="fr.univlyon1.m1if.m1if03.cherbal.classes.Candidat" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.Set" %>
 <jsp:useBean id="bulletins" type="java.util.List" beanName="bulletins" scope="application"/>
-<jsp:useBean id="bulletins" type="java.util.List" beanName="bulletins" scope="application"/>
+<%--<jsp:useBean id="bulletins" type="java.util.List" beanName="bulletins" scope="application"/>--%>
 
 <html>
 <head>
@@ -41,18 +42,9 @@
 <%--        <h2>Sélectionnez un candidat : </h2>--%>
         <%-- jsp:useBean id="votes" scope="request" class="java.util.HashMap" /--%>
         <%
-            Map<String, Integer> votes = new HashMap<>();
-            for (String nomCandidat : ((Map<String, Candidat>) application.getAttribute("candidats")).keySet()) {
-                votes.put(nomCandidat, 0);
-            }
 
-//            for (Candidat nomCandidat : ((Map<String, Candidat>) application.getAttribute("candidats")).get(candidat)) {
-//                votes.put(nomCandidat, 0);
-//            }
-//            for (Bulletin bulletin : (List<Bulletin>) bulletins) {
-//                int score = ((Map<String, Integer>) votes).get(bulletin.getCandidat().getNom());
-//                votes.put(bulletin.getCandidat().getNom(), ++score);
-//            }
+            Map<String, Candidat> MapCandidats = (Map<String, Candidat>) application.getAttribute("candidats");
+
         %>
     <form method="post" action="vote">
         <label>Sélectionnez un candidat :
@@ -60,12 +52,14 @@
         </label>
 
         <select name="candidat-choisi" >
-                <option value="">--Choisez un candidat --</option>
-                <c:forEach items="<%= votes.keySet()%>" var="nomCandidat">
-                <option value="${nomCandidat}"><c:out value="${nomCandidat}"/></option>
-                </c:forEach>
-        </select>
 
+            <option value="">--Choisez un candidat --</option>
+            <c:forEach items="<%= MapCandidats.keySet()%>" var="nomCandidat">
+            <option ><c:out value="${nomCandidat}"/> </option>
+            </c:forEach>
+        </select>
+<%--        <c:out value="${nom}"/>--%>
+<%--        <c:out value="${prenom}"/>--%>
 
             <p>
                 <input type="submit" name="action" value="Envoyer votre vote ">
