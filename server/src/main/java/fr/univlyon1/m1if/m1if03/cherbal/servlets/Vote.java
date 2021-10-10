@@ -46,12 +46,9 @@ public class Vote extends HttpServlet {
                 session.setAttribute("candidatVoter", candidat );
                 request.getRequestDispatcher("ballot.jsp").forward(request, response);
             } else {
-                response.sendRedirect("index.html");
+                response.sendRedirect("ballot.jsp");
             }
     }
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.sendRedirect("index.html");
-    }
+
 }

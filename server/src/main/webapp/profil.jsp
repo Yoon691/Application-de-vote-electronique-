@@ -16,7 +16,7 @@
 <%--<jsp:useBean id="bulletins" type="java.util.List" beanName="bulletins" scope="application"/>--%>
 <%--<jsp:useBean id="bulletins" type="java.util.List" beanName="bulletins" scope="application"/>--%>
 <c:if test="${sessionScope.user == null}">
-<%response.sendError(HttpServletResponse.SC_FORBIDDEN, "Vous ne pouvez pas acceder a cette page connctez-vous pour acceder ");%>
+    <%response.sendError(HttpServletResponse.SC_FORBIDDEN, "Vous ne pouvez pas acceder a cette page connctez-vous pour acceder ");%>
 </c:if>
 <html>
 <head>
@@ -28,32 +28,18 @@
 <main id="contenu" class="wrapper">
     <jsp:include page="WEB-INF/components/menu.jsp"/>
     <article class="contenu">
-
-        <%
-
-            Map<String, Candidat> MapCandidats = (Map<String, Candidat>) application.getAttribute("candidats");
-
-        %>
-    <form method="post" action="vote">
-        <label>Sélectionnez un candidat :
-
-        </label>
-
-        <select name="candidat-choisi" >
-
-            <option value="">--Choisez un candidat --</option>
-<%--            <option value="blanc">**BLANC**</option>--%>
-            <c:forEach items="<%= MapCandidats.keySet()%>" var="nomCandidat">
-            <option ><c:out value="${nomCandidat}"/> </option>
-            </c:forEach>
-        </select>
-<%--        <c:out value="${nom}"/>--%>
-<%--        <c:out value="${prenom}"/>--%>
-
-            <p>
-                <input type="submit" name="action" value="Envoyer votre vote ">
-            </p>
-        </form>
+            <form method="post" action="profil">
+                <h2>Mettrez à jour votre profil</h2>
+                <p>
+                    <label>
+                        Entrez votre nouveau nom :
+                        <input type="text" name="new-nom" autofocus>
+                    </label>
+                </p>
+                <p>
+                    <input type="submit" name="action" value="Modifiez">
+                </p>
+            </form>
     </article>
 </main>
 

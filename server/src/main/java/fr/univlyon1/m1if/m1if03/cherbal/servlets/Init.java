@@ -48,6 +48,8 @@ public class Init extends HttpServlet {
         try {
             if (candidats == null) {
                 candidats = CandidatListGenerator.getCandidatList();
+                Candidat candidatBlanc = new Candidat("**Vous avez votez BLANC !**", "blanc");
+                candidats.put("blanc", candidatBlanc);
                 request.getServletContext().setAttribute("candidats", candidats);
             }
 
@@ -59,7 +61,7 @@ public class Init extends HttpServlet {
                 session.setAttribute("user", new User(login, request.getParameter("nom") != null ? request.getParameter("nom") : ""));
                 request.getRequestDispatcher("vote.jsp").forward(request, response);
             } else {
-                response.sendRedirect("index.html");
+                response.sendRedirect("index.jsp");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -70,6 +72,7 @@ public class Init extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.sendRedirect("index.html");
+        response.sendRedirect("index.jsp");
+
     }
 }

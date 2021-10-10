@@ -14,42 +14,33 @@
 <%@ page import="java.util.List" %>
 <jsp:useBean id="bulletins" type="java.util.List" beanName="bulletins" scope="application"/>
 <jsp:useBean id="ballots" type="java.util.Map" beanName="ballots" scope="application"/>
-
+<c:if test="${sessionScope.user == null}">
+    <%response.sendError(HttpServletResponse.SC_FORBIDDEN, "Vous ne pouvez pas acceder a cette page connctez-vous pour acceder ");%>
+</c:if>
 <html>
 <head>
     <title>Preuve de Vote</title>
     <link rel="stylesheet" type="text/css" href="static/vote.css">
 </head>
 <body>
-<jsp:include page="WEB-INF/components/header.jsp"/>
+<jsp:include page="WEB-INF/components/header.jsp"><jsp:param name="titre-header" value="Votre pruve de vote"/></jsp:include>
 <main id="contenu" class="wrapper">
-    <aside class="menu">
-        <h2>Menu</h2>
-        <ul>
-            <li><a href="vote.jsp">Voter</a></li>
-            <li><a href="ballot.jsp">Votre vote</a></li>
-            <li><a href="resultats.jsp">Résultats</a></li>
-            <li><a href="Deco">Déconnexion</a></li>
-        </ul>
-    </aside>
+    <jsp:include page="WEB-INF/components/menu.jsp"/>
     <article class="contenu">
-        <%--        <h2>Sélectionnez un candidat : </h2>--%>
-        <%-- jsp:useBean id="votes" scope="request" class="java.util.HashMap" /--%>
-<%--        <%--%>
-<%--            Map<String, Integer> votes = new HashMap<>();--%>
-<%--            for (String nomCandidat : ((Map<String, Candidat>) application.getAttribute("candidats")).keySet()) {--%>
-<%--                votes.put(nomCandidat, 0);--%>
-<%--            }--%>
-<%--//            for (Bulletin bulletin : (List<Bulletin>) bulletins) {--%>
-<%--//                int score = ((Map<String, Integer>) votes).get(bulletin.getCandidat().getNom());--%>
-<%--//                votes.put(bulletin.getCandidat().getNom(), ++score);--%>
-<%--//            }--%>
-<%--        %>--%>
+
         <form method="post" action="DeleteVote">
             <label>Votre Vote :
-                <c:if test="${applicationScope.ballots.containsKey(sessionScope.user.login)}">
-                   <c:out value="${sessionScope.candidatVoter.nom}"/>  <c:out value="${sessionScope.candidatVoter.prenom}"/> </label>
-                </c:if>
+                <c:choose>
+                    <c:when test="${applicationScope.ballots.containsKey(sessionScope.user.login)}">
+                        <c:out value="${sessionScope.candidatVoter.nom}"/>  <c:out value="${sessionScope.candidatVoter.prenom}"/>
+                    </c:when>
+
+                    <c:otherwise><c:out value="Vous avez pas encore voter"/></c:otherwise>
+                </c:choose>
+<%--                <c:if test="${applicationScope.ballots.containsKey(sessionScope.user.login)}">--%>
+<%--                   <c:out value="${sessionScope.candidatVoter.nom}"/>  <c:out value="${sessionScope.candidatVoter.prenom}"/> </label>--%>
+<%--                </c:if>--%>
+            </label>
             <p>
                 <input type="submit" name="action" value="supprimer">
             </p>
