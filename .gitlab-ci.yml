@@ -18,7 +18,7 @@ deploy:
     
 
   script:
-    - cd /builds/p1809208/mif03_tp
+    - cd /builds/p1809208/mif03_tp/server
     - mvn clean && mvn package 
-    - scp -o StrictHostKeyChecking=no -i $CI_SSH_KEY target/server.war gitlabci@192.168.75.70:/opt/tomcat/webapps/v1.war
+    - scp -o StrictHostKeyChecking=no -i $CI_SSH_KEY /target/server.war gitlabci@192.168.75.70:/opt/tomcat/webapps/v1.war
 
