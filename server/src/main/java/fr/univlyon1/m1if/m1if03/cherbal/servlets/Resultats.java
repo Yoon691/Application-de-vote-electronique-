@@ -20,6 +20,13 @@ import java.util.Set;
 public class Resultats extends HttpServlet {
 
 
+    
+    /** 
+     * @param request
+     * @param response
+     * @throws IOException
+     * @throws ServletException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         @SuppressWarnings("unchecked")

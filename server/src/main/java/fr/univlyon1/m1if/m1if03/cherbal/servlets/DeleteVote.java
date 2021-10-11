@@ -18,6 +18,13 @@ import java.util.Map;
 
 @WebServlet(name = "DeleteVote", value = "/DeleteVote")
 public class DeleteVote extends HttpServlet {
+    
+    /** 
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletConfig config = getServletConfig();

@@ -26,6 +26,11 @@ public class Init extends HttpServlet {
     final Map<String, Ballot> ballots = new HashMap<>();
     final List<Bulletin> bulletins = new ArrayList<>();
 
+    
+    /** 
+     * @param config
+     * @throws ServletException
+     */
     @Override
     public void init(ServletConfig config) throws ServletException {
         // Cette instruction doit toujours être au début de la méthode init() pour pouvoir accéder à l'objet config.
@@ -35,6 +40,13 @@ public class Init extends HttpServlet {
         context.setAttribute("bulletins", bulletins);
     }
 
+    
+    /** 
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // On intercepte le premier appel à Init pour mettre en place la liste des candidats,
@@ -65,6 +77,12 @@ public class Init extends HttpServlet {
         }
     }
 
+    
+    /** 
+     * @param request
+     * @param response
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.sendRedirect("index.jsp");

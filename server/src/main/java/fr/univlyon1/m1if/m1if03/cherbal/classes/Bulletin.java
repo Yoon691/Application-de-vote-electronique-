@@ -7,6 +7,10 @@ public class Bulletin {
         this.candidat = candidat;
     }
 
+    
+    /** 
+     * @return Candidat
+     */
     public Candidat getCandidat() {
         return candidat;
     }

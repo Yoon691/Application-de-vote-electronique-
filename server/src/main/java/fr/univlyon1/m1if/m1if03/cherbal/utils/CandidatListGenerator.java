@@ -15,6 +15,11 @@ import java.util.Map;
  * Classe statique qui renvoie une liste de candidats. Vous n'avez pas à vous préoccuper du fonctionnement de cette classe.
  */
 public class CandidatListGenerator {
+    
+    /** 
+     * @return Map<String, Candidat>
+     * @throws IOException
+     */
     public static Map<String, Candidat> getCandidatList() throws IOException {
         // Lecture du ficher de candidats avec Jackson
         ObjectMapper mapper = new ObjectMapper();

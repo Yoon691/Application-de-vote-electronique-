@@ -11,18 +11,35 @@ public class User {
         this.nom = nom;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getLogin() {
         return login;
     }
 
+    
+    /** 
+     * @param nom
+     */
     public void setNom(String nom) {
         this.nom = nom;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getNom() {
         return nom;
     }
 
+    
+    /** 
+     * @param o
+     * @return boolean
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -31,6 +48,10 @@ public class User {
         return login.equals(user.login);
     }
 
+    
+    /** 
+     * @return int
+     */
     @Override
     public int hashCode() {
         return Objects.hash(login);

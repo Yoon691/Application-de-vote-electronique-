@@ -7,10 +7,18 @@ public class Ballot {
         this.bulletin = bulletin;
     }
 
+    
+    /** 
+     * @return Bulletin
+     */
     public Bulletin getBulletin() {
         return bulletin;
     }
 
+    
+    /** 
+     * @param bulletin
+     */
     public void setBulletin(Bulletin bulletin) {
         this.bulletin = bulletin;
     }

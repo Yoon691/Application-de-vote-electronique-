@@ -8,10 +8,18 @@ public class Candidat {
         this.nom = nom;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getPrenom() {
         return prenom;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getNom() {
         return nom;
     }

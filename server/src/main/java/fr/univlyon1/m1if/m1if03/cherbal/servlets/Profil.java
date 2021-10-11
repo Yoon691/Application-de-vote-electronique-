@@ -20,6 +20,13 @@ import java.util.Map;
 @WebServlet(name = "Profil", value = "/profil")
 public class Profil extends HttpServlet {
 
+        
+        /** 
+         * @param request
+         * @param response
+         * @throws ServletException
+         * @throws IOException
+         */
         @Override
         protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             String nouveauNom = request.getParameter("new-nom");

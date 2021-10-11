@@ -9,6 +9,13 @@ import java.io.IOException;
 
 @WebServlet(name = "Deco", urlPatterns = "/deco")
 public class Deco extends HttpServlet {
+    
+    /** 
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getSession().invalidate();
         response.sendRedirect("./");
