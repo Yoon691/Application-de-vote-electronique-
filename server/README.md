@@ -25,7 +25,7 @@ Nous avons traité toutes les parties demander dans ce TP2 de la création de pr
 
            'response.sendRedirect("./");'
 
-    qui doone :
+    qui donne :
            
            '302 Found'
       
