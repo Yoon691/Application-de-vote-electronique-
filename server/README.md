@@ -23,11 +23,11 @@ Nous avons traité toutes les parties demander dans ce TP2 de la création de pr
 * Réponses au question :
     -  Pour la servlet de déconnexion : Quel est le type de redirection que vous devez employer pour cela :
 
-           'response.sendRedirect("./");'
-
-           qui doone :
-           
-           '302 Found'
+           - 'response.sendRedirect("./");' : 
+                    
+    qui doone :
+            
+           -'302 Found'
       
 * URLs de TP :
   
