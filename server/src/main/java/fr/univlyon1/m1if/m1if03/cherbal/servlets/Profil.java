@@ -22,34 +22,18 @@ public class Profil extends HttpServlet {
 
         @Override
         protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            ServletConfig config = getServletConfig();
-            ServletContext context = config.getServletContext();
             String nouveauNom = request.getParameter("new-nom");
-            @SuppressWarnings("unchecked")
-            Map<String, Candidat> listCandidat = (Map<String, Candidat>) request.getServletContext().getAttribute("candidats");
             System.out.println("new-nom : " + nouveauNom);
             if (nouveauNom != null && !nouveauNom.equals("")) {
                 HttpSession session = request.getSession(true);
                 User user = (User) session.getAttribute("user");
                 user.setNom(nouveauNom);
+                request.setAttribute("nomN", nouveauNom);
                 request.getRequestDispatcher("profil.jsp").forward(request, response);
             } else {
                 response.sendRedirect("profil.jsp");
             }
         }
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        HttpSession session = request.getSession(true);
-        User user = (User) session.getAttribute("user");
-        if (user != null ) {
-            response.sendRedirect("profil.jsp");
-        } else {
-
-            response.sendError(HttpServletResponse.SC_FORBIDDEN, "Vous avez pas le droite d'accéder a cette page il faut se connecter");
-            //            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erreur dans la récupération de la liste des candidats.");
-
-        }
-    }
 
     }

@@ -4,11 +4,6 @@ import fr.univlyon1.m1if.m1if03.cherbal.classes.Ballot;
 import fr.univlyon1.m1if.m1if03.cherbal.classes.Bulletin;
 import fr.univlyon1.m1if.m1if03.cherbal.classes.Candidat;
 import fr.univlyon1.m1if.m1if03.cherbal.classes.User;
-//import fr.univlyon1.m1if.m1if03.classes.Ballot;
-//import fr.univlyon1.m1if.m1if03.classes.Bulletin;
-//import fr.univlyon1.m1if.m1if03.classes.Candidat;
-//import fr.univlyon1.m1if.m1if03.classes.User;
-//import fr.univlyon1.m1if.m1if03.utils.CandidatListGenerator;
 import fr.univlyon1.m1if.m1if03.cherbal.utils.CandidatListGenerator;
 
 import javax.servlet.ServletConfig;
@@ -48,8 +43,8 @@ public class Init extends HttpServlet {
         try {
             if (candidats == null) {
                 candidats = CandidatListGenerator.getCandidatList();
-                Candidat candidatBlanc = new Candidat("**Vous avez votez BLANC !**", "blanc");
-                candidats.put("blanc", candidatBlanc);
+                Candidat candidatBlanc = new Candidat("**Vous avez votez BLANC !**", "VOTE Blanc");
+                candidats.put("VOTE Blanc", candidatBlanc);
                 request.getServletContext().setAttribute("candidats", candidats);
             }
 
