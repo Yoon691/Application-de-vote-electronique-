@@ -4,25 +4,26 @@
 
 Les parties traiter : 
 
-Nous avons traité toutes les parties demander dans ce tp de la creation de projet, amelioration du code donner par le prof, implementation des servlet, jsp et fonctionnalité demander et jusqu'à integration continue
-* Derniére partie traiter : 
+Nous avons traité toutes les parties demander dans ce TP2 de la création de projet, amélioration du code donner par le prof, implémentation des servlet, jsp et les fonctionnalités demander et jusqu'à l'intégration continue
+* Dernière partie traiter : 
 
-    - 1.4 
+    - 1.4(la dernière) pour les fonctionnalités  + Intégration contenue
   
 * les différents choix d'implémentation :
 
     -  la possibilité que l'utilisateur puisse voter blanc :
        
-        Nous avons ajouter un candidat s'appelle VOTE Blanc et l'ajouter dans la Map de Candidat dans la servlet Init.
+        Nous avons créé un candidat s'appelle VOTE Blanc et nous l'avons ajouté dans la Map de Candidat dans la servlet Init.
    
-    - Chnger index.html -> index.jsp :
+    - Changer index.html -> index.jsp :
     
-        Pour avoir un menu dynamique selon selon que l'utlisateur est connecté ou non
-        bah nous avons changer index en jsp pour pouvoir faire ça
+        Pour avoir un menu dynamique selon le sujet qui affiche le menu selon le status de l'utilisateur connecté ou non.
+        Nous avons choisi cette méthode faire ça.
       
-* Reponses au question :
-    - Quel est le type de redirection que vous devez employer pour cela :
-      
+* Réponses au question :
+    -  Pour la servlet de déconnexion : Quel est le type de redirection que vous devez employer pour cela :
+           'response.sendRedirect("./");'
+           qui doone :
            '302 Found'
       
 * URLs de TP :
