@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="static/vote.css">
 </head>
 <body>
-<jsp:include page="WEB-INF/components/header.jsp"><jsp:param name="titre-header" value="Bienvenue sur notre application de vote révolutionnaire !"/></jsp:include>
+<jsp:include page="WEB-INF/components/header.jsp"><jsp:param name="titre-header" value="Bienvenue sur notre application de vote revolutionnaire !"/></jsp:include>
 
 <main id="contenu" class="wrapper">
     <jsp:include page="WEB-INF/components/menu.jsp"/>

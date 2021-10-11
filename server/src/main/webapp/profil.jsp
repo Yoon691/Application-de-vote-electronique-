@@ -9,11 +9,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:if test="${sessionScope.user == null}">
-    <%response.sendError(HttpServletResponse.SC_FORBIDDEN, "Vous ne pouvez pas acceder a cette page connctez-vous pour acceder ");%>
+    <%response.sendError(HttpServletResponse.SC_FORBIDDEN, "Vous ne pouvez pas acceder a cette page connectez-vous pour acceder ");%>
 </c:if>
 <html>
 <head>
-    <title>Modificaion de nom</title>
+    <title>Modification de nom</title>
     <link rel="stylesheet" type="text/css" href="static/vote.css">
 </head>
 <body>
