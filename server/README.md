@@ -18,14 +18,14 @@ Nous avons traité toutes les parties demander dans ce TP2 de la création de pr
     - Changer index.html -> index.jsp :
     
         Pour avoir un menu dynamique selon le sujet qui affiche le menu selon le status de l'utilisateur connecté ou non.
-        Nous avons choisi cette méthode faire ça.
+        Nous avons choisi cette méthode pour faire ça.
       
 * Réponses au question :
     -  Pour la servlet de déconnexion : Quel est le type de redirection que vous devez employer pour cela :
 
            'response.sendRedirect("./");'
 
-           qui doone :
+    qui doone :
            
            '302 Found'
       
