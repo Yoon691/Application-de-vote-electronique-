@@ -1,10 +1,10 @@
-package fr.univlyon1.m1if.m1if03.cherbal.servlets;
+package fr.univlyon1.m1if.m1if03.p1507426.servlets;
 
-import fr.univlyon1.m1if.m1if03.cherbal.classes.Ballot;
-import fr.univlyon1.m1if.m1if03.cherbal.classes.Bulletin;
-import fr.univlyon1.m1if.m1if03.cherbal.classes.Candidat;
-import fr.univlyon1.m1if.m1if03.cherbal.classes.User;
-import fr.univlyon1.m1if.m1if03.cherbal.utils.CandidatListGenerator;
+
+import fr.univlyon1.m1if.m1if03.p1507426.classes.Ballot;
+import fr.univlyon1.m1if.m1if03.p1507426.classes.Bulletin;
+import fr.univlyon1.m1if.m1if03.p1507426.classes.Candidat;
+import fr.univlyon1.m1if.m1if03.p1507426.classes.User;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -36,7 +36,7 @@ public class Vote extends HttpServlet {
         ServletContext context = config.getServletContext();
         String candidatChoisi = request.getParameter("candidat-choisi");
         @SuppressWarnings("unchecked")
-        Map<String,Candidat> listCandidat = (Map<String, Candidat>) request.getServletContext().getAttribute("candidats");
+        Map<String, Candidat> listCandidat = (Map<String, Candidat>) request.getServletContext().getAttribute("candidats");
             System.out.println("candidatChoisi : " + candidatChoisi);
             if (candidatChoisi != null && !candidatChoisi.equals("")) {
                 HttpSession session = request.getSession(true);

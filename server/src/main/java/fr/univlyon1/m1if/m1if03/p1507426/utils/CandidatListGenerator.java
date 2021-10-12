@@ -1,8 +1,8 @@
-package fr.univlyon1.m1if.m1if03.cherbal.utils;
+package fr.univlyon1.m1if.m1if03.p1507426.utils;
 
-import fr.univlyon1.m1if.m1if03.cherbal.classes.Candidat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
+import fr.univlyon1.m1if.m1if03.p1507426.classes.Candidat;
 //import fr.univlyon1.m1if.m1if03.classes.Candidat;
 
 import java.io.IOException;

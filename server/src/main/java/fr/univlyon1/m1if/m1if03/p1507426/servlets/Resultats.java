@@ -1,7 +1,9 @@
-package fr.univlyon1.m1if.m1if03.cherbal.servlets;
+package fr.univlyon1.m1if.m1if03.p1507426.servlets;
 
-import fr.univlyon1.m1if.m1if03.cherbal.classes.Bulletin;
-import fr.univlyon1.m1if.m1if03.cherbal.classes.Candidat;
+
+
+import fr.univlyon1.m1if.m1if03.p1507426.classes.Bulletin;
+import fr.univlyon1.m1if.m1if03.p1507426.classes.Candidat;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;

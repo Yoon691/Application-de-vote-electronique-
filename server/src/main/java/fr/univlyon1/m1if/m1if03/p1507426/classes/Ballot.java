@@ -1,4 +1,4 @@
-package fr.univlyon1.m1if.m1if03.cherbal.classes;
+package fr.univlyon1.m1if.m1if03.p1507426.classes;
 
 public class Ballot {
     Bulletin bulletin;

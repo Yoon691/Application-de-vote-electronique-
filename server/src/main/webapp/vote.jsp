@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.Map" %>
-<%@ page import="fr.univlyon1.m1if.m1if03.cherbal.classes.Candidat" %>
+<%@ page import="fr.univlyon1.m1if.m1if03.p1507426.classes.Candidat" %>
 
 <c:if test="${sessionScope.user == null}">
 <%response.sendError(HttpServletResponse.SC_FORBIDDEN, "Vous ne pouvez pas acceder a cette page connctez-vous pour acceder ");%>

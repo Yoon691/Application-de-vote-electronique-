@@ -1,10 +1,11 @@
-package fr.univlyon1.m1if.m1if03.cherbal.servlets;
+package fr.univlyon1.m1if.m1if03.p1507426.servlets;
 
-import fr.univlyon1.m1if.m1if03.cherbal.classes.Ballot;
-import fr.univlyon1.m1if.m1if03.cherbal.classes.Bulletin;
-import fr.univlyon1.m1if.m1if03.cherbal.classes.Candidat;
-import fr.univlyon1.m1if.m1if03.cherbal.classes.User;
-import fr.univlyon1.m1if.m1if03.cherbal.utils.CandidatListGenerator;
+
+import fr.univlyon1.m1if.m1if03.p1507426.classes.Ballot;
+import fr.univlyon1.m1if.m1if03.p1507426.classes.Bulletin;
+import fr.univlyon1.m1if.m1if03.p1507426.classes.Candidat;
+import fr.univlyon1.m1if.m1if03.p1507426.classes.User;
+import fr.univlyon1.m1if.m1if03.p1507426.utils.CandidatListGenerator;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -20,33 +21,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet(name = "Init", value = "/init")
+@WebServlet(name = "Init", value = "/init", loadOnStartup = 1)
 public class Init extends HttpServlet {
     Map<String, Candidat> candidats = null;
     final Map<String, Ballot> ballots = new HashMap<>();
     final List<Bulletin> bulletins = new ArrayList<>();
 
-    
-    /** 
-     * @param config
-     * @throws ServletException
-     */
     @Override
     public void init(ServletConfig config) throws ServletException {
         // Cette instruction doit toujours être au début de la méthode init() pour pouvoir accéder à l'objet config.
         super.init(config);
+
         ServletContext context = config.getServletContext();
         context.setAttribute("ballots", ballots);
         context.setAttribute("bulletins", bulletins);
     }
 
-    
-    /** 
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // On intercepte le premier appel à Init pour mettre en place la liste des candidats,
@@ -55,8 +45,6 @@ public class Init extends HttpServlet {
         try {
             if (candidats == null) {
                 candidats = CandidatListGenerator.getCandidatList();
-                Candidat candidatBlanc = new Candidat("**Vous avez votez BLANC !**", "VOTE Blanc");
-                candidats.put("VOTE Blanc", candidatBlanc);
                 request.getServletContext().setAttribute("candidats", candidats);
             }
 
@@ -64,11 +52,12 @@ public class Init extends HttpServlet {
             String login = request.getParameter("login");
             if (login != null && !login.equals("")) {
                 HttpSession session = request.getSession(true);
-                request.getServletContext().getContext("ballots");
-                session.setAttribute("user", new User(login, request.getParameter("nom") != null ? request.getParameter("nom") : ""));
+                session.setAttribute("user", new User(login,
+                        request.getParameter("nom") != null ? request.getParameter("nom") : "",
+                        request.getParameter("admin") != null && request.getParameter("admin").equals("on")));
                 request.getRequestDispatcher("vote.jsp").forward(request, response);
             } else {
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("index.html");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -77,15 +66,8 @@ public class Init extends HttpServlet {
         }
     }
 
-    
-    /** 
-     * @param request
-     * @param response
-     * @throws IOException
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.sendRedirect("index.jsp");
-
+        response.sendRedirect("index.html");
     }
 }

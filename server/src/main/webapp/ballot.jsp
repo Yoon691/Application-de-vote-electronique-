@@ -9,8 +9,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.HashMap" %>
-<%@ page import="fr.univlyon1.m1if.m1if03.cherbal.classes.Bulletin" %>
-<%@ page import="fr.univlyon1.m1if.m1if03.cherbal.classes.Candidat" %>
+<%@ page import="fr.univlyon1.m1if.m1if03.p1507426.classes.Bulletin" %>
+<%@ page import="fr.univlyon1.m1if.m1if03.p1507426.classes.Candidat" %>
 <%@ page import="java.util.List" %>
 <jsp:useBean id="bulletins" type="java.util.List" beanName="bulletins" scope="application"/>
 <jsp:useBean id="ballots" type="java.util.Map" beanName="ballots" scope="application"/>
