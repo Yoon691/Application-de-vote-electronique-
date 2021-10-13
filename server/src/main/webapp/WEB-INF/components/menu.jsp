@@ -8,6 +8,7 @@
          <li><a href="vote.jsp">Voter</a></li>
          <li><a href="ballot.jsp">Votre vote</a></li>
          <li><a href="profil.jsp">mettre à jour votre profil</a></li>
+         <li><a href="listBallots.jsp">list de Ballots</a></li>
          <li><a href="deco">Déconnexion</a></li>
       </c:if>
    </ul>
