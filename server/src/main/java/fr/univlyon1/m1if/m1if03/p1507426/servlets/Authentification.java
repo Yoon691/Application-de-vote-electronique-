@@ -20,7 +20,7 @@ import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import java.io.IOException;
 
-@WebFilter(filterName = "Authentification", value = "/authentification")
+@WebFilter(filterName = "Authentification", value = "/vote.jsp")
 public class Authentification extends HttpFilter {
 
     @Override
@@ -35,7 +35,8 @@ public class Authentification extends HttpFilter {
                     req.getParameter("nom") != null ? req.getParameter("nom") : "",
                     req.getParameter("admin") != null && req.getParameter("admin").equals("on")));
 //            request.getRequestDispatcher("vote.jsp").forward(request, response);
-            res.sendRedirect("vote.jsp");
+           // res.sendRedirect("vote.jsp");
+            req.getRequestDispatcher("vote.jsp").forward(req, res);
         } else {
             res.sendRedirect("index.html");
         }
