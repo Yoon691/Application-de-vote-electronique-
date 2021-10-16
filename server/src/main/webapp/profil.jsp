@@ -14,14 +14,14 @@
 <html>
 <head>
     <title>Modification de nom</title>
-    <link rel="stylesheet" type="text/css" href="static/vote.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/vote.css">
 </head>
 <body>
 <jsp:include page="WEB-INF/components/header.jsp"><jsp:param name="titre-header" value="Modifiez votre nom"/></jsp:include>
 <main id="contenu" class="wrapper">
     <jsp:include page="WEB-INF/components/menu.jsp"/>
     <article class="contenu">
-            <form method="post" action="profil">
+            <form method="post" action="${pageContext.request.contextPath}/election/user">
                 <h2>Mettrez à jour votre profil</h2>
                 <p>
                     <label>

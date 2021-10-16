@@ -9,18 +9,18 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <jsp:useBean id="ballots" type="java.util.Map" scope="application" beanName="ballots"/>
 
-<c:if test="${sessionScope.user == null || !sessionScope.user.admin}">
-    <%
-        // Remarque : on ne peut pas avoir 2 blocs c:if qui font chacun un sendError (erreur 500).
-        // D'où la double condition et les 2 types d'erreurs dans la même instruction sendError()
-        response.sendError(session.getAttribute("user") == null ? HttpServletResponse.SC_FORBIDDEN : HttpServletResponse.SC_UNAUTHORIZED, "Admin : " + ((User) session.getAttribute("User")).isAdmin());
-    %>
-</c:if>
+<%--<c:if test="${sessionScope.user == null || !sessionScope.user.admin}">--%>
+<%--    <%--%>
+<%--        // Remarque : on ne peut pas avoir 2 blocs c:if qui font chacun un sendError (erreur 500).--%>
+<%--        // D'où la double condition et les 2 types d'erreurs dans la même instruction sendError()--%>
+<%--        response.sendError(session.getAttribute("user") == null ? HttpServletResponse.SC_FORBIDDEN : HttpServletResponse.SC_UNAUTHORIZED, "Admin : " + ((User) session.getAttribute("User")).isAdmin());--%>
+<%--    %>--%>
+<%--</c:if>--%>
 
 <html>
 <head>
     <title>Liste des ballots (admin)</title>
-    <link rel="stylesheet" type="text/css" href="static/vote.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/vote.css">
 </head>
 <body>
 <%--<jsp:include page="WEB-INF/components/title.jsp?title=Liste des ballots (admin)"/>--%>
@@ -34,7 +34,7 @@
         <ul>
             <c:forEach items="${ballots}" var="ballotEntry">
                 <li>
-                    <form action="deleteVote" method="post">
+                    <form action="${pageContext.request.contextPath}/election/deleteVote" method="post">
                         <c:out value="${ballotEntry.key}"/>
                         <input type="hidden" name="user" value="${ballotEntry.key}">
                         <input type="submit" value="supprimer">

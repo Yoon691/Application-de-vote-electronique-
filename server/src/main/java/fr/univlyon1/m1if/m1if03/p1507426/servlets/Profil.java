@@ -35,11 +35,16 @@ public class Profil extends HttpServlet {
                 User user = (User) session.getAttribute("user");
                 user.setNom(nouveauNom);
                 request.setAttribute("nomN", nouveauNom);
-                request.getRequestDispatcher("profil.jsp").forward(request, response);
+                request.getRequestDispatcher("profil.jsp").include(request, response);
             } else {
-                response.sendRedirect("profil.jsp");
+                response.sendRedirect("user");
             }
         }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        request.getRequestDispatcher("profil.jsp").include(request, response);
+    }
 
 
     }

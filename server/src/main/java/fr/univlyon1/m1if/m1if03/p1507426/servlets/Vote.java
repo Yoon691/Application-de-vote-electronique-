@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.net.SocketTimeoutException;
 import java.util.List;
 import java.util.Map;
 
@@ -51,10 +52,17 @@ public class Vote extends HttpServlet {
                 User user = (User) session.getAttribute("user");
                 ballots.put(user.getLogin(), ballot);
                 session.setAttribute("candidatVoter", candidat );
-                request.getRequestDispatcher("ballot.jsp").forward(request, response);
+                request.getRequestDispatcher("ballot.jsp").include(request, response);
             } else {
                 response.sendRedirect("ballot.jsp");
             }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        System.out.println("doGet Servlet vote 1 ");
+        request.getRequestDispatcher("vote.jsp").include(request, response);
+        System.out.println("doGet Servlet vote 2");
     }
 
 

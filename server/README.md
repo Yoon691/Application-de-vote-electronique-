@@ -33,3 +33,25 @@ Nous avons traité toutes les parties demander dans ce TP2 de la création de pr
   
   - http://192.168.75.70:8080/v1/
   - https://192.168.75.70/api/v1/
+
+
+#le 16/10/2021:
+    * marche pas : 
+        * Post : 
+            - l'admin 
+        * Get : 
+             -   
+    * marche : 
+        * Post : 
+            - Connextion
+            - vote
+        * Get : 
+            - resultat
+            - voter 
+            - mettre a jour profil
+            - votre Vote 
+            - listBallot
+            - deconection depuis la page d'accuile
+            - deconection AVEC un lien /election
+            - supprimer un vote
+            - modifier nom

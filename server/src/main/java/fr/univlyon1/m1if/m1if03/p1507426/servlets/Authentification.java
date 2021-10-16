@@ -20,7 +20,7 @@ import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import java.io.IOException;
 
-@WebFilter(filterName = "Authentification", value = "/vote.jsp")
+@WebFilter(filterName = "Authentification", value = "/election")
 public class Authentification extends HttpFilter {
 
     @Override
@@ -31,13 +31,15 @@ public class Authentification extends HttpFilter {
         if(session.getAttribute("user") != null) {
             chain.doFilter(req, res);
         } else if (req.getParameter("login") != null && !req.getParameter("login").equals("")){
+            System.out.println("doFiltre conecter");
             session.setAttribute("user", new User(req.getParameter("login"),
                     req.getParameter("nom") != null ? req.getParameter("nom") : "",
                     req.getParameter("admin") != null && req.getParameter("admin").equals("on")));
 //            request.getRequestDispatcher("vote.jsp").forward(request, response);
            // res.sendRedirect("vote.jsp");
-            req.getRequestDispatcher("vote.jsp").forward(req, res);
+            req.getRequestDispatcher("vote.jsp").include(req, res);
         } else {
+            System.out.println("doFiltre  non connecter");
             res.sendRedirect("index.html");
         }
 

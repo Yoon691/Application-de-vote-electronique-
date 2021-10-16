@@ -16,7 +16,7 @@
 <html>
 <head>
     <title>Page de Vote</title>
-    <link rel="stylesheet" type="text/css" href="static/vote.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/vote.css">
 </head>
 <body>
 <jsp:include page="WEB-INF/components/header.jsp"><jsp:param name="titre-header" value="Voter pour qui vous voulez"/></jsp:include>
@@ -29,7 +29,7 @@
             Map<String, Candidat> MapCandidats = (Map<String, Candidat>) application.getAttribute("candidats");
 
         %>
-    <form method="post" action="vote">
+    <form method="post" action="${pageContext.request.contextPath}/election/vote">
         <label>Sélectionnez un candidat :
 
         </label>

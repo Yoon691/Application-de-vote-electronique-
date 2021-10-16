@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet(name = "DeleteVote", value = "/DeleteVote")
+@WebServlet(name = "DeleteVote", value = "/deleteVote")
 public class DeleteVote extends HttpServlet {
     
     /** 
@@ -43,9 +43,9 @@ public class DeleteVote extends HttpServlet {
             bulletins.remove(bulletin);
             ballot.setBulletin(null);
             ballots.remove(user.getLogin());
-            request.getRequestDispatcher("ballot.jsp").forward(request, response);
+            request.getRequestDispatcher("listBallots").forward(request, response);
 
         }
-        response.sendRedirect("ballot.jsp");
+        response.sendRedirect("listBallots");
     }
 }

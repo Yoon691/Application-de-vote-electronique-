@@ -20,7 +20,7 @@
 <html>
 <head>
     <title>Preuve de Vote</title>
-    <link rel="stylesheet" type="text/css" href="static/vote.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/vote.css">
 </head>
 <body>
 <jsp:include page="WEB-INF/components/header.jsp"><jsp:param name="titre-header" value="Votre pruve de vote"/></jsp:include>
@@ -28,7 +28,7 @@
     <jsp:include page="WEB-INF/components/menu.jsp"/>
     <article class="contenu">
 
-        <form method="post" action="DeleteVote">
+        <form method="post" action="${pageContext.request.contextPath}/election/deleteVote">
             <label>Votre Vote :
                 <c:choose>
                     <c:when test="${applicationScope.ballots.containsKey(sessionScope.user.login)}">

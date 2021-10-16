@@ -3,13 +3,13 @@
 <aside class="menu">
    <h2>Menu</h2>
    <ul>
-      <li><a href="resultats">Résultats</a></li>
+      <li><a href="/server/election/resultats">Résultats</a></li>
       <c:if test="${sessionScope.user != null}">
-         <li><a href="vote.jsp">Voter</a></li>
-         <li><a href="ballot.jsp">Votre vote</a></li>
-         <li><a href="profil.jsp">mettre à jour votre profil</a></li>
-         <li><a href="listBallots.jsp">list de Ballots</a></li>
-         <li><a href="deco">Déconnexion</a></li>
+         <li><a href="vote">Voter</a></li>
+         <li><a href="/server/election/listBallots">Votre vote</a></li>
+         <li><a href="/server/election/user">mettre à jour votre profil</a></li>
+         <li><a href="/server/election/listBallots">list de Ballots</a></li>
+         <li><a href="${pageContext.request.contextPath}/deco">Déconnexion</a></li>
       </c:if>
    </ul>
 </aside>

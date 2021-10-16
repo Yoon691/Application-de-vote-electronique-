@@ -49,4 +49,6 @@ public class Resultats extends HttpServlet {
 
         request.getRequestDispatcher("resultats.jsp").include(request,response);
     }
+
+
 }
