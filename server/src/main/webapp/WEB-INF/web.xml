@@ -8,39 +8,19 @@
         xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
         version="3.0">
-<!--        <display-name>Archetype Created Web Application</display-name>-->
-<!--        <load-on-startup>1</load-on-startup>-->
 
+    <display-name>Archetype Created Web Application</display-name>
 
-<!--    <filter>-->
-<!--        <filter-name>Authentification</filter-name>-->
-<!--        <filter-class/>-->
-<!--    </filter>-->
-<!--        <filter-mapping>-->
-<!--            <filter-name>Authentification</filter-name>-->
-<!--        </filter-mapping>-->
-<!--        <filter-mapping>-->
-<!--            <filter-name>Autorisation</filter-name>-->
-<!--        </filter-mapping>-->
+        <filter-mapping>
+                <filter-name>Authentification</filter-name>
+                <url-pattern>/vote.jsp</url-pattern>
+        </filter-mapping>
 
-    <filter>
-        <filter-name>Authentification</filter-name>
-        <filter-class>fr.univlyon1.m1if.m1if03.p1507426.servlets.Authentification</filter-class>
-    </filter>
-    <filter>
-        <filter-name>Autorisation</filter-name>
-        <filter-class>fr.univlyon1.m1if.m1if03.p1507426.servlets.Autorisation</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>Authentification</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
+        <filter-mapping>
+                <filter-name>Autorisation</filter-name>
+                <url-pattern>/listBallots.jsp</url-pattern>
+        </filter-mapping>
 
-
-    <filter-mapping>
-        <filter-name>Autorisation</filter-name>
-        <url-pattern>/listBallots.jsp</url-pattern>
-    </filter-mapping>
 
 
 

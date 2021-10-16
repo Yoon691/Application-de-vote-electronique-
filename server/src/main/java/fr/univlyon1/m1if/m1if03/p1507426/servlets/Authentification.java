@@ -20,7 +20,7 @@ import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import java.io.IOException;
 
-@WebFilter(filterName = "Authentification", value = "/vote.jsp")
+@WebFilter(filterName = "Authentification", urlPatterns = {"/vote.jsp"})
 public class Authentification extends HttpFilter {
 
     @Override
