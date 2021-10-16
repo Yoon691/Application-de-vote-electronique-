@@ -13,6 +13,7 @@ import java.io.IOException;
 
 ///listBallots.jsp
 @WebFilter(filterName = "Autorisation", value = "/election/listBallots")
+
 public class Autorisation extends HttpFilter {
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException

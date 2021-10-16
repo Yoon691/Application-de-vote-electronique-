@@ -18,7 +18,7 @@
 
     <filter-mapping>
         <filter-name>Autorisation</filter-name>
-        <url-pattern>/election/listBallots</url-pattern>
+        <url-pattern>/listBallots.jsp</url-pattern>
     </filter-mapping>
 
 
