@@ -12,7 +12,7 @@
 <html>
 <head>
     <title>Vote</title>
-    <link rel="stylesheet" type="text/css" href="../static/vote.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/vote.css">
 </head>
 <body>
 <jsp:include page="WEB-INF/components/header.jsp"><jsp:param name="titre-header" value="Resultats actuels de l'election"/></jsp:include>
