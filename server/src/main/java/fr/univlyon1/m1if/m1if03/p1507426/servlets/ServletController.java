@@ -38,6 +38,11 @@ public class ServletController extends HttpServlet {
 //                resp.sendRedirect("/resultats");
                 req.getRequestDispatcher("/listBallots").forward(req, resp);
                 break;
+            case "/ballot":
+                System.out.println("listBallot doGet");
+//                resp.sendRedirect("/resultats");
+                req.getRequestDispatcher("/ballot").forward(req, resp);
+                break;
 
 
             default:

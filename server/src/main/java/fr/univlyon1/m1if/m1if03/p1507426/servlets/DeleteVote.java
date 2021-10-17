@@ -34,18 +34,33 @@ public class DeleteVote extends HttpServlet {
         Map<String, Ballot> ballots = (Map<String, Ballot>) context.getAttribute("ballots");
         HttpSession session = request.getSession(true);
         User user = (User) session.getAttribute("user");
-        if (ballots.get(user.getLogin()) != null) {
+        if (!user.isAdmin()) {
+            if (ballots.get(user.getLogin()) != null) {
 
-            Ballot ballot = ballots.get(user.getLogin());
-            Bulletin bulletin = ballot.getBulletin();
-            @SuppressWarnings("unchecked")
-            List<Bulletin> bulletins = (List<Bulletin>) context.getAttribute("bulletins");
-            bulletins.remove(bulletin);
-            ballot.setBulletin(null);
-            ballots.remove(user.getLogin());
-            request.getRequestDispatcher("listBallots").forward(request, response);
+                Ballot ballot = ballots.get(user.getLogin());
+                Bulletin bulletin = ballot.getBulletin();
+                @SuppressWarnings("unchecked")
+                List<Bulletin> bulletins = (List<Bulletin>) context.getAttribute("bulletins");
+                bulletins.remove(bulletin);
+                ballot.setBulletin(null);
+                ballots.remove(user.getLogin());
+                request.getRequestDispatcher("ballot").forward(request, response);
 
+            }
+            response.sendRedirect("ballot");
+        } else {
+            String votant = request.getParameter("user");
+            if (votant != null) {
+                Ballot ballot = ballots.get(votant);
+                Bulletin bulletin = ballot.getBulletin();
+                @SuppressWarnings("unchecked")
+                List<Bulletin> bulletins = (List<Bulletin>) context.getAttribute("bulletins");
+                bulletins.remove(bulletin);
+                ballot.setBulletin(null);
+                ballots.remove(votant);
+                request.getRequestDispatcher("listBallots").forward(request, response);
+            }
+            response.sendRedirect("listBallots");
         }
-        response.sendRedirect("listBallots");
     }
 }

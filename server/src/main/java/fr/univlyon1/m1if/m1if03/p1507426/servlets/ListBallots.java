@@ -44,27 +44,27 @@ public class ListBallots extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        HttpSession session = request.getSession(true);
+//        HttpSession session = request.getSession(true);
+//
+//        User user = (User) session.getAttribute("user");
+//        if(user == null) {
+//
+//            // Remarque : on ne peut pas avoir 2 blocs c:if qui font chacun un sendError (erreur 500).--%>
+//            // D'où la double condition et les 2 types d'erreurs dans la même instruction sendError()--%>
+//            response.sendError(session.getAttribute("user") == null ? HttpServletResponse.SC_FORBIDDEN : HttpServletResponse.SC_UNAUTHORIZED, "Admin : " + ((User) session.getAttribute("User")).isAdmin());
+//
+//        } else if(user.isAdmin()){
 
-        User user = (User) session.getAttribute("user");
-        if(user == null) {
+        request.getRequestDispatcher("WEB-INF/components/listBallots.jsp").include(request, response);
+//        } else {
+//            request.getRequestDispatcher("ballot.jsp").include(request, response);
 
-            // Remarque : on ne peut pas avoir 2 blocs c:if qui font chacun un sendError (erreur 500).--%>
-            // D'où la double condition et les 2 types d'erreurs dans la même instruction sendError()--%>
-            response.sendError(session.getAttribute("user") == null ? HttpServletResponse.SC_FORBIDDEN : HttpServletResponse.SC_UNAUTHORIZED, "Admin : " + ((User) session.getAttribute("User")).isAdmin());
-
-        } else if(user.isAdmin()){
-
-        request.getRequestDispatcher("listBallots.jsp").include(request, response);
-        } else {
-            request.getRequestDispatcher("ballot.jsp").include(request, response);
-
-        }
+        //}
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("ballot.jsp").include(req, resp);
+        req.getRequestDispatcher("WEB-INF/components/listBallots.jsp").include(req, resp);
 
     }
 }

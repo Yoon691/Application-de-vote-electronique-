@@ -35,7 +35,7 @@ public class Profil extends HttpServlet {
                 User user = (User) session.getAttribute("user");
                 user.setNom(nouveauNom);
                 request.setAttribute("nomN", nouveauNom);
-                request.getRequestDispatcher("profil.jsp").include(request, response);
+                request.getRequestDispatcher("WEB-INF/components/profil.jsp").include(request, response);
             } else {
                 response.sendRedirect("user");
             }
@@ -43,7 +43,7 @@ public class Profil extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        request.getRequestDispatcher("profil.jsp").include(request, response);
+        request.getRequestDispatcher("WEB-INF/components/profil.jsp").include(request, response);
     }
 
 

@@ -52,16 +52,16 @@ public class Vote extends HttpServlet {
                 User user = (User) session.getAttribute("user");
                 ballots.put(user.getLogin(), ballot);
                 session.setAttribute("candidatVoter", candidat );
-                request.getRequestDispatcher("ballot.jsp").include(request, response);
+                request.getRequestDispatcher("WEB-INF/components/ballot.jsp").include(request, response);
             } else {
-                response.sendRedirect("ballot.jsp");
+                response.sendRedirect("WEB-INF/components/ballot.jsp");
             }
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         System.out.println("doGet Servlet vote 1 ");
-        request.getRequestDispatcher("vote.jsp").include(request, response);
+        request.getRequestDispatcher("WEB-INF/components/vote.jsp").include(request, response);
         System.out.println("doGet Servlet vote 2");
     }
 

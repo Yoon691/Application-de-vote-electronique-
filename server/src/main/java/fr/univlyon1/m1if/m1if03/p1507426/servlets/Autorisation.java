@@ -28,7 +28,7 @@ public class Autorisation extends HttpFilter {
             System.out.println("Filtre Autorisation non Admin");
 
 //            res.sendRedirect("ballot.jsp");
-            req.getRequestDispatcher("listBallots").include(req, res);
+            req.getRequestDispatcher("ballot").forward(req, res);
         }
 
     }

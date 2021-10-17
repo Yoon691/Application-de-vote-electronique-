@@ -24,10 +24,10 @@
 </head>
 <body>
 <%--<jsp:include page="WEB-INF/components/title.jsp?title=Liste des ballots (admin)"/>--%>
-<jsp:include page="WEB-INF/components/header.jsp"><jsp:param name="titre-header" value="Liste des ballots"/></jsp:include>
+<jsp:include page="header.jsp"><jsp:param name="titre-header" value="Liste des ballots"/></jsp:include>
 
 <main id="contenu" class="wrapper">
-    <jsp:include page="WEB-INF/components/menu.jsp"/>
+    <jsp:include page="menu.jsp"/>
     <article class="contenu">
         <h2>Voici la liste des <c:out value="${ballots.size()}" /> votants</h2>
 

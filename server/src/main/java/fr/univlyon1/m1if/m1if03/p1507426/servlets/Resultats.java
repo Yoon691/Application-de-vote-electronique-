@@ -47,7 +47,7 @@ public class Resultats extends HttpServlet {
         }
         request.setAttribute("votes", votes);
 
-        request.getRequestDispatcher("resultats.jsp").include(request,response);
+        request.getRequestDispatcher("WEB-INF/components/resultats.jsp").include(request,response);
     }
 
 

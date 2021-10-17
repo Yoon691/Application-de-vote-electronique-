@@ -15,9 +15,9 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/vote.css">
 </head>
 <body>
-<jsp:include page="WEB-INF/components/header.jsp"><jsp:param name="titre-header" value="Resultats actuels de l'election"/></jsp:include>
+<jsp:include page="header.jsp"><jsp:param name="titre-header" value="Resultats actuels de l'election"/></jsp:include>
 <main id="contenu" class="wrapper">
-    <jsp:include page="WEB-INF/components/menu.jsp"/>
+    <jsp:include page="menu.jsp"/>
     <article class="contenu">
         <h2>Voici le résultat courant de l'élection</h2>
         <%--  /--%>
@@ -30,6 +30,6 @@
     </article>
 </main>
 
-<jsp:include page="WEB-INF/components/footer.html"/>
+<jsp:include page="footer.html"/>
 </body>
 </html>

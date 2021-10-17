@@ -37,7 +37,7 @@ public class Authentification extends HttpFilter {
                     req.getParameter("admin") != null && req.getParameter("admin").equals("on")));
 //            request.getRequestDispatcher("vote.jsp").forward(request, response);
            // res.sendRedirect("vote.jsp");
-            req.getRequestDispatcher("vote.jsp").include(req, res);
+            req.getRequestDispatcher("WEB-INF/components/vote.jsp").include(req, res);
         } else {
             System.out.println("doFiltre  non connecter");
             res.sendRedirect("index.html");
