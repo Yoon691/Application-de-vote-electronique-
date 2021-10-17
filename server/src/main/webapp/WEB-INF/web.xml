@@ -13,7 +13,7 @@
 
     <filter-mapping>
         <filter-name>Authentification</filter-name>
-        <url-pattern>/vote.jsp</url-pattern>
+        <url-pattern>/election/*</url-pattern>
     </filter-mapping>
 
     <filter-mapping>

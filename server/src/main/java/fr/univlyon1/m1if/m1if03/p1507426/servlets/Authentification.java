@@ -20,18 +20,20 @@ import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import java.io.IOException;
 
-@WebFilter(filterName = "Authentification", value = "/election")
+@WebFilter(filterName = "Authentification", urlPatterns = "/election")
 public class Authentification extends HttpFilter {
 
     @Override
     public void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
-
+        System.out.println("Filtre Autorisation");
         HttpSession session = req.getSession(true);
 
         if(session.getAttribute("user") != null) {
+            System.out.println("Filtre Autorisation user != null");
+
             chain.doFilter(req, res);
         } else if (req.getParameter("login") != null && !req.getParameter("login").equals("")){
-            System.out.println("doFiltre conecter");
+            System.out.println("Filtre Autorisation connection");
             session.setAttribute("user", new User(req.getParameter("login"),
                     req.getParameter("nom") != null ? req.getParameter("nom") : "",
                     req.getParameter("admin") != null && req.getParameter("admin").equals("on")));
@@ -39,7 +41,7 @@ public class Authentification extends HttpFilter {
            // res.sendRedirect("vote.jsp");
             req.getRequestDispatcher("WEB-INF/components/vote.jsp").include(req, res);
         } else {
-            System.out.println("doFiltre  non connecter");
+            System.out.println("Filtre Autorisation non connecter");
             res.sendRedirect("index.html");
         }
 

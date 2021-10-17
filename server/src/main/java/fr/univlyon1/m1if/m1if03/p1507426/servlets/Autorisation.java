@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 ///listBallots.jsp
-@WebFilter(filterName = "Autorisation", value = "/election/listBallots")
+@WebFilter(filterName = "Autorisation", urlPatterns = "/election/listBallots")
 
 public class Autorisation extends HttpFilter {
     @Override
