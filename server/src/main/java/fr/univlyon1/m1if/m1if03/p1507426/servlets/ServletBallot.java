@@ -64,7 +64,7 @@ public class ServletBallot extends HttpServlet {
         System.out.println("Bultins  : " + bulletins.size());
 
 //        Integer nombreDeVote = bulletins.size();
-        int nombreVote = bulletins.size();
+        Integer nombreVote = ballots.size();
         req.setAttribute("nombreVote", nombreVote);
         req.getRequestDispatcher("WEB-INF/components/ballot.jsp").include(req, resp);
     }

@@ -12,7 +12,12 @@
 <html>
 <head>
     <title>Vote</title>
+<c:if test="${sessionScope.user != null}">
     <link rel="stylesheet" type="text/css" href="../static/vote.css">
+</c:if>
+<c:if test="${sessionScope.user == null}">
+    <link rel="stylesheet" type="text/css" href="static/vote.css">
+</c:if>
 </head>
 <body>
 <jsp:include page="header.jsp"><jsp:param name="titre-header" value="Resultats actuels de l'election"/></jsp:include>

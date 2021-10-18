@@ -36,13 +36,19 @@ Nous avons traité toutes les parties demander dans ce TP2 de la création de pr
 
 
 #le 16/10/2021:
-    * ne marche pas : 
-        * Post : 
-            
-            - nombre de vote
-            
-        * Get : 
-             -   
+
+    * a faire  :
+        
+        - regarde le nombre de vote
+        - regarde le cache
+        - regarde le Etag
+        - .gitignore
+        - change le nom de dossier a serverMVC
+        - netoyer le code 
+        - readme branch et master 
+        - mergue request
+        
+
     * marche : 
         * Post :
             - index.html sans login
