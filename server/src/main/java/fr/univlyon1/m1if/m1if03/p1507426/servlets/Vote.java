@@ -40,23 +40,26 @@ public class Vote extends HttpServlet {
         Map<String, Candidat> listCandidat = (Map<String, Candidat>) request.getServletContext().getAttribute("candidats");
             System.out.println("candidatChoisi : " + candidatChoisi);
             if (candidatChoisi != null && !candidatChoisi.equals("")) {
+                System.out.println("If Servlet Vote");
                 HttpSession session = request.getSession(true);
                 Candidat candidat = listCandidat.get(candidatChoisi);
                 Bulletin bulletin = new Bulletin(candidat);
                 @SuppressWarnings("unchecked")
                 List<Bulletin> bulletins = (List<Bulletin>) context.getAttribute("bulletins");
                 bulletins.add(bulletin);
-                Ballot ballot =new Ballot(bulletin);
+                Ballot ballot = new Ballot(bulletin);
                 @SuppressWarnings("unchecked")
-                Map<String,Ballot> ballots = (Map<String, Ballot>) context.getAttribute("ballots");
+                Map<String, Ballot> ballots = (Map<String, Ballot>) context.getAttribute("ballots");
                 User user = (User) session.getAttribute("user");
                 ballots.put(user.getLogin(), ballot);
-                session.setAttribute("candidatVoter", candidat );
+                session.setAttribute("candidatVoter", candidat);
 //                request.getRequestDispatcher("WEB-INF/components/ballot.jsp").include(request, response);
-                request.getRequestDispatcher("ballot").forward(request, response);
-            } else {
-                response.sendRedirect("ballot");
+//                request.getRequestDispatcher("WEB-INF/components/vote.jsp").include(request, response);
+//            } else {
+//                response.sendRedirect("WEB-INF/components/vote.jsp");
+//            }
             }
+        request.getRequestDispatcher("WEB-INF/components/vote.jsp").include(request, response);
     }
 
     @Override

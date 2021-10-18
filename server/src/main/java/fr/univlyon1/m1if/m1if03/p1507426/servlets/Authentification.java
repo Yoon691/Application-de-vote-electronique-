@@ -40,6 +40,7 @@ public class Authentification extends HttpFilter {
 //            request.getRequestDispatcher("vote.jsp").forward(request, response);
            // res.sendRedirect("vote.jsp");
             req.getRequestDispatcher("WEB-INF/components/vote.jsp").include(req, res);
+            //            req.getRequestDispatcher("vote").forward(req, res);
         } else {
             System.out.println("Filtre Autorisation non connecter");
             res.sendRedirect("index.html");

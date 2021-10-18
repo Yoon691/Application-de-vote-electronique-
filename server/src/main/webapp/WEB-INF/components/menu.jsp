@@ -3,15 +3,15 @@
 <aside class="menu">
    <h2>Menu</h2>
    <ul>
-      <li><a href="${pageContext.request.requestURL}/resultats">Résultats</a></li>
+      <li><a href="resultats">Résultats</a></li>
       <c:if test="${sessionScope.user != null}">
-         <li><a href="${pageContext.request.contextPath}/election/vote">Voter</a></li>
+         <li><a href="vote">Voter</a></li>
          <c:if test="${!sessionScope.user.admin}">
-         <li><a href="${pageContext.request.contextPath}/election/ballot">Votre vote</a></li>
+         <li><a href="ballot">Votre vote</a></li>
          </c:if>
-         <li><a href="${pageContext.request.contextPath}/election/user">mettre à jour votre profil</a></li>
+         <li><a href="user">mettre à jour votre profil</a></li>
          <c:if test="${sessionScope.user.admin}">
-         <li><a href="${pageContext.request.contextPath}/election/listBallots">list de Ballots</a></li>
+         <li><a href="listBallots">list de Ballots</a></li>
          </c:if>
          <li><a href="${pageContext.request.contextPath}/deco">Déconnexion</a></li>
       </c:if>
