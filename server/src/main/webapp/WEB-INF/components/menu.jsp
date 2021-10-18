@@ -13,7 +13,7 @@
          <c:if test="${sessionScope.user.admin}">
          <li><a href="listBallots">list de Ballots</a></li>
          </c:if>
-         <li><a href="${pageContext.request.contextPath}/deco">Déconnexion</a></li>
+         <li><a href="deco">Déconnexion</a></li>
       </c:if>
    </ul>
 </aside>
