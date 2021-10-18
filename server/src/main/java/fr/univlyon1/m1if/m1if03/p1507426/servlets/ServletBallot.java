@@ -33,7 +33,8 @@ public class ServletBallot extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("Ballot Servlet");
-        String supprime = (String) req.getAttribute("action");
+        String supprime = req.getParameter("action");
+        System.out.println("supprime : " + supprime);
         ServletConfig config = getServletConfig();
         ServletContext context = config.getServletContext();
         @SuppressWarnings("unchecked")
@@ -43,6 +44,7 @@ public class ServletBallot extends HttpServlet {
         HttpSession session = req.getSession(true);
         User user = (User) session.getAttribute("user");
         if (supprime != null &&  supprime.equals("supprimer")) {
+            System.out.println("If Supperime");
             if (ballots.get(user.getLogin()) != null) {
                 System.out.println("Ballot Servlet ballots.get(user.getLogin()) != null");
                 Ballot ballot = ballots.get(user.getLogin());

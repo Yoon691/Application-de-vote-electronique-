@@ -82,6 +82,8 @@ public class ServletController extends HttpServlet {
                 break;
             case "/ballot":
                 System.out.println("Ballot doPost");
+                String supprime = (String) req.getAttribute("action");
+                System.out.println("supprime : " + supprime);
 //                resp.sendRedirect("/resultats");
                 req.getRequestDispatcher("/ballot").forward(req, resp);
                 break;
