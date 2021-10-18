@@ -52,9 +52,10 @@ public class Vote extends HttpServlet {
                 User user = (User) session.getAttribute("user");
                 ballots.put(user.getLogin(), ballot);
                 session.setAttribute("candidatVoter", candidat );
-                request.getRequestDispatcher("WEB-INF/components/ballot.jsp").include(request, response);
+//                request.getRequestDispatcher("WEB-INF/components/ballot.jsp").include(request, response);
+                request.getRequestDispatcher("ballot").forward(request, response);
             } else {
-                response.sendRedirect("WEB-INF/components/ballot.jsp");
+                response.sendRedirect("ballot");
             }
     }
 

@@ -36,9 +36,9 @@ Nous avons traité toutes les parties demander dans ce TP2 de la création de pr
 
 
 #le 16/10/2021:
-    * marche pas : 
+    * ne marche pas : 
         * Post : 
-            - l'admin 
+            - deleteVote donne erreur 500
         * Get : 
              -   
     * marche : 

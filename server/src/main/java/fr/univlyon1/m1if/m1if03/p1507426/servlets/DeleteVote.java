@@ -28,6 +28,7 @@ public class DeleteVote extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("deleteVote Servlet");
         ServletConfig config = getServletConfig();
         ServletContext context = config.getServletContext();
         @SuppressWarnings("unchecked")
@@ -35,7 +36,9 @@ public class DeleteVote extends HttpServlet {
         HttpSession session = request.getSession(true);
         User user = (User) session.getAttribute("user");
         if (!user.isAdmin()) {
+            System.out.println("deleteVote Servlet !user.isAdmin()");
             if (ballots.get(user.getLogin()) != null) {
+                System.out.println("deleteVote Servlet ballots.get(user.getLogin()) != null");
 
                 Ballot ballot = ballots.get(user.getLogin());
                 Bulletin bulletin = ballot.getBulletin();
@@ -46,11 +49,15 @@ public class DeleteVote extends HttpServlet {
                 ballots.remove(user.getLogin());
                 request.getRequestDispatcher("ballot").forward(request, response);
 
-            }
-            response.sendRedirect("ballot");
+            } else{
+            response.sendRedirect("ballot");}
         } else {
+            System.out.println("deleteVote Servlet admin");
+
             String votant = request.getParameter("user");
             if (votant != null) {
+                System.out.println("deleteVote Servlet admin votant != null");
+
                 Ballot ballot = ballots.get(votant);
                 Bulletin bulletin = ballot.getBulletin();
                 @SuppressWarnings("unchecked")
@@ -58,9 +65,12 @@ public class DeleteVote extends HttpServlet {
                 bulletins.remove(bulletin);
                 ballot.setBulletin(null);
                 ballots.remove(votant);
+                System.out.println("deleteVote Servlet admin votant != null FIN");
+
                 request.getRequestDispatcher("listBallots").forward(request, response);
+            } else {
+                response.sendRedirect("listBallots");
             }
-            response.sendRedirect("listBallots");
         }
     }
 }

@@ -7,11 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="java.util.Map" %>
-<%@ page import="java.util.HashMap" %>
-<%@ page import="fr.univlyon1.m1if.m1if03.p1507426.classes.Bulletin" %>
-<%@ page import="fr.univlyon1.m1if.m1if03.p1507426.classes.Candidat" %>
-<%@ page import="java.util.List" %>
 <jsp:useBean id="bulletins" type="java.util.List" beanName="bulletins" scope="application"/>
 <jsp:useBean id="ballots" type="java.util.Map" beanName="ballots" scope="application"/>
 <c:if test="${sessionScope.user == null}">
@@ -36,10 +31,14 @@
                     </c:when>
 
                     <c:otherwise><c:out value="Vous avez pas encore voter"/></c:otherwise>
-                </c:choose>
+                </c:choose><br>
 <%--                <c:if test="${applicationScope.ballots.containsKey(sessionScope.user.login)}">--%>
 <%--                   <c:out value="${sessionScope.candidatVoter.nom}"/>  <c:out value="${sessionScope.candidatVoter.prenom}"/> </label>--%>
 <%--                </c:if>--%>
+
+                <label>Nombre de vote actuelle :
+                    <c:out value="${requestScope.nombreVote}"/>
+                </label>
             </label>
             <p>
                 <input type="submit" name="action" value="supprimer">

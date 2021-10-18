@@ -20,7 +20,7 @@ import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import java.io.IOException;
 
-@WebFilter(filterName = "Authentification", urlPatterns = "/election")
+@WebFilter(filterName = "Authentification", urlPatterns = "/election/*")
 public class Authentification extends HttpFilter {
 
     @Override

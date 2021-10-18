@@ -54,8 +54,9 @@ public class ListBallots extends HttpServlet {
 //            response.sendError(session.getAttribute("user") == null ? HttpServletResponse.SC_FORBIDDEN : HttpServletResponse.SC_UNAUTHORIZED, "Admin : " + ((User) session.getAttribute("User")).isAdmin());
 //
 //        } else if(user.isAdmin()){
-
+        System.out.println("Servlet lisBallots 1");
         request.getRequestDispatcher("WEB-INF/components/listBallots.jsp").include(request, response);
+        System.out.println("Servlet lisBallots 2");
 //        } else {
 //            request.getRequestDispatcher("ballot.jsp").include(request, response);
 
@@ -64,6 +65,7 @@ public class ListBallots extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("listBallot Servlet doPost");
         req.getRequestDispatcher("WEB-INF/components/listBallots.jsp").include(req, resp);
 
     }
