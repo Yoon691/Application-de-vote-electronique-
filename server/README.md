@@ -38,16 +38,18 @@ Nous avons traité toutes les parties demander dans ce TP2 de la création de pr
 #le 16/10/2021:
     * ne marche pas : 
         * Post : 
-            - index.html sans login
+            
             - nombre de vote
-            -deconxion vm https
+            
         * Get : 
              -   
     * marche : 
-        * Post : 
+        * Post :
+            - index.html sans login
             - Connextion
             - vote
             -- Code metier dans vote.jsp
+            -deconxion vm https
         * Get : 
             - resultat
             - voter 
