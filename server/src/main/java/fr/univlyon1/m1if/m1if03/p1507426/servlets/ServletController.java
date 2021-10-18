@@ -88,6 +88,7 @@ public class ServletController extends HttpServlet {
                 req.getRequestDispatcher("/ballot").forward(req, resp);
                 break;
 
+
             default:
                 resp.sendError(HttpServletResponse.SC_NOT_FOUND, " La ressource demandé existe pas");
                 break;

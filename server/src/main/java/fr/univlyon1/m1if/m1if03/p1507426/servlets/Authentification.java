@@ -43,7 +43,7 @@ public class Authentification extends HttpFilter {
             //            req.getRequestDispatcher("vote").forward(req, res);
         } else {
             System.out.println("Filtre Autorisation non connecter");
-            res.sendRedirect("index.html");
+            res.sendRedirect("../index.html");
         }
 
 
