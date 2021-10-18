@@ -15,15 +15,15 @@
 <html>
 <head>
     <title>Preuve de Vote</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/vote.css">
+    <link rel="stylesheet" type="text/css" href="../static/vote.css">
 </head>
 <body>
 <jsp:include page="header.jsp"><jsp:param name="titre-header" value="Votre pruve de vote"/></jsp:include>
 <main id="contenu" class="wrapper">
     <jsp:include page="menu.jsp"/>
     <article class="contenu">
-
-        <form method="post" action="${pageContext.request.contextPath}/election/ballot">
+<%--        ${pageContext.request.contextPath}/election/ballot--%>
+        <form method="post" action="ballot">
             <label>Votre Vote :
                 <c:choose>
                     <c:when test="${applicationScope.ballots.containsKey(sessionScope.user.login)}">

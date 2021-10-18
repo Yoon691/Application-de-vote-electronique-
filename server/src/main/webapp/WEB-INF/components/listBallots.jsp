@@ -20,7 +20,7 @@
 <html>
 <head>
     <title>Liste des ballots (admin)</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/vote.css">
+    <link rel="stylesheet" type="text/css" href="../static/vote.css">
 </head>
 <body>
 <%--<jsp:include page="WEB-INF/components/title.jsp?title=Liste des ballots (admin)"/>--%>
@@ -34,7 +34,7 @@
         <ul>
             <c:forEach items="${ballots}" var="ballotEntry">
                 <li>
-                    <form action="${pageContext.request.contextPath}/election/listBallots" method="post">
+                    <form action="listBallots" method="post">
                         <c:out value="${ballotEntry.key}"/>
                         <input type="hidden" name="user" value="${ballotEntry.key}">
                         <input type="submit" value="supprimer">

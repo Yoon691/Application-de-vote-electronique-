@@ -39,6 +39,7 @@ Nous avons traité toutes les parties demander dans ce TP2 de la création de pr
     * ne marche pas : 
         * Post : 
             - deleteVote donne erreur 500
+            - Code metier dans vote.jsp
         * Get : 
              -   
     * marche : 

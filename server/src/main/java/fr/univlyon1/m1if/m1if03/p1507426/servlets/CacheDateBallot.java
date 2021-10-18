@@ -56,7 +56,6 @@ public class CacheDateBallot extends HttpFilter {
                     System.out.println("d<=ifmod");
                     res.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
 //                req.getRequestDispatcher("/WEB-INF/components/listBallots.jsp").include(req,res);
-                    return;
                 //} else {
                   //   chain.doFilter(req, res);
                 //}
