@@ -9,6 +9,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="fr.univlyon1.m1if.m1if03.p1507426.classes.Candidat" %>
+<%--<jsp:useBean id="candidats" type="java.util.Map" scope="application" beanName="candidats"/>--%>
+
 
 <c:if test="${sessionScope.user == null}">
 <%response.sendError(HttpServletResponse.SC_FORBIDDEN, "Vous ne pouvez pas acceder a cette page connctez-vous pour acceder ");%>
@@ -24,11 +26,11 @@
     <jsp:include page="menu.jsp"/>
     <article class="contenu">
 
-        <%
+<%--        <%--%>
 
-            Map<String, Candidat> MapCandidats = (Map<String, Candidat>) application.getAttribute("candidats");
+<%--            Map<String, Candidat> MapCandidats = (Map<String, Candidat>) application.getAttribute("candidats");--%>
 
-        %>
+<%--        %>--%>
     <form method="post" action="vote">
         <label>Sélectionnez un candidat :
 
@@ -37,7 +39,7 @@
         <select name="candidat-choisi" >
 
             <option value="">--Choisez un candidat --</option>
-            <c:forEach items="<%= MapCandidats.keySet()%>" var="nomCandidat">
+            <c:forEach items="${applicationScope.candidats.keySet()}" var="nomCandidat">
             <option ><c:out value="${nomCandidat}"/> </option>
             </c:forEach>
         </select>

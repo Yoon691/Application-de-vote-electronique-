@@ -64,9 +64,9 @@ public class Init extends HttpServlet {
 ////                response.sendRedirect("index.html");
 ////            }
 //    }
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.sendRedirect("index.html");
-    }
+//
+//    @Override
+//    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+//        response.sendRedirect("index.html");
+//    }
 }

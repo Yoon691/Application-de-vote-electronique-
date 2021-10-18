@@ -38,14 +38,16 @@ Nous avons traité toutes les parties demander dans ce TP2 de la création de pr
 #le 16/10/2021:
     * ne marche pas : 
         * Post : 
-            - deleteVote donne erreur 500
-            - Code metier dans vote.jsp
+            - index.html sans login
+            - nombre de vote
+            -deconxion vm https
         * Get : 
              -   
     * marche : 
         * Post : 
             - Connextion
             - vote
+            -- Code metier dans vote.jsp
         * Get : 
             - resultat
             - voter 
