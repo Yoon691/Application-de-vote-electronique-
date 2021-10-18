@@ -31,11 +31,11 @@
         <url-pattern>/election/listBallots</url-pattern>
     </filter-mapping>
 
-<!--    <filter-mapping>-->
-<!--        <filter-name>CacheDateBallot</filter-name>-->
-<!--        <url-pattern>/election/listBallots</url-pattern>-->
-<!--        <url-pattern>/election/vote</url-pattern>-->
-<!--    </filter-mapping>-->
+    <filter-mapping>
+        <filter-name>CacheDateBallot</filter-name>
+        <url-pattern>/election/listBallots</url-pattern>
+        <url-pattern>/election/vote</url-pattern>
+    </filter-mapping>
 
 
 

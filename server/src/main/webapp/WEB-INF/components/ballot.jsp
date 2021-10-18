@@ -23,7 +23,7 @@
     <jsp:include page="menu.jsp"/>
     <article class="contenu">
 
-        <form method="post" action="${pageContext.request.contextPath}/election/deleteVote">
+        <form method="post" action="${pageContext.request.contextPath}/election/ballot">
             <label>Votre Vote :
                 <c:choose>
                     <c:when test="${applicationScope.ballots.containsKey(sessionScope.user.login)}">

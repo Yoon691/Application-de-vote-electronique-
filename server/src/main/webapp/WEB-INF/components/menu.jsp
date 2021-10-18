@@ -3,7 +3,7 @@
 <aside class="menu">
    <h2>Menu</h2>
    <ul>
-      <li><a href="${pageContext.request.contextPath}/election/resultats">Résultats</a></li>
+      <li><a href="${pageContext.request.requestURL}/resultats">Résultats</a></li>
       <c:if test="${sessionScope.user != null}">
          <li><a href="${pageContext.request.contextPath}/election/vote">Voter</a></li>
          <c:if test="${!sessionScope.user.admin}">

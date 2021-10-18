@@ -34,7 +34,7 @@
         <ul>
             <c:forEach items="${ballots}" var="ballotEntry">
                 <li>
-                    <form action="${pageContext.request.contextPath}/election/deleteVote" method="post">
+                    <form action="${pageContext.request.contextPath}/election/listBallots" method="post">
                         <c:out value="${ballotEntry.key}"/>
                         <input type="hidden" name="user" value="${ballotEntry.key}">
                         <input type="submit" value="supprimer">

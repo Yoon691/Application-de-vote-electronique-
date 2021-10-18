@@ -65,8 +65,34 @@ public class ListBallots extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("listBallot Servlet doPost");
-        req.getRequestDispatcher("WEB-INF/components/listBallots.jsp").include(req, resp);
+            System.out.println("listBallots Servlet admin");
+            //System.out.println("deleteVote Servlet");
+            ServletConfig config = getServletConfig();
+            ServletContext context = config.getServletContext();
+            @SuppressWarnings("unchecked")
+            Map<String, Ballot> ballots = (Map<String, Ballot>) context.getAttribute("ballots");
+//            HttpSession session = req.getSession(true);
+//            User user = (User) session.getAttribute("user");
+            String votant = req.getParameter("user");
+            if (votant != null) {
+                System.out.println("deleteVote Servlet admin votant != null");
+
+                Ballot ballot = ballots.get(votant);
+                Bulletin bulletin = ballot.getBulletin();
+                @SuppressWarnings("unchecked")
+                List<Bulletin> bulletins = (List<Bulletin>) context.getAttribute("bulletins");
+                bulletins.remove(bulletin);
+                ballot.setBulletin(null);
+                ballots.remove(votant);
+                System.out.println("deleteVote Servlet admin votant != null FIN");
+
+                req.getRequestDispatcher("WEB-INF/components/listBallots.jsp").include(req, resp);
+            } else {
+                resp.sendRedirect("WEB-INF/components/listBallots.jsp");
+            }
+
+//        System.out.println("listBallot Servlet doPost");
+//        req.getRequestDispatcher("WEB-INF/components/listBallots.jsp").include(req, resp);
 
     }
 }

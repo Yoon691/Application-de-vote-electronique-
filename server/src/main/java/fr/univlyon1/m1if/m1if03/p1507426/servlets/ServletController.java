@@ -73,7 +73,7 @@ public class ServletController extends HttpServlet {
             case "/listBallots":
                 System.out.println("listBallot doPost");
 //                resp.sendRedirect("/resultats");
-                req.getRequestDispatcher("/listBallot").forward(req, resp);
+                req.getRequestDispatcher("/listBallots").forward(req, resp);
                 break;
             case "/deleteVote":
                 System.out.println("deleteVote doPost");
