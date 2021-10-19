@@ -20,7 +20,7 @@ import java.util.Map;
 public class ServletBallot extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setIntHeader("Refresh", 5);
+        //resp.setIntHeader("Refresh", 5);
         ServletConfig config = getServletConfig();
         ServletContext context = config.getServletContext();
         @SuppressWarnings("unchecked")

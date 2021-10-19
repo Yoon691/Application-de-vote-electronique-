@@ -39,6 +39,7 @@ Nous avons traité toutes les parties demander dans ce TP2 de la création de pr
 
     * a faire  :
         - pas plusieur utilisateur connecter en méme temps dans un seul navigateur
+        -Orthographe
         - regarde le nombre de vote 
         - la suppresion de vote 
         - regarde le cache 

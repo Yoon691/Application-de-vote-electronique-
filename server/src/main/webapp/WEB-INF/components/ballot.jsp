@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="../static/vote.css">
 </head>
 <body>
-<jsp:include page="header.jsp"><jsp:param name="titre-header" value="Votre pruve de vote"/></jsp:include>
+<jsp:include page="header.jsp"><jsp:param name="titre-header" value="Votre preuve de vote"/></jsp:include>
 <main id="contenu" class="wrapper">
     <jsp:include page="menu.jsp"/>
     <article class="contenu">
