@@ -26,6 +26,7 @@ public class Init extends HttpServlet {
     Map<String, Candidat> candidats = null;
     final Map<String, Ballot> ballots = new HashMap<>();
     final List<Bulletin> bulletins = new ArrayList<>();
+    final Map<String, User> userList = new HashMap<>();
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -44,6 +45,7 @@ public class Init extends HttpServlet {
             }
             context.setAttribute("ballots", ballots);
         context.setAttribute("bulletins", bulletins);
+        context.setAttribute("userList", userList);
     }
 
 }

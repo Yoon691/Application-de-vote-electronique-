@@ -38,16 +38,19 @@ Nous avons traité toutes les parties demander dans ce TP2 de la création de pr
 #le 16/10/2021:
 
     * a faire  :
-        
-        - regarde le nombre de vote
-        - regarde le cache
-        - regarde le Etag
+        - pas plusieur utilisateur connecter en méme temps dans un seul navigateur
+        - regarde le nombre de vote 
+        - la suppresion de vote 
+        - regarde le cache 
+        - regarde le Etag que dans :8080 pas dans https
         - .gitignore
         - change le nom de dossier a serverMVC
         - netoyer le code 
         - readme branch et master 
         - mergue request
-        
+    * fait : 
+
+        - atualiser la page refresh 
 
     * marche : 
         * Post :

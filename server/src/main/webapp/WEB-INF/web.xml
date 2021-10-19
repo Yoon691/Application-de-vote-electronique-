@@ -37,6 +37,10 @@
         <url-pattern>/election/vote</url-pattern>
     </filter-mapping>
 
+    <filter-mapping>
+        <filter-name>FiltreCacheETag</filter-name>
+        <url-pattern>/election/ballot</url-pattern>
+    </filter-mapping>
 
 
 

@@ -19,6 +19,10 @@ import javax.servlet.ServletConfig;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @WebFilter(filterName = "Authentification", urlPatterns = "/election/*")
 public class Authentification extends HttpFilter {
@@ -28,23 +32,29 @@ public class Authentification extends HttpFilter {
         System.out.println("Filtre Autorisation");
         HttpSession session = req.getSession(true);
 
-        if(session.getAttribute("user") != null) {
-            System.out.println("Filtre Autorisation user != null");
-
-            chain.doFilter(req, res);
-        } else if (req.getParameter("login") != null && !req.getParameter("login").equals("")){
-            System.out.println("Filtre Autorisation connection");
-            session.setAttribute("user", new User(req.getParameter("login"),
-                    req.getParameter("nom") != null ? req.getParameter("nom") : "",
-                    req.getParameter("admin") != null && req.getParameter("admin").equals("on")));
+                if (session.getAttribute("user") != null ) {
+                    System.out.println("session.getAttribute(user) != null");
+//                    User user = (User)session.getAttribute("user");
+//                    if (user.getLogin().equals((req.getParameter("login")))) {
+//                        System.out.println("user.getLogin().equals((req.getParameter(login))))");
+//                        System.out.println("Filtre Authentification user != null");
+                        chain.doFilter(req, res);
+                    //}
+                } else if (req.getParameter("login") != null && !req.getParameter("login").equals("")) {
+                    System.out.println("Filtre Authentification connection");
+                    User nouveauUser = new User(req.getParameter("login"),
+                            req.getParameter("nom") != null ? req.getParameter("nom") : "",
+                            req.getParameter("admin") != null && req.getParameter("admin").equals("on"));
+                    session.setAttribute("user", nouveauUser);
+                    chain.doFilter(req, res);
 //            request.getRequestDispatcher("vote.jsp").forward(request, response);
-           // res.sendRedirect("vote.jsp");
-            req.getRequestDispatcher("WEB-INF/components/vote.jsp").include(req, res);
-            //            req.getRequestDispatcher("vote").forward(req, res);
-        } else {
-            System.out.println("Filtre Autorisation non connecter");
-            res.sendRedirect("../");
-        }
+                    // res.sendRedirect("vote.jsp");
+//                    req.getRequestDispatcher("WEB-INF/components/vote.jsp").include(req, res);
+                    //            req.getRequestDispatcher("vote").forward(req, res);
+                } else {
+                    System.out.println("Filtre Autorisation non connecter");
+                    res.sendRedirect("../");
+                }
 
 
     }
