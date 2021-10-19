@@ -1,6 +1,6 @@
 # Cache downloaded dependencies and plugins between builds.
 # Not strictly necessary, but speeds up the builds.
-#cache:
+cache:
   key: "$CI_JOB_NAME"
   paths:
     # Must be within the repository under test hence we can't use the
