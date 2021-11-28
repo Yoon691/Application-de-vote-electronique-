@@ -14,4 +14,5 @@ public class Ballot {
     public void setBulletin(Bulletin bulletin) {
         this.bulletin = bulletin;
     }
+
 }

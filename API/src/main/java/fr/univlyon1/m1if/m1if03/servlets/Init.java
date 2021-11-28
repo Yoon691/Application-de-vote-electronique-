@@ -3,6 +3,7 @@ package fr.univlyon1.m1if.m1if03.servlets;
 import fr.univlyon1.m1if.m1if03.classes.Ballot;
 import fr.univlyon1.m1if.m1if03.classes.Bulletin;
 import fr.univlyon1.m1if.m1if03.classes.Candidat;
+import fr.univlyon1.m1if.m1if03.classes.User;
 import fr.univlyon1.m1if.m1if03.utils.CandidatListGenerator;
 
 import javax.servlet.ServletConfig;
@@ -16,11 +17,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 @WebServlet(loadOnStartup = 1, value = {})
 public class Init extends HttpServlet {
     Map<String, Candidat> candidats = null;
     final Map<String, Ballot> ballots = new HashMap<>();
     final List<Bulletin> bulletins = new ArrayList<>();
+    final Map<String, User> users = new HashMap<>();
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -32,6 +35,8 @@ public class Init extends HttpServlet {
         ServletContext context = config.getServletContext();
         context.setAttribute("ballots", ballots);
         context.setAttribute("bulletins", bulletins);
+        context.setAttribute("users", users);
+
 
         // Fait dans un bloc try/catch pour le cas où la liste des candidats ne s'est pas construite correctement.
         try {
@@ -45,3 +50,4 @@ public class Init extends HttpServlet {
         }
     }
 }
+    

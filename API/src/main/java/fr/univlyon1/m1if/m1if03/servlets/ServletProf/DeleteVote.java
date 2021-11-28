@@ -1,4 +1,4 @@
-package fr.univlyon1.m1if.m1if03.servlets;
+package fr.univlyon1.m1if.m1if03.servlets.ServletProf;
 
 import fr.univlyon1.m1if.m1if03.classes.Ballot;
 import fr.univlyon1.m1if.m1if03.classes.Bulletin;
@@ -39,3 +39,4 @@ public class DeleteVote extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/components/electionHome.jsp").forward(request, response);
     }
 }
+    

@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <header>
     <c:if test="${sessionScope.user != null}">
-        <p class="header-user"> Bonjour <a href="election/user">${sessionScope.user.nom}</a></p>
+        <p class="header-user"> Bonjour <a href="users/user">${sessionScope.user.nom}</a></p>
     </c:if>
     <h1 class="header-titre">${param.title}</h1>
 </header>

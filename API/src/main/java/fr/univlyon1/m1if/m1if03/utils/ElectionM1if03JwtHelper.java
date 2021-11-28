@@ -38,6 +38,7 @@ public class ElectionM1if03JwtHelper {
 
         authenticationVerifier.verify(token); // Lève une NullPointerException si le token n'existe pas, et une JWTVerificationException s'il est invalide
         DecodedJWT jwt = JWT.decode(token); // Pourrait lever une JWTDecodeException mais comme le token est vérifié avant, cela ne devrait pas arriver
+        System.out.println("return verifier token: " + jwt.getClaim("sub").asString());
         return jwt.getClaim("sub").asString();
     }
 

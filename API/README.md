@@ -63,5 +63,22 @@
   - http://192.168.75.70:8080/v2/
   - https://192.168.75.70/api/v2/
     
+* Observation pour TP4:
+  
+    -   Users : on partage le controller de user sur deux un pour les Operation 
+  (Login/logout)
+    -   un pour user/resources
+    -   logout ne marche pas avec swagger probléme CORS?
+    -   login n'envoie pas les headers.    
+    -   code status pour login .
+    -   code status d'erreur.
+    -   type de requete que json qui march.
+    -   get /users
 
-    
+* Programme TP4:
+
+    -   Vendredi: Finir les requéte de ballot et vote .
+    -   Samedi : Finir le rest, Normalement : users/vote et users/ballot ansi resultat
+    -   Dimanche: Organiser le code, regler les bug, et les message d'erreur
+        
+        

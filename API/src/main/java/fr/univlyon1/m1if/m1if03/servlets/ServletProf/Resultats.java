@@ -1,4 +1,4 @@
-package fr.univlyon1.m1if.m1if03.servlets;
+package fr.univlyon1.m1if.m1if03.servlets.ServletProf;
 
 import fr.univlyon1.m1if.m1if03.classes.Bulletin;
 import fr.univlyon1.m1if.m1if03.classes.Candidat;
@@ -46,3 +46,4 @@ public class Resultats extends HttpServlet {
         req.getRequestDispatcher("/WEB-INF/components/resultats.jsp").forward(req, resp);
     }
 }
+    
