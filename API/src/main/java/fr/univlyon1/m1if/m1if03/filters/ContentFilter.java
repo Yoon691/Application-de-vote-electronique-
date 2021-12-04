@@ -1,34 +1,15 @@
 package fr.univlyon1.m1if.m1if03.filters;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.CollectionType;
-import com.google.gson.Gson;
-import fr.univlyon1.m1if.m1if03.classes.Candidat;
-import fr.univlyon1.m1if.m1if03.dto.CandidatsDTO;
-import fr.univlyon1.m1if.m1if03.dto.UserDTO;
-import fr.univlyon1.m1if.m1if03.utils.CandidatListGenerator;
-import org.graalvm.compiler.serviceprovider.IsolateUtil;
 
-import javax.json.JsonObject;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.Writer;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import static fr.univlyon1.m1if.m1if03.utils.HTMLContent.setContentAttributes;
 
 @WebFilter(filterName = "ContentFilter")
 public class ContentFilter extends HttpFilter {
