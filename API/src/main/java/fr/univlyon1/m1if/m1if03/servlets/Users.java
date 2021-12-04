@@ -35,7 +35,7 @@ public class Users extends HttpServlet {
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        processRequest(req, resp);
+        this.getServletContext().getNamedDispatcher("UsersResources").forward(req, resp);
     }
 
     protected void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

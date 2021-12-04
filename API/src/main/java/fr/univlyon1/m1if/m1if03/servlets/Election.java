@@ -43,7 +43,11 @@ public class Election extends HttpServlet {
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        processRequest(req, resp);
+//        String action = req.getRequestURL().toString().split("/election/")[1];
+//        String urlplus = action.split("/")[0];
+        this.getServletContext().getNamedDispatcher("BallotsController").forward(req, resp);
+
+
     }
 
     @Override
@@ -69,7 +73,7 @@ public class Election extends HttpServlet {
 
         switch(action) {
             case "resultats":
-                this.getServletContext().getNamedDispatcher("ResultatsController").forward(req, resp);
+                this.getServletContext().getNamedDispatcher("ResultatsController").include(req, resp);
                 break;
             case "ballots":
                 this.getServletContext().getNamedDispatcher("BallotsController").include(req, resp);

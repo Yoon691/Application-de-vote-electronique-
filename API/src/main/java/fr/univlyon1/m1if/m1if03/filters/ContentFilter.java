@@ -54,6 +54,19 @@ public class ContentFilter extends HttpFilter {
                     case "UserNonAdmin":
                         response.sendError(403, "Utilisateur non administrateur");
                         break;
+                    case "Ballotnontrouve":
+                        response.sendError(404, "Ballot non trouvé");
+                        break;
+                    case "UserNonAdminOuNonProp":
+                        response.sendError(403, "Utilisateur non administrateur ou non propriétaire du ballot");
+                        break;
+                    case "UserNoexist":
+                        response.sendError(HttpServletResponse.SC_NOT_FOUND, "Utilisateur n'existes pas encore.");
+                        break;
+                    case "UserOrBallotNoExist":
+                        response.sendError(404, "Utilisateur ou ballot non trouvé");
+                    case "UserNoTrouver" :
+                        response.sendError(404,  "Utilisateur non trouvé");
                     default:
                 }
             }
@@ -68,7 +81,6 @@ public class ContentFilter extends HttpFilter {
                     response.setContentType("application/json");
                     try {
                         System.out.println("try");
-
                         ObjectMapper objectMapper = new ObjectMapper();
 //                        String responseAsString = objectMapper.writeValueAsString(request.getAttribute("DTO"));
                         objectMapper.writeValue(response.getWriter(), request.getAttribute("DTO"));
@@ -88,7 +100,7 @@ public class ContentFilter extends HttpFilter {
                     return;
                 case "text/html":
                     System.out.println("text/html");
-                    setContentAttributes(request, DTO.getClass());
+//                    setContentAttributes(request, DTO.getClass());
                     String vu = (String) request.getAttribute("Vu");
                     System.out.println("vue: " + vu);
                     request.getRequestDispatcher("/WEB-INF/components/".concat(vu).concat(".jsp")).include(request,response);

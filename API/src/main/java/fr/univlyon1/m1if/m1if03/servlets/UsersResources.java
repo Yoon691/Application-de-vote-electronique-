@@ -42,23 +42,26 @@ public class UsersResources extends HttpServlet {
     @SuppressWarnings("unchecked")
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        users = (Map<String, User>) req.getAttribute("users");
         try {
-//                List<String> uri = parseUri(request.getRequestURL().toString(), "users");
                 String uri = req.getRequestURL().toString().split("/users/")[1];
                 System.out.println("uri Put user: " + uri );
                 String nom = uri.split("/")[0];
                 System.out.println("nom: " + nom);
-                User user= users.get(nom);
+                User user = users.get(nom);
                 String nameUserLoguer = (String) req.getAttribute("loggedUserUrl");
+            if (users.get(nameUserLoguer) == null){
+                System.out.println("key == null");
+                resp.sendError(HttpServletResponse.SC_NOT_FOUND, "Utilisateur n'existes pas encore.");
+                return;
+            }
                 User userLoguer = users.get(nameUserLoguer);
                 if(user==null) {
                     System.out.println("if user == null");
-                    resp.sendError(404, "Utilisateur non trouvÃ©");
+                    resp.sendError(404, "Utilisateur non trouvé");
                     return;
                 }
                 if (user.getLogin().equals(userLoguer.getLogin()) || userLoguer.isAdmin()){
-                    System.out.println("else if user == null");
+                    System.out.println("else if user : " +  user.getLogin());
                     NomUserDTO usernomdto = new ObjectMapper().readValue(req.getReader(), NomUserDTO.class);
                     System.out.println("usernomdto: " + usernomdto.getNom());
                     System.out.println("usernomdto != null");
@@ -81,13 +84,18 @@ public class UsersResources extends HttpServlet {
     @SuppressWarnings("unchecked")
     private void getUser(final HttpServletRequest request, final HttpServletResponse response,
                          final String userId) throws IOException {
-//        users = (Map<String, User>) request.getAttribute("users");
+
         String nameUserLoguer = (String) request.getAttribute("loggedUserUrl");
+        if (users.get(nameUserLoguer) == null){
+            System.out.println("key == null");
+            request.setAttribute("CodeErreur","UserNoexist");
+            return;
+        }
         User userLoguer = users.get(nameUserLoguer);
         User user = users.get(userId);
         if (user == null) {
             System.out.println("if (user == null)");
-//            response.setStatus(404);
+            request.setAttribute("CodeErreur","UserNoTrouver");
             response.sendError(404,  "Utilisateur non trouvé");
             return;
         }
@@ -98,7 +106,7 @@ public class UsersResources extends HttpServlet {
             request.setAttribute("Vu","/users/user");
             response.setStatus(200);
         } else {
-            response.sendError(403, "Utilisateur non administrateur ou  ou pas celui qui est logué");
+            request.setAttribute("CodeErreur","UserNonAdminOuNonProp");
         }
 
     }

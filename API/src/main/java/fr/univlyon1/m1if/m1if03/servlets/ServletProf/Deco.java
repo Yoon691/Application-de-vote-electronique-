@@ -1,4 +1,4 @@
-package fr.univlyon1.m1if.m1if03.servlets;
+package fr.univlyon1.m1if.m1if03.servlets.ServletProf;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

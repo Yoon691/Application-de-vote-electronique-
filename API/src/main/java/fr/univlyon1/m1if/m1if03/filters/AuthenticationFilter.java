@@ -9,7 +9,7 @@ import javax.servlet.annotation.*;
 import javax.servlet.http.*;
 import java.io.IOException;
 
-@WebFilter(filterName = "AuthenticationFilter", urlPatterns = {"/users/*"})
+@WebFilter(filterName = "AuthenticationFilter", urlPatterns = {"/*"})
 public class AuthenticationFilter extends HttpFilter {
     private final String[] authorizedURIs = {"/index.html", "/static", "/election/resultats", "/election/candidats", "/election/candidats/noms" ,"/users/login"}; // Manque "/", traité plus bas...
     @Override

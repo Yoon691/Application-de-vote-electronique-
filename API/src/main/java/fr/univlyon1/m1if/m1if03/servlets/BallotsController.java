@@ -89,36 +89,51 @@ public class BallotsController extends HttpServlet {
         String rootUrl = req.getRequestURL().toString().replace(req.getRequestURL().toString().split("/election/")[0] + "/election/", "");
         String id = rootUrl.split("ballots/")[1];
         String nameUser = (String) req.getAttribute("loggedUserUrl");
-        String key = (String) ballots.keySet().toArray()[Integer.parseInt(id)];
         System.out.println("nameUser: " + nameUser);
-//        System.out.println("key: " + key);
-//        Map<String, User> users = (Map<String, User>) req.getAttribute("users");
+        System.out.println("ballotId" + id);
+        String key = null;
+        System.out.println("key: " + key);
+        if (ballots != null && Integer.parseInt(id) <= ballots.size() - 1) {
+            System.out.println("if (ballotId <= ballots.size()) : " + ballots.size());
+            if (ballots.keySet().toArray()[Integer.parseInt(id)] != null) {
+                System.out.println("ballots.keySet().toArray()[ballotId] != null");
+                key = (String) ballots.keySet().toArray()[Integer.parseInt(id)];
+                System.out.println("key: " + key);
+            }
+        }
+
+//        Map<String, User> users = (Map<String, User>) request.getAttribute("users");
+        if (users.get(nameUser) == null){
+            System.out.println("key == null");
+            resp.sendError(HttpServletResponse.SC_NOT_FOUND, "Utilisateur n'existes pas encore.");
+            return;
+        }
         User user = users.get(nameUser);
-        if (key != null) {
-            if (key.equals(nameUser) || user.isAdmin()) { //|| user.isAdmin()
+        System.out.println("user.login" + user.getLogin());
+        if (key == null) {
+            System.out.println("key == null");
+            resp.sendError(404, "Ballot non trouvé");
+        }else if (key.equals(nameUser) || user.isAdmin()) { //|| user.isAdmin()
                 ballots.remove(key);
                 resp.setStatus(204);
-            } else {
-                resp.sendError(403, "Utilisateur non administrateur ou non propriÃ©taire du ballot");
-            }
         } else {
-            resp.sendError(404, "Ballot non trouvÃ©");
-        }
+            resp.sendError(403, "Utilisateur non administrateur ou non propriétaire du ballot");
+            }
     }
 
     private void getBallots(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String nameUser = (String) request.getAttribute("loggedUserUrl");
         System.out.println("nameUser: " + nameUser);
         User user = users.get(nameUser);
-        if (!user.isAdmin()){
-            System.out.println("!user.isAdmin()");
-            request.setAttribute("CodeErreur","UserNonAdmin");
-            return;
-        }
+//        if (!user.isAdmin()){
+//            System.out.println("!user.isAdmin()");
+//            request.setAttribute("CodeErreur","UserNonAdmin");
+//            return;
+//        }
         String rootUrl = request.getRequestURL().toString().split("/ballots")[0];
         BallotsDTO ballotsDTO = new BallotsDTO(ballots, rootUrl);
         request.setAttribute("DTO", ballotsDTO);
-        request.setAttribute("Vu", "candidats/candidats");
+        request.setAttribute("Vu", "ballots/ballots");
         response.setStatus(200);
     }
 
@@ -128,29 +143,38 @@ public class BallotsController extends HttpServlet {
         String nameUser = (String) request.getAttribute("loggedUserUrl");
         System.out.println("nameUser: " + nameUser);
         System.out.println("ballotId" + ballotId);
-        String key = (String) ballots.keySet().toArray()[ballotId];
+        String key = null;
         System.out.println("key: " + key);
+        if (ballots != null && ballotId <= ballots.size() - 1) {
 
-//        if (ballots.keySet().toArray()[ballotId] != null) {
-//            key = (String) ballots.keySet().toArray()[ballotId];
-//            System.out.println("key: " + key);
-//        }
+            System.out.println("if (ballotId <= ballots.size()) : " + ballots.size());
+            if (ballots.keySet().toArray()[ballotId] != null) {
+                System.out.println("ballots.keySet().toArray()[ballotId] != null");
+                key = (String) ballots.keySet().toArray()[ballotId];
+                System.out.println("key: " + key);
+            }
+        }
 
 //        Map<String, User> users = (Map<String, User>) request.getAttribute("users");
+        if (users.get(nameUser) == null){
+            System.out.println("key == null");
+            request.setAttribute("CodeErreur","UserNoexist");
+            return;
+        }
         User user = users.get(nameUser);
         System.out.println("user.login" + user.getLogin());
         if (key == null) {
-            System.out.println("if (user == null)");
-            response.sendError(404, "Ballot non trouvÃ©");
+            System.out.println("key == null");
+            request.setAttribute("CodeErreur","Ballotnontrouve");
         } else if (key.equals(nameUser)|| user.isAdmin()) { //
             System.out.println("aprés if (user == null)");
             BallotIdDTO ballotIdDTO = new BallotIdDTO(ballotId, rootUrl);
             System.out.println("ballotDot: " + ballotIdDTO);
             request.setAttribute("DTO", ballotIdDTO);
-            request.setAttribute("Vu", "/ballots/ballots");
+            request.setAttribute("Vu", "/ballots/ballot");
             response.setStatus(200);
         } else {
-            response.sendError(403, "Utilisateur non administrateur ou non propriÃ©taire du ballot");
+            request.setAttribute("CodeErreur","UserNonAdminOuNonProp");
         }
 
     }
@@ -161,11 +185,16 @@ public class BallotsController extends HttpServlet {
         String nameUser = (String) request.getAttribute("loggedUserUrl");
         System.out.println("nameUser: " + nameUser);
 //        Map<String, User> users = (Map<String, User>) request.getAttribute("users");
+        if (users.get(nameUser) == null){
+            System.out.println("key == null");
+            request.setAttribute("CodeErreur","UserNoexist");
+            return;
+        }
         User user = users.get(nameUser);
         System.out.println("user.login" + user.getLogin());
         if (ballots.get(userId) == null || users.get(userId) == null) {
             System.out.println("if (user == null)");
-            response.sendError(404, "Utilisateur ou ballot non trouvé");
+            request.setAttribute("CodeErreur","UserOrBallotNoExist");
         } else if (ballots.get(userId).equals(ballots.get(nameUser))|| user.isAdmin()) { //
             System.out.println("aprés if (user == null)");
             BallotByUserDTO ballotByUserDTO = new BallotByUserDTO(ballots, userId, rootUrl, true);
@@ -173,7 +202,7 @@ public class BallotsController extends HttpServlet {
             request.setAttribute("Vu", "/ballots/ballotsByUser");
             response.setStatus(200);
         } else {
-            response.sendError(403, "Utilisateur non administrateur ou non propriÃ©taire du ballot");
+            request.setAttribute("CodeErreur","UserNonAdminOuNonProp");
         }
 
 

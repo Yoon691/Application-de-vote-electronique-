@@ -50,11 +50,15 @@ public final class HTMLContent {
                 System.out.println("CandidatsDTO");
                 CandidatsDTO candidatsDTO = (CandidatsDTO) request.getAttribute("DTO");
                 List<Candidat> candidatsContent = new ArrayList<>();
-                for (String passageUrl : candidatsDTO) {
+                for (String candidatUrl : candidatsDTO) {
 //                    String passageId = getIdFromUrl(passageUrl);
-                    candidatsContent.add(candidats.get(passageUrl));
+                    candidatsContent.add(candidats.get(candidatUrl));
+
                 }
                 System.out.println("CandidatsDTO 2 ");
+                for (int i=0 ; i < candidatsContent.size(); i++){
+                    System.out.println("contente: " + candidatsContent.get(i));
+                }
                 request.setAttribute("candidatContent", candidatsContent);
 
                 break;

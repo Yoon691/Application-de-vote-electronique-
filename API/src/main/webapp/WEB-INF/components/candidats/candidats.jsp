@@ -9,26 +9,17 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
         <% System.out.println("jsp1");%>
-
-<%--<jsp:useBean id="candidat" type="fr.univlyon1.m1if.m1if03.classes.Candidat" scope="request"/>--%>
+<jsp:useBean id="DTO" type="java.util.ArrayList" scope="request" beanName="candidats"/>
 
 <section>
-<%--&lt;%&ndash;    <p>Salut</p>&ndash;%&gt;--%>
-<%--    <tr>--%>
-<%--        <% System.out.println("jsp1");%>--%>
-<%--        <c:forEach items="${applicationScope.candidats.keySet()}" var="nomCandidat">--%>
-<%--            <% System.out.println("jsp2");%>--%>
-<%--        <a>${nomCandidat}</a>--%>
-<%--            <% System.out.println("jsp3");%>--%>
-<%--        </c:forEach>--%>
-<%--    </tr>--%>
 
 <table>
 <tr>
     <th>Candidats</th>
 
 </tr>
-<c:forEach items="${applicationScope.candidats.keySet()}" var="nomCandidat">
+<c:forEach items="${DTO}" var="nomCandidat">
+    <% System.out.println();%>
     <tr>
     <td><a href="http://localhost:8080/election/candidats/${nomCandidat}">${nomCandidat}</a></td>
     </tr>
