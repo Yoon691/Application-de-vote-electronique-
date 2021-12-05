@@ -1,11 +1,9 @@
 package fr.univlyon1.m1if.m1if03.servlets;
 
 import fr.univlyon1.m1if.m1if03.classes.Candidat;
-import fr.univlyon1.m1if.m1if03.classes.User;
 import fr.univlyon1.m1if.m1if03.dto.CandidatDTO;
 import fr.univlyon1.m1if.m1if03.dto.CandidatsDTO;
 import fr.univlyon1.m1if.m1if03.dto.CandidatsNomDTO;
-import fr.univlyon1.m1if.m1if03.dto.UserDTO;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -44,7 +42,6 @@ public class CandidatsController extends HttpServlet {
                 String id = rootUrl.split("candidats/")[1];
                 getCandidat(req, resp, id);
         }
-        //getCandidats(req,resp);
 
 
     }
@@ -73,7 +70,6 @@ public class CandidatsController extends HttpServlet {
         if (candidat == null) {
             System.out.println("if (user == null)");
             request.setAttribute("CodeErreur","CandidatNonTrouvé");
-//            response.sendError(404,  "Candidat non trouvé");
             return;
         }
         System.out.println("aprés if (user == null)");

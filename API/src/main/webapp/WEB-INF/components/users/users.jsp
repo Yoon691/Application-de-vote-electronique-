@@ -9,22 +9,20 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <% System.out.println("jsp4");%>
-<jsp:useBean id="DTO" type="fr.univlyon1.m1if.m1if03.dto.UserDTO" scope="request" beanName="users"/>
-<jsp:useBean id="DTO" type="fr.univlyon1.m1if.m1if03.dto.BallotDTO" scope="request" beanName="ballot"/>
+<jsp:useBean id="DTO" type="java.util.ArrayList" scope="request" beanName="users"/>
 
 <section>
 
     <table>
         <tr>
-            <th>Ballot user</th>
+            <th>Users</th>
 
         </tr>
-        <tr>
-            <td>"User ":${DTO.login}</td>
-        </tr>
-        <tr>
-            <td>"Ballot ":${DTO.nomCandidat}</td>
-        </tr>
+        <c:forEach items="${DTO}" var="userLogin">
+            <tr>
+                <td><a href="http://localhost:8080/election/candidats/${userLogin}">${userLogin}</a></td>
+            </tr>
+        </c:forEach>
     </table>
 </section>
 

@@ -1,7 +1,6 @@
 package fr.univlyon1.m1if.m1if03.filters;
 
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import fr.univlyon1.m1if.m1if03.classes.User;
 import fr.univlyon1.m1if.m1if03.utils.ElectionM1if03JwtHelper;
 
 import javax.servlet.*;
@@ -37,13 +36,7 @@ public class AuthenticationFilter extends HttpFilter {
                 }
             }
 
-//        if(currentUri.equals("/users/")) {
-//            System.out.println("IF /users");
-////            this.getServletContext().getNamedDispatcher("Users").include(req, res);
-////            req.getRequestDispatcher("/users").include(req, res);
-//           super.doFilter(req, res, chain);
-//            return;
-//        }
+
 
         // Traitement des autres URLs autorisées sans authentification
         for(String authorizedUri: authorizedURIs) {
@@ -71,19 +64,5 @@ public class AuthenticationFilter extends HttpFilter {
         }
         chain.doFilter(req, res);
 
-//        HttpSession session = req.getSession(false); // On récupère la session sans la créer
-//        if(session != null && session.getAttribute("user") != null) {
-//            super.doFilter(req, res, chain);
-//        } else {
-//            String login = req.getParameter("login");
-//            if(req.getMethod().equals("POST") && login != null && !login.equals("")) {
-//                session = req.getSession(true);
-//                session.setAttribute("user", new User(login,
-//                        req.getParameter("nom") != null ? req.getParameter("nom") : "",
-//                        req.getParameter("admin") != null && req.getParameter("admin").equals("on")));
-//                super.doFilter(req, res, chain);
-//            } else
-//                res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Vous devez être connecté pour accéder à cette page.");
-//        }
     }
 }

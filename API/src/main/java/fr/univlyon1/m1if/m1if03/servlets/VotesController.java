@@ -100,7 +100,6 @@ public class VotesController extends HttpServlet {
             System.out.println("key: " + key);
         }
 
-//        Map<String, User> users = (Map<String, User>) request.getAttribute("users");
         User user = users.get(nameUser);
         System.out.println("user.login" + user.getLogin());
         if (key == null) {
@@ -108,8 +107,7 @@ public class VotesController extends HttpServlet {
             response.sendError(404, "Vote non trouvé");
         } else if (key.equals(nameUser)|| user.isAdmin()) { //
             System.out.println("aprés if (user == null)");
-//            BallotIdDTO ballotIdDTO = new BallotIdDTO(ballotId, rootUrl);
-//            System.out.println("ballotDot: " + ballotIdDTO);
+
             VoteDTO voteDTO = new VoteDTO();
             request.setAttribute("DTO", voteDTO);
             request.setAttribute("Vu", "/votes/vote");
@@ -125,7 +123,6 @@ public class VotesController extends HttpServlet {
         String rootUrl = request.getRequestURL().toString().split("/votes")[0];
         String nameUser = (String) request.getAttribute("loggedUserUrl");
         System.out.println("nameUser: " + nameUser);
-//        Map<String, User> users = (Map<String, User>) request.getAttribute("users");
         User user = users.get(nameUser);
          System.out.println("user.login" + user.getLogin());
         if (ballots.get(userId) == null || users.get(userId) == null) {

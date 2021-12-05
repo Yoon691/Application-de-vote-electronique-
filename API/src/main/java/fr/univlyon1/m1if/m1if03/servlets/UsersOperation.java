@@ -13,12 +13,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 @WebServlet(name = "UsersOperation", urlPatterns = {})
 public class UsersOperation extends HttpServlet {
     Map<String, User> users;
+    List<String> tokensInvalide = new ArrayList<>();
 
     @SuppressWarnings("unchecked")
     @Override
@@ -30,10 +32,8 @@ public class UsersOperation extends HttpServlet {
     @SuppressWarnings("unchecked")
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        String action = req.getRequestURI().replace(req.getContextPath() + "/users/", "");
         String uri = req.getRequestURL().toString().split("/users")[1];
         System.out.println("uri: " + uri);
-//        Map<String, User> users = (Map<String, User>) req.getAttribute("users");
         switch (uri){
             case "/login":
                 try {
@@ -100,8 +100,10 @@ public class UsersOperation extends HttpServlet {
                 }
                 break;
             case "/logout":
-                resp.setHeader("Authorization",null);
-                //response.setHeader("Location",getRootUrl(request));
+                String authorizationToken = req.getHeader("Authorization").replace("Bearer ", "");
+                System.out.println("Authorization: " + authorizationToken);
+                tokensInvalide.add(authorizationToken);
+                resp.setHeader("Authorization","");
                 resp.setStatus(204);
                 break;
 

@@ -39,10 +39,8 @@ public class Users extends HttpServlet {
     }
 
     protected void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        String action = req.getRequestURI().replace(req.getContextPath() + "/users/", "");
         String action = req.getRequestURL().toString().split("/users/")[1];
         System.out.println("Action : " + action);
-//        req.setAttribute("users", users); // Utilisé dans electionHome.jsp
         if (action.equals("login") || action.equals("logout")){
             System.out.println("IF users");
             this.getServletContext().getNamedDispatcher("UsersOperation").forward(req, resp);
@@ -50,21 +48,7 @@ public class Users extends HttpServlet {
         else {
             System.out.println("Else users");
             this.getServletContext().getNamedDispatcher("UsersResources").include(req, resp);
-//            req.getRequestDispatcher("/resources").forward(req, resp);
         }
-//        switch(action) {
-//            case "login":
-//                this.getServletContext().getNamedDispatcher("UserOperation").forward(req, resp);
-//                break;
-//            case "logout" :
-//                this.getServletContext().getNamedDispatcher("Home").forward(req, resp);
-//                break;
-//            case "user":
-//
-//                this.getServletContext().getNamedDispatcher("UpdateAccount").forward(req, resp);
-//                break;
-//            default:
-//                resp.sendError(HttpServletResponse.SC_NOT_FOUND);
-//        }
+
     }
 }

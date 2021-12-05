@@ -27,7 +27,6 @@ public class Election extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        processRequest(req, resp);
         String action = req.getRequestURL().toString().split("/election/")[1];
         switch(action) {
             case "resultats":
@@ -43,8 +42,6 @@ public class Election extends HttpServlet {
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        String action = req.getRequestURL().toString().split("/election/")[1];
-//        String urlplus = action.split("/")[0];
         this.getServletContext().getNamedDispatcher("BallotsController").forward(req, resp);
 
 
@@ -61,12 +58,7 @@ public class Election extends HttpServlet {
         String url = req.getRequestURL().toString().split("/election/")[1];
         System.out.println("url: " + url);
         System.out.println("lenght: " + url.length());
-//        if (!(url.split("candidats")[1].isEmpty())) {
-//            System.out.println("isEmpty");
-//            id = url.split("candidats/")[1];
-//            System.out.println("id: " + id);
-//        }
-//        String action = req.getRequestURI().replace(req.getContextPath() + "/election/", "");
+
         String action = req.getRequestURL().toString().split("/election/")[1];
         System.out.println("action: "+ action);
         req.setAttribute("action", action); // Utilisé dans electionHome.jsp
@@ -93,7 +85,6 @@ public class Election extends HttpServlet {
                 this.getServletContext().getNamedDispatcher("CandidatsController").include(req, resp);
                 break;
             default:
-//                if (url.length() > 9){
                     String urlplus = url.split("/")[0];
                     System.out.println("urlplus: " + urlplus);
                     System.out.println("if (url.length() > 9)");
@@ -110,7 +101,6 @@ public class Election extends HttpServlet {
                         return;
                 }
 
-//                }
                 resp.sendError(HttpServletResponse.SC_NOT_FOUND);
         }
 

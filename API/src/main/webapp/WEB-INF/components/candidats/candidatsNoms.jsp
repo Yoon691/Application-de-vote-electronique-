@@ -8,7 +8,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
-<% System.out.println("jsp2");%>
+<jsp:useBean id="DTO" type="java.util.ArrayList" scope="request" beanName="candidats"/>
+
 
 <section>
     <table>
@@ -16,7 +17,7 @@
             <th>Noms candidats</th>
 
         </tr>
-        <c:forEach items="${applicationScope.candidats.keySet()}" var="nomCandidat">
+        <c:forEach items="${DTO}" var="nomCandidat">
             <tr>
                 <td>${nomCandidat}</td>
             </tr>

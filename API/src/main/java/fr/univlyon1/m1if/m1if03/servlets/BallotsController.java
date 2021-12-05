@@ -93,7 +93,7 @@ public class BallotsController extends HttpServlet {
                 }
             }
 
-                System.out.println("ballotDTO : " + ballotDTO.getNomCandidat());
+            System.out.println("ballotDTO : " + ballotDTO.getNomCandidat());
             Ballot ballot;
             System.out.println("creation de ballots ");
             if (candidats.get(ballotDTO.getNomCandidat()) == null){
@@ -134,7 +134,6 @@ public class BallotsController extends HttpServlet {
             }
         }
 
-//        Map<String, User> users = (Map<String, User>) request.getAttribute("users");
         if (users.get(nameUser) == null){
             System.out.println("key == null");
             resp.sendError(HttpServletResponse.SC_NOT_FOUND, "Utilisateur n'existes pas encore.");
@@ -155,14 +154,6 @@ public class BallotsController extends HttpServlet {
     }
 
     private void getBallots(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String nameUser = (String) request.getAttribute("loggedUserUrl");
-        System.out.println("nameUser: " + nameUser);
-        User user = users.get(nameUser);
-//        if (!user.isAdmin()){
-//            System.out.println("!user.isAdmin()");
-//            request.setAttribute("CodeErreur","UserNonAdmin");
-//            return;
-//        }
         String rootUrl = request.getRequestURL().toString().split("/ballots")[0];
         BallotsDTO ballotsDTO = new BallotsDTO(ballots, rootUrl);
         request.setAttribute("DTO", ballotsDTO);
@@ -188,7 +179,6 @@ public class BallotsController extends HttpServlet {
             }
         }
 
-//        Map<String, User> users = (Map<String, User>) request.getAttribute("users");
         if (users.get(nameUser) == null){
             System.out.println("key == null");
             request.setAttribute("CodeErreur","UserNoexist");
@@ -217,7 +207,6 @@ public class BallotsController extends HttpServlet {
         String rootUrl = request.getRequestURL().toString().split("/ballots")[0];
         String nameUser = (String) request.getAttribute("loggedUserUrl");
         System.out.println("nameUser: " + nameUser);
-//        Map<String, User> users = (Map<String, User>) request.getAttribute("users");
         if (users.get(nameUser) == null){
             System.out.println("key == null");
             request.setAttribute("CodeErreur","UserNoexist");

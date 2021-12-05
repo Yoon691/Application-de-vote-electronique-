@@ -21,11 +21,7 @@ public class ContentFilter extends HttpFilter {
         System.out.println("Je suis dans le ContentFilter 2");
         Object DTO = request.getAttribute("DTO");
         String codeErreur = (String) request.getAttribute("CodeErreur");
-//        if(request.getMethod().equals("POST")) {
-//            System.out.println("IF de POST FILTER");
-//            response.setStatus(201);
-////            response.setContentType("application/json");
-//        }
+
         if(DTO == null){
             if (codeErreur != null) {
                 System.out.println("if code erreur");
@@ -47,8 +43,19 @@ public class ContentFilter extends HttpFilter {
                         break;
                     case "UserOrBallotNoExist":
                         response.sendError(404, "Utilisateur ou ballot non trouvé");
+                        break;
                     case "UserNoTrouver" :
                         response.sendError(404,  "Utilisateur non trouvé");
+                        break;
+                    case "redirect":
+                        String urlRedirect = (String) request.getAttribute("urlRedirect");
+                        String userId = (String) request.getAttribute("userId");
+                        System.out.println("urlRedirect: " + urlRedirect);
+                        response.sendRedirect(urlRedirect);
+                        response.setHeader("Name", userId);
+                        response.setHeader("Location", urlRedirect);
+                        response.setStatus(303);
+                        return;
                     default:
                 }
             }
@@ -66,7 +73,6 @@ public class ContentFilter extends HttpFilter {
                         ObjectMapper objectMapper = new ObjectMapper();
                         objectMapper.writeValue(response.getWriter(), request.getAttribute("DTO"));
                     } catch (IOException ignored) {System.out.println("catch");}
-//                    chain.doFilter(request, response);
                     return;
                 case "application/xml" :
                     response.setContentType("application/xml");
@@ -81,11 +87,9 @@ public class ContentFilter extends HttpFilter {
 
                 case "text/html":
                     System.out.println("text/html");
-//                    setContentAttributes(request, DTO.getClass());
                     String vu = (String) request.getAttribute("Vu");
                     System.out.println("vue: " + vu);
                     request.getRequestDispatcher("/WEB-INF/components/".concat(vu).concat(".jsp")).include(request,response);
-//                    response.sendRedirect("WEB-INF/components/candidats/candidats.jsp");
                     System.out.println("Fin text/html");
                     return;
             }

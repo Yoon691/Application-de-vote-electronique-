@@ -1,6 +1,7 @@
 package fr.univlyon1.m1if.m1if03.servlets;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import fr.univlyon1.m1if.m1if03.classes.User;
 import fr.univlyon1.m1if.m1if03.dto.NomUserDTO;
 import fr.univlyon1.m1if.m1if03.dto.UserDTO;
@@ -24,30 +25,66 @@ public class UsersResources extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         users = (Map<String, User>) config.getServletContext().getAttribute("users");
-//        users = (Map<String, User>) config. request.getAttribute("users");
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String uri = req.getRequestURL().toString().split("/users/")[1];
         System.out.println("uri : " + uri);
+        String uriPlus = null;
+        if (uri.endsWith("ballot")){
+            uriPlus = uri.split("/")[1];
+        }
+
         if (uri.equals("list")){
             getUsers(req, resp);
-        } else {
+        } else if (uriPlus != null){
+            String id = uri.split("/")[0];
+            getUserBallot(req,resp,id);
+        }else {
             getUser(req,resp,uri);
         }
-        //super.doGet(req, resp);
 
     }
     @SuppressWarnings("unchecked")
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
+            NomUserDTO usernomdto = null;
+            for(String contentType : req.getHeader("Content-Type").split(", ")) {
+                switch (contentType) {
+                    case "application/x-www-form-urlencoded":
+                        System.out.println("application/x-www-form-urlencoded");
+                        String nom = req.getParameter("nom");
+                        System.out.println("nomPut: " + nom);
+                        User user = new User(null, nom, false);
+                        usernomdto = new NomUserDTO(user);
+                        System.out.println("usernomdtoUrlEncoded : " + usernomdto.getNom());
+                        break;
+                    case "application/json":
+                        System.out.println("application/json");
+                         usernomdto = new ObjectMapper().readValue(req.getReader(), NomUserDTO.class);
+                        System.out.println("usernomdtoJson : " + usernomdto.getNom());
+                        break;
+                    case "application/xml":
+                        System.out.println("application/xml");
+                        XmlMapper xmlMapper = new XmlMapper();
+                        usernomdto = xmlMapper.readValue(req.getReader(), NomUserDTO.class);
+                        System.out.println("nomxML: " + usernomdto.getNom());
+                        break;
+                    default:
+                        System.out.println("Default Login");
+                        resp.sendError(400, "Paramètres de la requête non acceptables ");
+                        return;
+                }
+
+
+            }
                 String uri = req.getRequestURL().toString().split("/users/")[1];
                 System.out.println("uri Put user: " + uri );
-                String nom = uri.split("/")[0];
-                System.out.println("nom: " + nom);
-                User user = users.get(nom);
+                String login = uri.split("/")[0];
+                System.out.println("login: " + login);
+                User user = users.get(login);
                 String nameUserLoguer = (String) req.getAttribute("loggedUserUrl");
             if (users.get(nameUserLoguer) == null){
                 System.out.println("key == null");
@@ -62,12 +99,12 @@ public class UsersResources extends HttpServlet {
                 }
                 if (user.getLogin().equals(userLoguer.getLogin()) || userLoguer.isAdmin()){
                     System.out.println("else if user : " +  user.getLogin());
-                    NomUserDTO usernomdto = new ObjectMapper().readValue(req.getReader(), NomUserDTO.class);
+                    assert usernomdto != null;
                     System.out.println("usernomdto: " + usernomdto.getNom());
                     System.out.println("usernomdto != null");
                     user.setNom(usernomdto.getNom());
                     System.out.println("user.getnom: " + user.getNom());
-                    users.put(nom,user);
+                    users.put(login,user);
                     resp.setStatus(204);
                 } else {
                     resp.sendError(403, "Utilisateur non administrateur ou  ou pas celui qui est logué");
@@ -96,7 +133,6 @@ public class UsersResources extends HttpServlet {
         if (user == null) {
             System.out.println("if (user == null)");
             request.setAttribute("CodeErreur","UserNoTrouver");
-            response.sendError(404,  "Utilisateur non trouvé");
             return;
         }
         System.out.println("aprés if (user == null)");
@@ -110,6 +146,37 @@ public class UsersResources extends HttpServlet {
         }
 
     }
+    @SuppressWarnings("unchecked")
+    private void getUserBallot(final HttpServletRequest request, final HttpServletResponse response,
+                         final String userId) throws IOException {
+        String nameUserLoguer = (String) request.getAttribute("loggedUserUrl");
+        if (users.get(nameUserLoguer) == null){
+            System.out.println("key == null");
+            request.setAttribute("CodeErreur","UserNoexist");
+            return;
+        }
+        User userLoguer = users.get(nameUserLoguer);
+        User user = users.get(userId);
+        if (user == null) {
+            System.out.println("if (user == null)");
+            request.setAttribute("CodeErreur","UserNoTrouver");
+            return;
+        }
+        if (user.getLogin().equals(userLoguer.getLogin()) || userLoguer.isAdmin()) {
+            System.out.println("getUserBallot");
+            String url = request.getRequestURL().toString().split("/user")[0];
+            System.out.println("url" + url);
+            String urlRedirect = url.concat("/election/ballots/byUser/" + userId);
+            System.out.println("urlRedirect" + urlRedirect);
+            request.setAttribute("CodeErreur", "redirect");
+            request.setAttribute("urlRedirect", urlRedirect);
+            request.setAttribute("userId", userId);
+
+        }else {
+            request.setAttribute("CodeErreur","UserNonAdminOuNonProp");
+        }
+    }
+
     @SuppressWarnings("unchecked")
     private void getUsers(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
 //        users = (Map<String, User>) request.getAttribute("users");

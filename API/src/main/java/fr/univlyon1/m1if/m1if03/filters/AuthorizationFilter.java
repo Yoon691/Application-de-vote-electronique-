@@ -1,10 +1,8 @@
 package fr.univlyon1.m1if.m1if03.filters;
 
-import fr.univlyon1.m1if.m1if03.classes.Candidat;
 import fr.univlyon1.m1if.m1if03.classes.User;
 
 import javax.servlet.FilterChain;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebFilter;

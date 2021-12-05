@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -47,18 +46,7 @@ public class ResultatsController extends HttpServlet {
 
 
     }
-//
-//    Map<String, Integer> votes = new HashMap<>();
-//        for (String nomCandidat : candidats.keySet()) {
-//        votes.put(nomCandidat, 0);
-//    }
-//
-//        for (Bulletin bulletin : bulletins) {
-//        int score = votes.get(bulletin.getCandidat().getNom());
-//        votes.put(bulletin.getCandidat().getNom(), ++score);
-//    }
-//        req.setAttribute("votes", votes);
-//        req.getRequestDispatcher("/WEB-INF/components/resultats.jsp").forward(req, resp);
+
 }
 
 
