@@ -1,6 +1,7 @@
 package fr.univlyon1.m1if.m1if03.servlets;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import fr.univlyon1.m1if.m1if03.classes.Ballot;
 import fr.univlyon1.m1if.m1if03.classes.Bulletin;
 import fr.univlyon1.m1if.m1if03.classes.Candidat;
@@ -62,14 +63,45 @@ public class BallotsController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         String uri = req.getRequestURL().toString().split("/election/")[1];
         System.out.println("uriBallot: " + uri);
         try {
-            BallotDTO ballotDTO = new ObjectMapper().readValue(req.getReader(), BallotDTO.class);
-            System.out.println("ballotDTO : " + ballotDTO.getNomCandidat());
+            BallotDTO ballotDTO = null;
+            for(String contentType : req.getHeader("Content-Type").split(", ")) {
+                switch (contentType) {
+                    case "application/x-www-form-urlencoded":
+                        System.out.println("application/x-www-form-urlencoded");
+                        String nomCandidat = req.getParameter("nomCandidat");
+                        ballotDTO = new BallotDTO();
+                        ballotDTO.setNomCandidat(nomCandidat);
+                        break;
+                    case "application/json":
+                        System.out.println("application/json");
+                        ballotDTO = new ObjectMapper().readValue(req.getReader(), BallotDTO.class);
+                        break;
+                    case "application/xml":
+                        System.out.println("application/xml");
+                        XmlMapper xmlMapper = new XmlMapper();
+                        ballotDTO = xmlMapper.readValue(req.getReader(), BallotDTO.class);
+                        System.out.println("nomCandidatXML: " + ballotDTO.getNomCandidat());
+                        break;
+                    default:
+                        System.out.println("Default Login");
+                        resp.sendError(400, "Paramètres de la requête non acceptables ");
+                        return;
+                }
+            }
+
+                System.out.println("ballotDTO : " + ballotDTO.getNomCandidat());
             Ballot ballot;
             System.out.println("creation de ballots ");
+            if (candidats.get(ballotDTO.getNomCandidat()) == null){
+                resp.sendError(404, "Vous avez voté sur un candidat n'existe pas");
+                return;
+            }
             Candidat candidat = candidats.get(ballotDTO.getNomCandidat());
+            System.out.println("candidat: " + candidat.getNom());
             Bulletin bulletin = new Bulletin(candidat);
             bulletins.add(bulletin);
             ballot = new Ballot(bulletin);
@@ -114,8 +146,9 @@ public class BallotsController extends HttpServlet {
             System.out.println("key == null");
             resp.sendError(404, "Ballot non trouvé");
         }else if (key.equals(nameUser) || user.isAdmin()) { //|| user.isAdmin()
-                ballots.remove(key);
-                resp.setStatus(204);
+            bulletins.remove(ballots.get(key).getBulletin());
+            ballots.remove(key);
+            resp.setStatus(204);
         } else {
             resp.sendError(403, "Utilisateur non administrateur ou non propriétaire du ballot");
             }

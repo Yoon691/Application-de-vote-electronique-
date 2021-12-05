@@ -8,24 +8,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
-<% System.out.println("jsp4");%>
-<jsp:useBean id="DTO" type="java.util.ArrayList" scope="request" beanName="resultats"/>
+<% System.out.println("jsp2");%>
 
 <section>
-
     <table>
         <tr>
-            <th>Resultats</th>
+            <th>Noms candidats</th>
 
         </tr>
-        <c:forEach items="${DTO}" var="resultats">
-            <% System.out.println();%>
+        <c:forEach items="${applicationScope.candidats.keySet()}" var="nomCandidat">
             <tr>
-                <th>"Nom : "</th>
-                <td>${resultats.nomCandidat}</td>
-                <th>"Vote : "</th>
-                <td>${resultats.votes}</td>
+                <td>${nomCandidat}</td>
             </tr>
         </c:forEach>
     </table>
 </section>
+

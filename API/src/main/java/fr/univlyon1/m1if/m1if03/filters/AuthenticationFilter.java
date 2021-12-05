@@ -11,7 +11,9 @@ import java.io.IOException;
 
 @WebFilter(filterName = "AuthenticationFilter", urlPatterns = {"/*"})
 public class AuthenticationFilter extends HttpFilter {
-    private final String[] authorizedURIs = {"/index.html", "/static", "/election/resultats", "/election/candidats", "/election/candidats/noms" ,"/users/login"}; // Manque "/", traité plus bas...
+    private final String[] authorizedURIs = {"/index.html", "/static", "/election/resultats" ,"/users/login"};
+    private final String[] authorizedURIsCandidat = {"/election/candidats", "/election/candidats/noms"};
+    // Manque "/", traité plus bas...
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
         System.out.println("Hello 1 ");
@@ -23,6 +25,18 @@ public class AuthenticationFilter extends HttpFilter {
             res.sendRedirect("index.html");
             return;
         }
+        for(String authorizedUri: authorizedURIsCandidat) {
+            System.out.println("authorizedUri: " + authorizedUri);
+            System.out.println("currentUri : " + currentUri);
+            String rootUrl =  currentUri.replace( "/election/candidats", "");
+            if(rootUrl.equals("") || rootUrl.equals("/noms")) {
+                    System.out.println("dofiltre candidat 1: " + req.getRequestURL().toString());
+                    super.doFilter(req, res, chain);
+                    System.out.println("dofiltre 2: " + req.getRequestURL().toString());
+                    return;
+                }
+            }
+
 //        if(currentUri.equals("/users/")) {
 //            System.out.println("IF /users");
 ////            this.getServletContext().getNamedDispatcher("Users").include(req, res);

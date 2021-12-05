@@ -2,6 +2,7 @@ package fr.univlyon1.m1if.m1if03.filters;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -63,22 +64,21 @@ public class ContentFilter extends HttpFilter {
                     try {
                         System.out.println("try");
                         ObjectMapper objectMapper = new ObjectMapper();
-//                        String responseAsString = objectMapper.writeValueAsString(request.getAttribute("DTO"));
                         objectMapper.writeValue(response.getWriter(), request.getAttribute("DTO"));
-//                        objectMapper.writeValue(System.out, request.getAttribute("DTO"));
-
-//                        JsonGenerator g = objectMapper.getFactory().createJsonGenerator(response.getWriter());
-////                        String gAsString = objectMapper.writeValueAsString(g);
-////                        System.out.println("gAsString"+ gAsString);
-//                        System.out.println("responseAsString"+ responseAsString);
-//                        String json = new Gson().toJson(responseAsString);
-//                        response.setContentType("application/json");
-//                        response.setCharacterEncoding("UTF-8");
-//                        response.getWriter().write(json);
                     } catch (IOException ignored) {System.out.println("catch");}
 //                    chain.doFilter(request, response);
-
                     return;
+                case "application/xml" :
+                    response.setContentType("application/xml");
+                    try {
+                        XmlMapper xmlMapper = new XmlMapper();
+                        xmlMapper.writeValue(response.getWriter(), request.getAttribute("DTO"));
+
+                    } catch (IOException ignored){
+                        System.out.println("catchXMLResponse");
+                    }
+                    return;
+
                 case "text/html":
                     System.out.println("text/html");
 //                    setContentAttributes(request, DTO.getClass());

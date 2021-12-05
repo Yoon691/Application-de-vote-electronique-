@@ -1,6 +1,7 @@
 package fr.univlyon1.m1if.m1if03.servlets;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import fr.univlyon1.m1if.m1if03.classes.User;
 import fr.univlyon1.m1if.m1if03.dto.UserDTO;
 import fr.univlyon1.m1if.m1if03.utils.ElectionM1if03JwtHelper;
@@ -36,7 +37,39 @@ public class UsersOperation extends HttpServlet {
         switch (uri){
             case "/login":
                 try {
-                    UserDTO userdto = new ObjectMapper().readValue(req.getReader(), UserDTO.class);
+                    UserDTO userdto = null;
+                    for(String contentType : req.getHeader("Content-Type").split(", ")) {
+                        switch (contentType) {
+                            case "application/x-www-form-urlencoded":
+                                System.out.println("application/x-www-form-urlencoded");
+                                String login = req.getParameter("login");
+                                String nom = req.getParameter("nom");
+                                String adminString =  req.getParameter("admin");
+                                boolean admin = adminString.equals("true");
+                                User user = new User(login, nom, admin);
+                                userdto = new UserDTO(user);
+                                break;
+                            case "application/json":
+                                System.out.println("application/json");
+                                userdto = new ObjectMapper().readValue(req.getReader(), UserDTO.class);
+                                break;
+                            case "application/xml":
+                                System.out.println("application/xml");
+                                XmlMapper xmlMapper = new XmlMapper();
+                                userdto = xmlMapper.readValue(req.getReader(), UserDTO.class);
+                                System.out.println("loginxML: " + userdto.getLogin());
+                                System.out.println("nomxML: " + userdto.getNom());
+                                System.out.println("AdminxML: " + userdto.getAdmin());
+                                break;
+                            default:
+                                System.out.println("Default Login");
+                                resp.sendError(400, "Paramètres de la requête non acceptables ");
+                                return;
+                        }
+
+
+                    }
+
                     System.out.println("case \"/login\":");
                     if(userdto!=null) {
                         System.out.println("If 1");
@@ -61,7 +94,9 @@ public class UsersOperation extends HttpServlet {
                     }
                 }
                 catch (Exception e){
+                    System.out.println("Catch Login");
                     resp.sendError(400, "Paramètres de la requête non acceptables ");
+                    return;
                 }
                 break;
             case "/logout":
