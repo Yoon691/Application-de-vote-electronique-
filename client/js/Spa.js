@@ -11,17 +11,31 @@ function displayNavbarConnection() {
     $('#nom').attr('contentEditable', 'true')
 
 }
+function showMenuConnecte() {
+
+    if (currentUser.login !== "") {
+        console.log("je suis co");
+        $('#menuConnecte').show();
+    } else {
+        console.log("je suis pas co");
+        $('#menuConnecte').hide();
+    }
+
+}
 $(document).ready(function() {
     window.addEventListener('hashchange', () => { show(window.location.hash); });
+    showMenuConnecte();
+    getResultats();
     function show(hash) {
         $('.active').removeClass('active').addClass('inactive');
         $(hash).removeClass('inactive').addClass('active');
         switch (hash) {
             case "#monCompte":
-                DOJOB("profile-template", currentUser, 'compteList');
+                showUserCurrent();
                 break;
-
-
+            case "#candidats":
+                getListCandidats();
+                break;
             default:
 
                 break;

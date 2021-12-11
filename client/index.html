@@ -13,71 +13,51 @@
         <script src="js/Spa.js"></script>
         <script src="js/Client.js"></script>
 
-        <script id="profile-template" type="x-tmpl-mustache">
 
-                    <tr>
-                        <td id="login">{{login}}</td>
-                        <td id="nom">
-                            {{nom}}
-                        </td>
-
-                        <td Id="admin">
-                            {{#admin}}Oui{{/admin}}
-                            {{^admin}}Non{{/admin}}
-                        </td>
-                    </tr>
-        </script>
-
-        <script>
-
-            var user = new Object();
-            user.nom = "TEST";
-            user.login = "login";
-            user.admin = true;
-
-
-            function DOJOB(templateID, data, idRes) {
-                console.log("appelle a dojob");
-                let template = $('#' + templateID).html();
-                Mustache.parse(template);
-                let html = Mustache.render(template, data);
-                $('#' + idRes).html(html);
-                console.log("fin appele a do job pour " + idRes);
-            }
-
-        </script>
-
-        </head>
-        <body>
-            <h1>&Eacute;lection M1IF03</h1>
-            <div id="errMsg"></div>
-            <aside id="menu">
-                <h2> <button class="btn btn-primary" style="width: 150px" id="menu1"> Menu</button></h2>
-                <ul id="menuA">
-                    <li><a href='#index'>Accueil</a></li>
-                    <li><a href='#connect'>Connexion</a></li>
+    </head>
+    <body>
+        <h1>&Eacute;lection M1IF03</h1>
+        <div id="errMsg"></div>
+        <aside id="menu">
+            <h2> <button class="btn btn-primary" style="width: 150px" id="menu1"> Menu</button></h2>
+            <ul id="menuA">
+                <li><a href='#index'>Accueil</a></li>
+                <li><a href='#connect'>Connexion</a></li>
+                <li><a href='#candidats'>Candidats</a></li>
+                <div id="menuConnecte">
                     <li><a href='#monCompte'>Mon compte</a></li>
-                    <li><a href='#candidats'>Candidats</a></li>
                     <li><a href='#vote'>Voter</a></li>
                     <li><a href='#ballot'>Vérifier mon vote</a></li>
                     <li><a href='#deco'>Déconnexion</a></li>
-                </ul>
-            </aside>
-            <section id='index' class='active'>
-                <h2>Bienvenue sur l'application Web de la grande élection de 2022 !</h2>
-                <p>Résultats courants de l'élection :</p>
+                </div>
+            </ul>
+        </aside>
+        <section id='index' class='active'>
+            <h2>Bienvenue sur l'application Web de la grande élection de 2022 !</h2>
+            <p>Résultats courants de l'élection :</p>
+            <script id="mustacheTempalte_resultats" type="text/template">
+
                     <ul>
-                        <li>...</li>
+                        {{#.}}
+                        <li>{{nomCandidat}}
+                            <ul>
+                                {{votes}}
+                            </ul>
+                        </li>
+                        {{/.}}
                     </ul>
-                <!--
-                    A vous de modifier cette section pour qu'elle affiche les résultats en cours et qu'elle se recharge toutes les 5 secondes.
-                -->
-            </section>
 
-            <section id='connect' class='inactive'>
-                <h2>Connectez-vous pour pouvoir voter</h2>
+            </script>
+            <div id="target-output-resultats"></div>
+            <!--
+                   A vous de modifier cette section pour qu'elle affiche les résultats en cours et qu'elle se recharge toutes les 5 secondes.
+              -->
+        </section>
 
-                    <p>
+        <section id='connect' class='inactive'>
+            <h2>Connectez-vous pour pouvoir voter</h2>
+<!--            <form onsubmit=" return login()">-->
+                <p>
                     <label for="loginForm">Entrez votre login :</label>
                     <input type="text" name="loginForm" id="loginForm" autofocus>
                 </p>
@@ -92,14 +72,18 @@
                 <p>
                     <input type="submit" name="action" value="Connexion" onclick="login()">
                 </p>
-            </section>
-            <section id='monCompte' class='inactive'>
-                <h2>Mon compte</h2>
+<!--            </form>-->
+        </section>
+        <section id='monCompte' class='inactive'>
+            <h2>Mon compte</h2>
+            <script id="mustacheTempalte_a" type="text/template">
                 <ul id='compteList'>
-                    <li>Login : <span id="login"></span></li>
-                    <li>Nom : <span id="nom"></span></li>
-                    <li>Admin : <span id="admin"></span></li>
+                    <li>Login : <span id="login">{{login}}</span></li>
+                    <li>Nom : <span id="nom">{{nom}}</span></li>
+                    <li>Admin : <span id="admin">{{admin}}</span></li>
                 </ul>
+            </script>
+            <div id="target-output"></div>
                 <form method="post" action="TODO">
                     <p>Modifier mon nom :
                         <input type="text" name="nom">
@@ -120,9 +104,14 @@
 
             <section id='candidats' class='inactive'>
                 <h2>Voici la liste des différents candidats</h2>
-                    <ul>
-                        <li><a href="#candidat/Toto">Toto</a></li>
-                    </ul>
+                <script id="mustacheTempalte_candidat" type="text/template">
+                <ul>
+                    {{#.}}
+                    <li>{{.}}</li>
+                    {{/.}}
+                </ul>
+                </script>
+                <div id="target-output-candidats"></div>
                 <!--
                     TODO: générer dynamiquement cette section pour qu'elle affiche les bonnes données.
                 -->
@@ -160,5 +149,7 @@
                 -->
                 <p><a href='#deco'>Déconnexion</a></p>
             </section>
+
+            <script src="js/template.js"></script>
         </body>
     </html>
