@@ -14,7 +14,6 @@ deploy:
   #image: maven:3.6.1-jdk-11 # docker image with Maven
   before_script:
     - chmod 400 $CI_SSH_KEY
-    - 
     - . ci/setup-mvn-proxy.sh && echo "$CI_SSH_KEY" > ci_private_key.pem && chmod 400 ci_private_key.pem
 
 
