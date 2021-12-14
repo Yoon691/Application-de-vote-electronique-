@@ -123,7 +123,7 @@
 
             <section id='vote' class='inactive'>
                 <h2>Voter !</h2>
-                <form method="post" action="TODO">
+<!--                <form method="post" action="TODO">-->
                     <p>
                         <label for="candidat-select">Sélectionnez un candidat :</label>
                         <script id="mustacheTempalte_candidat" type="text/template">
@@ -137,14 +137,18 @@
                     <div id="target-output-candidat"></div>
 
                     <p>
-                        <input type="submit" name="action" value="Envoyer votre vote">
+                        <input type="submit" name="action" value="Envoyer votre vote" onclick="vote()">
                     </p>
-                </form>
+<!--                </form>-->
                 <p><a href="#deco">Déconnexion</a></p>
             </section>
             <section id='ballot' class='inactive'>
                 <h2>Ma preuve de vote</h2>
                 <p>Votre vote a bien été enrgistré.</p>
+                <script id="mustacheTempalte_ballot" type="text/template">
+                    <label>Votre vote est de numéro  : <span id="voteBallot">{{.}}</span></label>
+                </script>
+                <div id="target-output-ballot"></div>
                 <form method="post" action="TODO">
                     <p><input type="submit" name="action" value="Supprimer votre vote"></p>
                 </form>

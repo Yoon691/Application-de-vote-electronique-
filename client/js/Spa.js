@@ -42,6 +42,9 @@ function show(hash) {
         case "#vote" :
             getListCandidats();
             break;
+        case "#ballot" :
+            getBallot();
+            break;
         default:
             // window.onload = timedRefresh(5000);
             break;

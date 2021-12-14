@@ -148,6 +148,7 @@ function getResultats(){
         method : "GET",
         headers : {
             'Accept' : "application/json",
+
         },
         mode : "cors",
         credentials : "same-origin"
@@ -162,6 +163,59 @@ function getResultats(){
             showResultats();
         })
         .catch(error => {console.error(error);} )
+}
+
+function vote(){
+    const nomCandidat = {
+        "nomCandidat": $('#candidat-select option:selected').text()
+    }
+    console.log("nomCandidatchoisi: " + nomCandidat.nomCandidat)
+    fetch(baseURL + '/election/ballots', {
+        method : 'POST',
+        headers : {
+            'content-type' : 'application/json',
+            'Authorization' : token,
+        },
+        body : JSON.stringify(nomCandidat),
+        credentials : "same-origin",
+        mode : "cors"
+    })
+        .then(response =>
+            {
+                if (response.ok){
+                    $('#vote').append("<p> Vous avez bien votez</p>");
+                } else {
+                    $('#vote').append("<p> Votre vote n'est pas passée</p>");
+                }
+            }
+
+        )
+        .catch(error => console.error(error));
+}
+
+function getBallot(){
+    console.log("userId getBallot: " + getUserId(token));
+    let userId = getUserId(token);
+    let ballot = {"votant":"",
+                    "id":""}
+    fetch(baseURL + '/election/ballots/byUser/' + userId, {
+        method : 'GET',
+        headers : {
+                    'Authorization' : token,
+                    'Accept' : 'application/json'
+        },
+        credentials : "same-origin",
+        mode : "cors"
+
+    })
+        .then(response =>{return response.json();}
+            )
+        .then(data =>{
+                ballot = data;
+                console.log("data ballot : " + ballot.id.split("/ballots/")[1] );
+                DOJOB('mustacheTempalte_ballot', ballot.id.split("/ballots/")[1], 'target-output-ballot');
+        })
+        .catch(error => console.error(error));
 }
 function jwtDecode(t) {
     let token = {};
