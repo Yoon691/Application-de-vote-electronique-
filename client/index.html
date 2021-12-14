@@ -22,8 +22,10 @@
             <h2> <button class="btn btn-primary" style="width: 150px" id="menu1"> Menu</button></h2>
             <ul id="menuA">
                 <li><a href='#index'>Accueil</a></li>
-                <li><a href='#connect'>Connexion</a></li>
                 <li><a href='#candidats'>Candidats</a></li>
+                <div id="menuConnexion">
+                <li><a href='#connect'>Connexion</a></li>
+                </div>
                 <div id="menuConnecte">
                     <li><a href='#monCompte'>Mon compte</a></li>
                     <li><a href='#vote'>Voter</a></li>
@@ -39,11 +41,7 @@
 
                     <ul>
                         {{#.}}
-                        <li>{{nomCandidat}}
-                            <ul>
-                                {{votes}}
-                            </ul>
-                        </li>
+                        <li>{{nomCandidat}} : {{votes}} votes</li>
                         {{/.}}
                     </ul>
 
@@ -84,27 +82,27 @@
                 </ul>
             </script>
             <div id="target-output"></div>
-                <form method="post" action="TODO">
+<!--                <form onclick="return">-->
                     <p>Modifier mon nom :
-                        <input type="text" name="nom">
-                        <input type="submit" value="Modifier">
+                        <input type="text" name="nom" id="nomPut">
+                        <input type="submit" value="Modifier" onclick="putNom()">
                     </p>
-                </form>
+<!--                </form>-->
                 <p><a href='#deco'>Déconnexion</a></p>
             </section>
             <section id='deco' class='inactive'>
                 <h2>Déconnexion</h2>
-                <form method="post" action="Deco">
+<!--                <form method="post" action="Deco">-->
                     <p>Cliquez ici pour vous déconnecter :
-                        <input type="submit" value="Deconnexion">
+                        <input type="submit" value="Deconnexion" onclick="deco()">
                     </p>
-                </form>
+<!--                </form>-->
                 <p><a href='#index'>Retour à la page d'accueil</a></p>
             </section>
 
             <section id='candidats' class='inactive'>
                 <h2>Voici la liste des différents candidats</h2>
-                <script id="mustacheTempalte_candidat" type="text/template">
+                <script id="mustacheTempalte_candidats" type="text/template">
                 <ul>
                     {{#.}}
                     <li>{{.}}</li>
@@ -128,10 +126,16 @@
                 <form method="post" action="TODO">
                     <p>
                         <label for="candidat-select">Sélectionnez un candidat :</label>
+                        <script id="mustacheTempalte_candidat" type="text/template">
                         <select name="candidat" id="candidat-select">
-                            <option value="">...</option>
+                            <option value="">---votez BLANC----</option>
+                            {{#.}}
+                            <option value="">{{.}}</option>
+                            {{/.}}
                         </select>
-                    </p>
+                        </script>
+                    <div id="target-output-candidat"></div>
+
                     <p>
                         <input type="submit" name="action" value="Envoyer votre vote">
                     </p>
