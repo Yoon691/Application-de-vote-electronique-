@@ -20,5 +20,5 @@ deploy:
   script:
     #- cd /builds/p1809208/mif03_tp/API
     #- mvn clean && mvn package 
-    - scp -o StrictHostKeyChecking=no -i $CI_SSH_KEY /builds/p1809208/mif03_tp/client/* gitlabci@192.168.75.70:/var/www/html
+    - scp -r -v -o StrictHostKeyChecking=no -i $CI_SSH_KEY /builds/p1809208/mif03_tp/client gitlabci@192.168.75.70:/var/www/html
 
