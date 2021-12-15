@@ -105,7 +105,7 @@
                 <script id="mustacheTempalte_candidats" type="text/template">
                 <ul>
                     {{#.}}
-                    <li>{{.}}</li>
+                    <li><a  href="#candidat/{{.}}">{{.}}</a></li>
                     {{/.}}
                 </ul>
                 </script>
@@ -115,8 +115,11 @@
                 -->
             </section>
             <section id='candidat' class='inactive'>
-                <h2>Informations sur un candidat</h2>
-                <p>Nom complet : ... ...</p>
+                    <h2>Informations sur un candidat</h2>
+                <script id="mustacheTempalte_candidat_info" type="text/template">
+                <p>Nom complet : {{prenom}} {{nom}}</p>
+                </script>
+                <div id="target-output-candidat-info"></div>
 
                 <p><a href="#deco">Déconnexion</a></p>
             </section>
@@ -149,9 +152,9 @@
                     <label>Votre vote est de numéro  : <span id="voteBallot">{{.}}</span></label>
                 </script>
                 <div id="target-output-ballot"></div>
-                <form method="post" action="TODO">
-                    <p><input type="submit" name="action" value="Supprimer votre vote"></p>
-                </form>
+<!--                <form method="post" action="TODO">-->
+                    <p><input type="submit" name="action" value="Supprimer votre vote" onclick="deleteVote()"></p>
+<!--                </form>-->
                 <!--
                     TODO : vérifier le ballot avant d'afficher ce contenu et le remplacer par un autre message si l'utilisateur n'a pas voté.
                 -->

@@ -2,6 +2,8 @@
 //     'hashchange',
 //     () => { show(window.location.hash); }
 // );
+
+let idCandiat = null
 function displayNavbarConnection() {
 
     $('#menu1').on("click", function () {
@@ -28,6 +30,7 @@ function showMenuConnecte() {
 function show(hash) {
     $('.active').removeClass('active').addClass('inactive');
     $(hash).removeClass('inactive').addClass('active');
+    console.log("hash: " + hash);
     switch (hash) {
         case "#monCompte":
             console.log("case \"#monCompte\"")
@@ -45,8 +48,12 @@ function show(hash) {
         case "#ballot" :
             getBallot();
             break;
+        case "#candidat":
+            console.log("ballotid: " + idCandiat);
+            getCandidat(idCandiat);
         default:
             // window.onload = timedRefresh(5000);
+            console.log("DEFAULT");
             break;
     }
 
@@ -59,7 +66,17 @@ function timedRefresh(timeoutPeriod) {
 }
 
 $(document).ready(function() {
-    window.addEventListener('hashchange', () => { show(window.location.hash); });
+
+    window.addEventListener('hashchange', () => {
+        console.log("hash document ready: " + window.location.hash.split("/")[0]);
+        if (window.location.hash.split("/")[0] === "#candidat"){
+            console.log("J'y suis");
+            idCandiat = window.location.hash.split("/")[1]
+            show(window.location.hash.split("/")[0]);
+        } else {
+            show(window.location.hash);
+        }
+    });
     showMenuConnecte();
     getResultats();
 

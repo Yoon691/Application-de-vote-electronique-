@@ -4,6 +4,10 @@ let currentUser={
     nom : "",
     admin : false
 };
+let ballot = {
+        votant:"",
+            id:""
+};
 let listCandidats = [];
 let resultats = [];
 let token;
@@ -106,6 +110,10 @@ function deco(){
                 nom : "",
                 admin : false
             };
+            ballot = {
+                votant:"",
+                id:""
+            };
             window.location.hash = "#index";
             showMenuConnecte();
 
@@ -113,6 +121,30 @@ function deco(){
         )
         .catch(error =>{ console.log("catch");
             console.log(error)} );
+}
+
+function getCandidat(candidatId){
+    console.log("HALLOOOOOOOOOOOOOO");
+
+    console.log("candidatSelectioner: " + candidatId)
+    fetch(baseURL + '/election/candidats/' + candidatId, {
+        method: "GET",
+        headers: {
+            'Authorization': token,
+            'Accept': "application/json",
+        },
+        credentials: "same-origin",
+        mode: "cors"
+    })
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            console.log("affiche candidat : " + JSON.stringify(data)  ) ;
+            DOJOB('mustacheTempalte_candidat_info', data , 'target-output-candidat-info');
+
+        })
+        .catch(error => console.error(error));
 }
 
 function getListCandidats(){
@@ -183,9 +215,9 @@ function vote(){
         .then(response =>
             {
                 if (response.ok){
-                    $('#vote').append("<p> Vous avez bien votez</p>");
+                    alert("Vous avez bien votez");
                 } else {
-                    $('#vote').append("<p> Votre vote n'est pas passée</p>");
+                    alert("Votre vote n'est pas passée");
                 }
             }
 
@@ -196,8 +228,8 @@ function vote(){
 function getBallot(){
     console.log("userId getBallot: " + getUserId(token));
     let userId = getUserId(token);
-    let ballot = {"votant":"",
-                    "id":""}
+    // let ballot = {"votant":"",
+    //                 "id":""}
     fetch(baseURL + '/election/ballots/byUser/' + userId, {
         method : 'GET',
         headers : {
@@ -208,14 +240,47 @@ function getBallot(){
         mode : "cors"
 
     })
-        .then(response =>{return response.json();}
-            )
+        .then(response =>{
+            if (response.status === 200){
+                return response.json();
+            }})
         .then(data =>{
-                ballot = data;
-                console.log("data ballot : " + ballot.id.split("/ballots/")[1] );
-                DOJOB('mustacheTempalte_ballot', ballot.id.split("/ballots/")[1], 'target-output-ballot');
+                console.log("DATA : " + JSON.stringify(data));
+                if (data == null){
+                    alert("Vous n'avez pas encore voté , Votez pour accéder a votre vote");
+                } else {
+                    ballot = data;
+                    console.log("data ballot : " + ballot.id + " / " +ballot.votant );
+                    DOJOB('mustacheTempalte_ballot', ballot.id.split("/ballots/")[1], 'target-output-ballot');
+                    return ballot;
+                }
+
         })
         .catch(error => console.error(error));
+}
+
+function deleteVote(){
+    let ballotId = ballot.id;
+    console.log("ballotId: " + ballotId);
+    fetch(baseURL + '/election/ballots/' + ballotId.split('/ballots/')[1], {
+        method : "DELETE",
+        headers : {
+                'Authorization' : token,
+        },
+        credentials : "same-origin",
+        mode : "cors"
+    } )
+        .then(response => {
+                if (response.status === 204){
+                    alert("Votre vote est bien supprimer");
+                    DOJOB('mustacheTempalte_ballot', "vote supprimer", 'target-output-ballot');
+
+                } else if (response.status === 404){
+                    alert("Action interdit : vous n'avez pas encore voté");
+                }
+        })
+        .catch(error => console.log(error));
+
 }
 function jwtDecode(t) {
     let token = {};
