@@ -18,9 +18,6 @@ let token;
 function login() {
     console.log("Hello word");
     if ($("#loginForm").val() !== "") {
-        console.log("login :" + $("#loginForm").val() +
-            "nom : " + $("#nomForm").val() +
-            "admin: " + $("#adminForm").get(0).checked)
         const userData = {
             "login": $("#loginForm").val(),
             "nom": $("#nomForm").val(),
@@ -49,12 +46,13 @@ function login() {
     }
 }
 
-function putNom(){
-    console.log("token put: " + token);
+function putNom(balise){
+    console.log("token put: " + balise);
     let userId = getUserId(token);
     const userNom = {
-            "nom" : $("#nomPut").val(),
+            "nom" : $("#" + balise).text(),
     };
+    console.log("newNom: " + JSON.stringify(userNom) );
     fetch(baseURL + '/users/' + userId + '/nom', {
         method: "PUT",
         headers : {
@@ -66,12 +64,16 @@ function putNom(){
         mode : 'cors'
     })
         .then(response => {
-            getUserInfos(userId);
+            if (response.ok){
+                currentUser.nom = userNom.nom;
+                getUserInfos(userId);
+            }
 
         })
         .catch(error => {console.log(error);})
 }
 function getUserInfos(login) {
+    console.log("jsuis dans getUserInfo");
     fetch(baseURL + '/users/' + login, {
         method: "GET",
         headers: {
@@ -86,8 +88,9 @@ function getUserInfos(login) {
         })
         .then(data => {
             currentUser = data;
+            console.log("currentUser" + JSON.stringify(data));
             showMenuConnecte();
-            showUserCurrent();
+            showTemplateData('mustacheTempalte_a',currentUser, 'target-output');
         })
         .catch(error => console.error(error));
 }
@@ -141,7 +144,7 @@ function getCandidat(candidatId){
         })
         .then(data => {
             console.log("affiche candidat : " + JSON.stringify(data)  ) ;
-            DOJOB('mustacheTempalte_candidat_info', data , 'target-output-candidat-info');
+            showTemplateData('mustacheTempalte_candidat_info', data , 'target-output-candidat-info');
 
         })
         .catch(error => console.error(error));
@@ -164,12 +167,10 @@ function getListCandidats(){
             listCandidats = data;
             if (window.location.hash === "#candidats"){
                 console.log("candidats if : " + listCandidats)
-                // showCandidatsList();
-                DOJOB('mustacheTempalte_candidats', listCandidats, 'target-output-candidats');
+                showTemplateData('mustacheTempalte_candidats', listCandidats, 'target-output-candidats');
             } else {
                 console.log("candidats else : " + listCandidats)
-                // showCandidatsList();
-                DOJOB('mustacheTempalte_candidat', listCandidats, 'target-output-candidat');
+                showTemplateData('mustacheTempalte_candidat', listCandidats, 'target-output-candidat');
             }
 
         })
@@ -192,7 +193,10 @@ function getResultats(){
         .then(data => {
             resultats = data;
             console.log("resultats : " + JSON.parse(JSON.stringify(resultats)));
-            showResultats();
+             window.location.hash = "#index";
+            // showResultats();
+            showTemplateData('mustacheTempalte_resultats', resultats, 'target-output-resultats')
+            show('#index');
         })
         .catch(error => {console.error(error);} )
 }
@@ -247,11 +251,12 @@ function getBallot(){
         .then(data =>{
                 console.log("DATA : " + JSON.stringify(data));
                 if (data == null){
+                    showTemplateData('mustacheTempalte_ballot', "vous n'avez pas encore voté", 'target-output-ballot');
                     alert("Vous n'avez pas encore voté , Votez pour accéder a votre vote");
                 } else {
                     ballot = data;
                     console.log("data ballot : " + ballot.id + " / " +ballot.votant );
-                    DOJOB('mustacheTempalte_ballot', ballot.id.split("/ballots/")[1], 'target-output-ballot');
+                    showTemplateData('mustacheTempalte_ballot', ballot.id.split("/ballots/")[1], 'target-output-ballot');
                     return ballot;
                 }
 
@@ -273,7 +278,7 @@ function deleteVote(){
         .then(response => {
                 if (response.status === 204){
                     alert("Votre vote est bien supprimer");
-                    DOJOB('mustacheTempalte_ballot', "vote supprimer", 'target-output-ballot');
+                    showTemplateData('mustacheTempalte_ballot', "vote supprimer", 'target-output-ballot');
 
                 } else if (response.status === 404){
                     alert("Action interdit : vous n'avez pas encore voté");

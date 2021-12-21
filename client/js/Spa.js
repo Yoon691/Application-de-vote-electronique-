@@ -1,7 +1,3 @@
-// window.addEventListener(
-//     'hashchange',
-//     () => { show(window.location.hash); }
-// );
 
 let idCandiat = null
 function displayNavbarConnection() {
@@ -33,14 +29,34 @@ function show(hash) {
     console.log("hash: " + hash);
     switch (hash) {
         case "#monCompte":
-            console.log("case \"#monCompte\"")
-            showUserCurrent();
+            console.log("case \"#monCompte\"");
+            let userId = getUserId(token);
+            getUserInfos(userId);
+            $('#target-output').on('click', function (){
+                console.log("click1");
+                $('#nom').attr('contenteditable', 'true');
+                console.log("click2");
+            });
+            $('#target-output').on('keypress',function (e){
+                if(e.which == 13) {
+                    console.log('You pressed enter!');
+                    console.log("Blurrr1");
+                    putNom("nom");
+                    console.log("Blurrr2");
+                }
+            });
+
             break;
         case "#candidats":
             getListCandidats();
             break;
         case "#index" :
-            // window.onload = timedRefresh(5000);
+            console.log("Tic");
+            setTimeout( function (){
+                if (window.location.hash === '#index'){
+                    getResultats();
+                }},5000);
+            console.log("Toc");
             break;
         case "#vote" :
             getListCandidats();
@@ -52,18 +68,12 @@ function show(hash) {
             console.log("ballotid: " + idCandiat);
             getCandidat(idCandiat);
         default:
-            // window.onload = timedRefresh(5000);
             console.log("DEFAULT");
             break;
     }
 
 }
 
-function timedRefresh(timeoutPeriod) {
-    console.log("refresh 1");
-    setTimeout("window.location.reload();",timeoutPeriod);
-    console.log("refresh 2");
-}
 
 $(document).ready(function() {
 
@@ -79,10 +89,6 @@ $(document).ready(function() {
     });
     showMenuConnecte();
     getResultats();
-
-    // $('#candidat-select').on('click', function (){
-    //     getListCandidats();
-    // })
 
     window.displayNavbarConnection();
 

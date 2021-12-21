@@ -54,7 +54,6 @@
 
         <section id='connect' class='inactive'>
             <h2>Connectez-vous pour pouvoir voter</h2>
-<!--            <form onsubmit=" return login()">-->
                 <p>
                     <label for="loginForm">Entrez votre login :</label>
                     <input type="text" name="loginForm" id="loginForm" autofocus>
@@ -70,24 +69,21 @@
                 <p>
                     <input type="submit" name="action" value="Connexion" onclick="login()">
                 </p>
-<!--            </form>-->
         </section>
         <section id='monCompte' class='inactive'>
             <h2>Mon compte</h2>
             <script id="mustacheTempalte_a" type="text/template">
                 <ul id='compteList'>
                     <li>Login : <span id="login">{{login}}</span></li>
-                    <li>Nom : <span id="nom">{{nom}}</span></li>
+                    <li id="adminF">Nom : <span id="nom">{{nom}}</span></li>
                     <li>Admin : <span id="admin">{{admin}}</span></li>
                 </ul>
             </script>
             <div id="target-output"></div>
-<!--                <form onclick="return">-->
                     <p>Modifier mon nom :
                         <input type="text" name="nom" id="nomPut">
-                        <input type="submit" value="Modifier" onclick="putNom()">
+                        <input type="submit" value="Modifier" onclick="putNom('nomPut')">
                     </p>
-<!--                </form>-->
                 <p><a href='#deco'>Déconnexion</a></p>
             </section>
             <section id='deco' class='inactive'>
