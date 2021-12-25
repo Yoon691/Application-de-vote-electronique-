@@ -6,9 +6,9 @@ cache:
     # Must be within the repository under test hence we can't use the
     # default ~/.m2
     - .m2/repository
-#variables:
+variables:
   # Use the cached directory above.
-  #MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
+  MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
 
 deploy:
   #image: maven:3.6.1-jdk-11 # docker image with Maven
