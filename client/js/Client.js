@@ -49,9 +49,17 @@ function login() {
 function putNom(balise){
     console.log("token put: " + balise);
     let userId = getUserId(token);
-    const userNom = {
+    let userNom;
+    if (balise === "nom"){
+        userNom = {
             "nom" : $("#" + balise).text(),
-    };
+        };
+    } else if (balise === "nomPut"){
+        userNom = {
+            "nom" : $("#" + balise).val(),
+        };
+    }
+
     console.log("newNom: " + JSON.stringify(userNom) );
     fetch(baseURL + '/users/' + userId + '/nom', {
         method: "PUT",
@@ -140,11 +148,24 @@ function getCandidat(candidatId){
         mode: "cors"
     })
         .then(response => {
-            return response.json();
+            if (response.ok){
+                return response.json();
+            }
         })
         .then(data => {
-            console.log("affiche candidat : " + JSON.stringify(data)  ) ;
-            showTemplateData('mustacheTempalte_candidat_info', data , 'target-output-candidat-info');
+            if (data == null){
+                const message = {
+                    nom : "les informations des candidats ",
+                    prenom : "Vous devez connectez pour voir"
+                };
+                console.log(JSON.stringify(message))
+                showTemplateData('mustacheTempalte_candidat_info',message, 'target-output-candidat-info');
+                // alert("Vous devez connectez pour voir les information des candidats");
+            } else {
+                console.log("affiche candidat : " + JSON.stringify(data)  ) ;
+                showTemplateData('mustacheTempalte_candidat_info', data , 'target-output-candidat-info');
+
+            }
 
         })
         .catch(error => console.error(error));
