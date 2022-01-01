@@ -49,38 +49,37 @@
                     </aside>
                 </div>
             </div>
-<!--            <div id="menuConnecte">-->
-<!--                <a href="#deco" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Déconnexion</span> </a>-->
-<!--            </div>-->
+            <!--            <div id="menuConnecte">-->
+            <!--                <a href="#deco" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Déconnexion</span> </a>-->
+            <!--            </div>-->
         </nav>
     </div>
     <section id='index' class='active section-style'>
-        <div class='main'>
-            <h2 class="form-title h2-style"><strong>Bienvenue sur l'application Web de la grande élection de 2022 !</strong></h2>
-            <h2 class='h1-style'>Résultats courants de l'élection :</h2>
-        </div>
-            <script id="mustacheTempalte_resultats" type="text/template">
-                <div class="container">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Nom</th>
-                                <th>Votes</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {{#.}}
-                            <tr>
-                                <td>{{nomCandidat}}</td>
-                                <td>{{votes}}</td>
-                            </tr>
-                            {{/.}}
+        <h2 class="form-title h2-style"><strong>Bienvenue sur l'application Web de la grande élection de 2022 !</strong></h2>
+        <h2 class='h1-style'>Résultats courants de l'élection :</h2>
 
-                        </tbody>
-                    </table>
-                </div>
-            </script>
-            <div id="target-output-resultats"></div>
+        <script id="mustacheTempalte_resultats" type="text/template">
+            <div class="container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Votes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#.}}
+                        <tr>
+                            <td>{{nomCandidat}}</td>
+                            <td>{{votes}}</td>
+                        </tr>
+                        {{/.}}
+
+                    </tbody>
+                </table>
+            </div>
+        </script>
+        <div id="target-output-resultats"></div>
     </section>
     <section id='connect' class='inactive'>
         <div class="main">
@@ -89,26 +88,26 @@
                     <div class="signup-form">
                         <h2 class="form-title h1-style">Connectez-vous pour pouvoir voter</h2>
                         <div>
-<!--                            <form class="row needs-validation">-->
-                                <div class="mb-3 col-12">
-                                    <label for="loginForm" class="form-label font-color">Entrez votre login</label>
-                                    <input type="text" class="form-control" name="loginForm" id="loginForm" placeholder="Votre login" required/>
-                                    <div class="invalid-feedback">Veuillez saisir un login</div>
-                                </div>
-                                <div class="mb-3 col-12">
-                                    <label for="nomForm" class="form-label font-color">Entrez votre nom</label>
-                                    <input type="text" class="form-control" name="nomForm" id="nomForm" placeholder="Votre nom" />
-<!--                                    <div class="invalid-feedback">Veuillez saisir un nom</div>-->
-                                </div>
-                                <div class="form-group">
-                                    <label for="adminForm" class="label-agree-term font-color"><span><span></span></span>Êtes-vous administrateur ?</label>
-                                    <input type="checkbox" name="adminForm" id="adminForm" class="agree-term" />
-                                </div>
-                                <div class="form-group form-button">
-                                    <!-- <button type="submit" onclick="login()"> submit</button> -->
-                                    <button class="form-submit" type="submit" value="Connexion"  onclick="login()">Connexion</button>
-                                </div>
-<!--                            </form>-->
+                            <!-- <form class="row needs-validation"> -->
+                            <div class="mb-3 col-12">
+                                <label for="loginForm" class="form-label font-color">Entrez votre login</label>
+                                <input type="text" class="form-control" name="loginForm" id="loginForm" placeholder="Votre login" required/>
+                                <div class="invalid-feedback">Veuillez saisir un login</div>
+                            </div>
+                            <div class="mb-3 col-12">
+                                <label for="nomForm" class="form-label font-color">Entrez votre nom</label>
+                                <input type="text" class="form-control" name="nomForm" id="nomForm" placeholder="Votre nom" />
+                                <!--                                    <div class="invalid-feedback">Veuillez saisir un nom</div>-->
+                            </div>
+                            <div class="form-group">
+                                <label for="adminForm" class="label-agree-term font-color"><span><span></span></span>Êtes-vous administrateur ?</label>
+                                <input type="checkbox" name="adminForm" id="adminForm" class="agree-term" />
+                            </div>
+                            <div class="form-group form-button">
+                                <!-- <button type="submit" onclick="login()"> submit</button> -->
+                                <button class="form-submit" type="submit" value="Connexion" onclick="login()">Connexion</button>
+                            </div>
+                            <!--  </form> -->
                         </div>
                     </div>
                     <div class="signup-image">
@@ -132,33 +131,33 @@
         </script>
         <div id="target-output"></div>
         <h5 style="margin-top: 30px;">Modifier mon nom :</h5>
-                    <div class="input-group">
-                        <input type="text" class="form-control input-style" name="nom" id="nomPut" placeholder="Votre nouveau nom">
-                        <span class="input-group-btn">
+        <div class="input-group">
+            <input type="text" class="form-control input-style" name="nom" id="nomPut" placeholder="Votre nouveau nom">
+            <span class="input-group-btn">
                             <button type="button" class="button-style btn btn-primary" style="background:  #6dabe4;" onclick="putNom()">Modifier</button>
                         </span>
-                    </div>
+        </div>
 
 
 
 
-<!--        <script id="mustacheTempalte_a" type="text/template">-->
-<!--            <div class="container d-flex justify-content-center">-->
-<!--                <div class="text-center"> <img src="im/user.png" width="100" class="rounded-circle">-->
-<!--                    <h3 class="mt-2"><span id="login">{{login}}</span> <span id="nom">{{nom}}</span></h3>-->
-<!--                    <span class="mt-1 clearfix font-color">Admin : <span id="admin">{{admin}}</span>-->
-<!--                    <h5 style="margin-top: 30px;">Modifier mon nom :</h5>-->
-<!--                    <div class="input-group">-->
-<!--                        <input type="text" class="form-control input-style" name="nom" id="nomPut" placeholder="Votre nouveau nom">-->
-<!--                        <span class="input-group-btn">-->
-<!--                            <button type="button" class="button-style btn btn-primary" style="background:  #6dabe4;"" onclick="putNom()">Modifier</button>-->
-<!--                        </span>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
+        <!--        <script id="mustacheTempalte_a" type="text/template">-->
+        <!--            <div class="container d-flex justify-content-center">-->
+        <!--                <div class="text-center"> <img src="im/user.png" width="100" class="rounded-circle">-->
+        <!--                    <h3 class="mt-2"><span id="login">{{login}}</span> <span id="nom">{{nom}}</span></h3>-->
+        <!--                    <span class="mt-1 clearfix font-color">Admin : <span id="admin">{{admin}}</span>-->
+        <!--                    <h5 style="margin-top: 30px;">Modifier mon nom :</h5>-->
+        <!--                    <div class="input-group">-->
+        <!--                        <input type="text" class="form-control input-style" name="nom" id="nomPut" placeholder="Votre nouveau nom">-->
+        <!--                        <span class="input-group-btn">-->
+        <!--                            <button type="button" class="button-style btn btn-primary" style="background:  #6dabe4;"" onclick="putNom()">Modifier</button>-->
+        <!--                        </span>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
 
-<!--        </script>-->
-<!--        <div id="target-output"></div>-->
+        <!--        </script>-->
+        <!--        <div id="target-output"></div>-->
         <p><a href='#deco'>Déconnexion</a></p>
     </section>
 
@@ -282,9 +281,9 @@
             </div>
         </div>
 
-            <p><a href="#deco">Déconnexion</a></p>
+        <p><a href="#deco">Déconnexion</a></p>
     </section>
-    <section id='ballot' class='inactive section-style'>
+    <section id='ballot' class='inactive section-style' data-toggle="modal" data-target="#exampleModal">
         <h2 class="h1-style">Ma preuve de vote</h2>
         <script id="mustacheTempalte_ballot" type="text/template">
             <div class="content">
@@ -296,7 +295,7 @@
                         </div>
                         <div class="profileinfo">
                             <p class="bio">Votre vote a bien été enrgistré.</p>
-                            <button type="button" class="btn btn-primary" style="background:  #6dabe4;" data-toggle="modal" data-target="#modalSupprimer" onclick="deleteVote()">Supprimer votre vote</button>
+                            <button type="button" class="btn btn-primary" style="background:  #6dabe4;" data-toggle="modal" data-target="#exampleModal" onclick="deleteVote()">Supprimer votre vote</button>
                         </div>
                     </div>
                 </div>
@@ -314,18 +313,15 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
-                </div>
+                    <h5 class="modal-title" id="exampleModalLabel"> Information vote</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <script id="mustacheTempalte_fenetre_modale" type="text/template">
-
-                        <h5 class="modal-title" id="voteModalLabel">{{titre}}</h5>
-
+                        <!-- <h5 class="modal-title" id="voteModalLabel">{{titre}}</h5> -->
                         <div class="modal-body font-color">
                             {{msg}}
-                </div>
+                        </div>
                     </script>
+                </div>
                 <div id="target-output-modal"></div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
@@ -335,7 +331,30 @@
     </div>
     <!-- Fin Modal vote-->
     <!-- Modal suppression vote-->
-    
+    <!--<div class="modal fade" id="modalSupprimer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"> Information vote</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <script id="mustacheTempalte_delete" type="text/template">-->
+    <!-- <h5 class="modal-title" id="exampleModalLabel"> {{titre}}</h5> -->
+    <!-- <div class="modal-body font-color">
+                            {{msg}}
+                        </div>
+                    </script>
+                </div>
+                <div id="target-output-del-modal"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- Fin Modal suppression vote -->
 
     <script src="js/template.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
