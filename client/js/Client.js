@@ -5,8 +5,8 @@ let currentUser={
     admin : false
 };
 let ballot = {
-        votant:"",
-            id:""
+    votant:"",
+    id:""
 };
 let listCandidats = [];
 let resultats = [];
@@ -23,6 +23,8 @@ function login() {
             "nom": $("#nomForm").val(),
             "admin": $("#adminForm").get(0).checked
         };
+
+        console.log(JSON.stringify(userData));
         fetch(baseURL + '/users/login', {
             method: "POST",
             headers: {'Content-Type': 'application/json'},
@@ -31,9 +33,9 @@ function login() {
             mode: "cors"
         })
             .then(response => {
-                 token = response.headers.get("Authorization")
-                 console.log("reponse :  "+ token);
-                 console.log("userId: " + getUserId(token) ) ;
+                token = response.headers.get("Authorization")
+                console.log("reponse :  "+ token);
+                console.log("userId: " + getUserId(token) ) ;
                 getUserInfos(getUserId(token));
                 window.location.hash = "#monCompte";
                 $("#connecte").hide();
@@ -42,7 +44,7 @@ function login() {
             .catch(error => console.log(error));
     }
     else {
-        alert("Vous devrez remplir tous les champs obligatoires (*)");
+        // alert("Vous devrez remplir tous les champs obligatoires (*)");
     }
 }
 
@@ -64,9 +66,9 @@ function putNom(balise){
     fetch(baseURL + '/users/' + userId + '/nom', {
         method: "PUT",
         headers : {
-                'Authorization': token,
-                'content-type' : "application/json",
-            },
+            'Authorization': token,
+            'content-type' : "application/json",
+        },
         body : JSON.stringify(userNom),
         credentials : 'same-origin',
         mode : 'cors'
@@ -108,25 +110,25 @@ function deco(){
     fetch(baseURL + '/users/logout', {
         method : "POST",
         headers : {'Authorization' : token,
-                   'Content-Type': 'application/json',
+            'Content-Type': 'application/json',
         },
         credentials : 'same-origin',
         mode : 'cors'
     })
         .then(response => {
-            console.log("FIN DE DECONNEXION");
-            token = null;
-            currentUser = {
-                login : "",
-                nom : "",
-                admin : false
-            };
-            ballot = {
-                votant:"",
-                id:""
-            };
-            window.location.hash = "#index";
-            showMenuConnecte();
+                console.log("FIN DE DECONNEXION");
+                token = null;
+                currentUser = {
+                    login : "",
+                    nom : "",
+                    admin : false
+                };
+                ballot = {
+                    votant:"",
+                    id:""
+                };
+                window.location.hash = "#index";
+                showMenuConnecte();
 
             }
         )
@@ -209,12 +211,12 @@ function getResultats(){
 
     })
         .then(response => {
-             return  response.json();
+            return  response.json();
         })
         .then(data => {
             resultats = data;
             console.log("resultats : " + JSON.parse(JSON.stringify(resultats)));
-             window.location.hash = "#index";
+            window.location.hash = "#index";
             // showResultats();
             showTemplateData('mustacheTempalte_resultats', resultats, 'target-output-resultats')
             show('#index');
@@ -240,9 +242,21 @@ function vote(){
         .then(response =>
             {
                 if (response.ok){
-                    alert("Vous avez bien votez");
+                    let modale = {
+                        titre : "Informations vote ",
+                        msg : "Vous avez bien votez "
+
+                    }
+                    showTemplateData('mustacheTempalte_fenetre_modale', modale, 'target-output-modal')
+
                 } else {
-                    alert("Votre vote n'est pas passée");
+                    let modale = {
+                        titre : "Informations vote ",
+                        msg : "Votre vote n'est pas passée"
+
+                    }
+                    showTemplateData('mustacheTempalte_fenetre_modale', modale, 'target-output-modal')
+
                 }
             }
 
@@ -258,8 +272,8 @@ function getBallot(){
     fetch(baseURL + '/election/ballots/byUser/' + userId, {
         method : 'GET',
         headers : {
-                    'Authorization' : token,
-                    'Accept' : 'application/json'
+            'Authorization' : token,
+            'Accept' : 'application/json'
         },
         credentials : "same-origin",
         mode : "cors"
@@ -270,16 +284,16 @@ function getBallot(){
                 return response.json();
             }})
         .then(data =>{
-                console.log("DATA : " + JSON.stringify(data));
-                if (data == null){
-                    showTemplateData('mustacheTempalte_ballot', "vous n'avez pas encore voté", 'target-output-ballot');
-                    alert("Vous n'avez pas encore voté , Votez pour accéder a votre vote");
-                } else {
-                    ballot = data;
-                    console.log("data ballot : " + ballot.id + " / " +ballot.votant );
-                    showTemplateData('mustacheTempalte_ballot', ballot.id.split("/ballots/")[1], 'target-output-ballot');
-                    return ballot;
-                }
+            console.log("DATA : " + JSON.stringify(data));
+            if (data == null){
+                showTemplateData('mustacheTempalte_ballot', "vous n'avez pas encore voté", 'target-output-ballot');
+                // alert("Vous n'avez pas encore voté , Votez pour accéder a votre vote");
+            } else {
+                ballot = data;
+                console.log("data ballot : " + ballot.id + " / " +ballot.votant );
+                showTemplateData('mustacheTempalte_ballot', ballot.id.split("/ballots/")[1], 'target-output-ballot');
+                return ballot;
+            }
 
         })
         .catch(error => console.error(error));
@@ -291,19 +305,19 @@ function deleteVote(){
     fetch(baseURL + '/election/ballots/' + ballotId.split('/ballots/')[1], {
         method : "DELETE",
         headers : {
-                'Authorization' : token,
+            'Authorization' : token,
         },
         credentials : "same-origin",
         mode : "cors"
     } )
         .then(response => {
-                if (response.status === 204){
-                    alert("Votre vote est bien supprimer");
-                    showTemplateData('mustacheTempalte_ballot', "vote supprimer", 'target-output-ballot');
+            if (response.status === 204){
+                // alert("Votre vote est bien supprimer");
+                showTemplateData('mustacheTempalte_ballot', "vote supprimer", 'target-output-ballot');
 
-                } else if (response.status === 404){
-                    alert("Action interdit : vous n'avez pas encore voté");
-                }
+            } else if (response.status === 404){
+                // alert("Action interdit : vous n'avez pas encore voté");
+            }
         })
         .catch(error => console.log(error));
 
@@ -328,5 +342,42 @@ function getUserId(token) {
     console.log("USER ID : " + userLogin);
     return userLogin;
 }
+
+document.addEventListener("DOMContentLoaded", function(event) {
+
+    const showNavbar = (toggleId, navId, bodyId, headerId) => {
+        const toggle = document.getElementById(toggleId),
+            nav = document.getElementById(navId),
+            bodypd = document.getElementById(bodyId),
+            headerpd = document.getElementById(headerId)
+
+        // Validate that all variables exist
+        if (toggle && nav && bodypd && headerpd) {
+            toggle.addEventListener('click', () => {
+                // show navbar
+                nav.classList.toggle('show')
+                // change icon
+                toggle.classList.toggle('bx-x')
+                // add padding to body
+                bodypd.classList.toggle('body-pd')
+                // add padding to header
+                headerpd.classList.toggle('body-pd')
+            })
+        }
+    }
+
+    showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
+
+    /*===== LINK ACTIVE =====*/
+    const linkColor = document.querySelectorAll('.nav_link')
+
+    function colorLink() {
+        if (linkColor) {
+            linkColor.forEach(l => l.classList.remove('active'))
+            this.classList.add('active')
+        }
+    }
+    linkColor.forEach(l => l.addEventListener('click', colorLink))
+});
 
 
