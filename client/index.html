@@ -41,7 +41,7 @@
                             <div id="menuConnecte">
                                 <a href="#monCompte" class="nav_link active"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Mon compte</span> </a>
                                 <a href="#vote" class="nav_link active"> <i class='bx bx-select-multiple nav_icon'></i> <span class="nav_name">Voter</span> </a>
-                                <a href="#ballot" class="nav_link active"> <i class='bx bx-check-circle nav_icon'></i> <span class="nav_name">Verification vote</span> </a>
+                                <a href="#ballot" class="nav_link active" id="bak"> <i class='bx bx-check-circle nav_icon'></i> <span class="nav_name">Verification vote</span> </a>
                                 <a href="#deco" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Déconnexion</span> </a>
 
                             </div>
@@ -138,26 +138,6 @@
                         </span>
         </div>
 
-
-
-
-        <!--        <script id="mustacheTempalte_a" type="text/template">-->
-        <!--            <div class="container d-flex justify-content-center">-->
-        <!--                <div class="text-center"> <img src="im/user.png" width="100" class="rounded-circle">-->
-        <!--                    <h3 class="mt-2"><span id="login">{{login}}</span> <span id="nom">{{nom}}</span></h3>-->
-        <!--                    <span class="mt-1 clearfix font-color">Admin : <span id="admin">{{admin}}</span>-->
-        <!--                    <h5 style="margin-top: 30px;">Modifier mon nom :</h5>-->
-        <!--                    <div class="input-group">-->
-        <!--                        <input type="text" class="form-control input-style" name="nom" id="nomPut" placeholder="Votre nouveau nom">-->
-        <!--                        <span class="input-group-btn">-->
-        <!--                            <button type="button" class="button-style btn btn-primary" style="background:  #6dabe4;"" onclick="putNom()">Modifier</button>-->
-        <!--                        </span>-->
-        <!--                    </div>-->
-        <!--                </div>-->
-        <!--            </div>-->
-
-        <!--        </script>-->
-        <!--        <div id="target-output"></div>-->
         <p><a href='#deco'>Déconnexion</a></p>
     </section>
 
@@ -283,7 +263,7 @@
 
         <p><a href="#deco">Déconnexion</a></p>
     </section>
-    <section id='ballot' class='inactive section-style' data-toggle="modal" data-target="#exampleModal">
+    <section id='ballot' class='inactive section-style'>
         <h2 class="h1-style">Ma preuve de vote</h2>
         <script id="mustacheTempalte_ballot" type="text/template">
             <div class="content">
@@ -291,17 +271,19 @@
                     <div class="firstinfo">
                         <div style="float: right;"> <img src="im/vote.png" width="114" height="70" alt=""> </div>
                         <div class="circle">
-                            <span id="voteBallot" style="font-size:32px"><strong>N°{{.}}</strong></span>
-                        </div>
-                        <div class="profileinfo">
-                            <p class="bio">Votre vote a bien été enrgistré.</p>
-                            <button type="button" class="btn btn-primary" style="background:  #6dabe4;" data-toggle="modal" data-target="#exampleModal" onclick="deleteVote()">Supprimer votre vote</button>
+                            <span id="voteBallot"  style="font-size:32px"><strong>N°{{.}}</strong></span>
                         </div>
                     </div>
                 </div>
             </div>
         </script>
         <div id="target-output-ballot"></div>
+        <div class="profileinfo">
+            <p class="bio">Votre vote a bien été enrgistré.</p>
+            <button type="button" class="btn btn-primary" style="background:  #6dabe4;" data-toggle="modal" data-target="#exampleModal" onclick="deleteVote()">Supprimer votre vote</button>
+        </div>
+
+
         <!--
                     TODO : vérifier le ballot avant d'afficher ce contenu et le remplacer par un autre message si l'utilisateur n'a pas voté.
                 -->
@@ -329,32 +311,6 @@
             </div>
         </div>
     </div>
-    <!-- Fin Modal vote-->
-    <!-- Modal suppression vote-->
-    <!--<div class="modal fade" id="modalSupprimer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"> Information vote</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <script id="mustacheTempalte_delete" type="text/template">-->
-    <!-- <h5 class="modal-title" id="exampleModalLabel"> {{titre}}</h5> -->
-    <!-- <div class="modal-body font-color">
-                            {{msg}}
-                        </div>
-                    </script>
-                </div>
-                <div id="target-output-del-modal"></div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-    <!-- Fin Modal suppression vote -->
 
     <script src="js/template.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

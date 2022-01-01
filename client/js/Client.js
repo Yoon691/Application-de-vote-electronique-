@@ -43,6 +43,13 @@ function login() {
             })
             .catch(error => console.log(error));
     } else {
+        let modale = {
+            titre: "Informations connexion ",
+            msg: "Vous devrez remplir tous les champs obligatoires (*) "
+
+        }
+        showTemplateData('mustacheTempalte_fenetre_modale', modale, 'target-output-modal')
+
         // alert("Vous devrez remplir tous les champs obligatoires (*)");
     }
 }
@@ -289,13 +296,16 @@ function getBallot() {
         .then(data => {
             console.log("DATA : " + JSON.stringify(data));
             if (data == null) {
+                console.log("pas encore Voter 1 et " +"data ballot : " + ballot.id + " / " + ballot.votant);
                 let modale = {
                     titre: "Informations vote ",
-                    msg: "Vous avez bien voté "
+                    msg: "Vous n'avez pas encore voté "
 
-                }
-                showTemplateData('mustacheTempalte_ballot', modale, 'target-output-ballot');
+                };
+                console.log("pas encore Voter 2");
+                showTemplateModal('mustacheTempalte_fenetre_modale', modale, 'target-output-modal');
                 // alert("Vous n'avez pas encore voté , Votez pour accéder a votre vote");
+                console.log("pas encore Voter 3");
             } else {
                 ballot = data;
                 console.log("data ballot : " + ballot.id + " / " + ballot.votant);
