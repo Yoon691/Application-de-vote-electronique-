@@ -133,7 +133,7 @@
         <div class="input-group">
             <input type="text" class="form-control input-style" name="nom" id="nomPut" placeholder="Votre nouveau nom">
             <span class="input-group-btn">
-                            <button type="button" class="button-style btn btn-primary" style="background:  #6dabe4;" onclick="putNom()">Modifier</button>
+                            <button type="button" class="button-style btn btn-primary" style="background:  #6dabe4;" onclick="putNom('nomPut')">Modifier</button>
                         </span>
         </div>
 
@@ -223,6 +223,10 @@
             </div>
         </script>
         <div id="target-output-candidat-info"  ></div>
+        <script id="mustacheTempalte_candidat-non-connect" type="text/template">
+            <h4>{{msg}}</h4>
+        </script>
+        <div id="target-output-candidat-non-connect"></div>
         <p><a href="#deco">Déconnexion</a></p>
     </section>
     <section id='vote' class='inactive section-style'>
@@ -277,6 +281,11 @@
             </div>
         </script>
         <div id="target-output-ballot"></div>
+        <script id="mustacheTempalte_ballot-non-vote" type="text/template">
+            <h4>{{msg}}</h4>
+        </script>
+        <div id="target-output-ballot-non-vote"></div>
+
         <div class="profileinfo">
             <p class="bio">Votre vote a bien été enrgistré.</p>
             <button type="button" class="btn btn-primary" style="background:  #6dabe4;" data-toggle="modal" data-target="#exampleModal" onclick="deleteVote()">Supprimer votre vote</button>

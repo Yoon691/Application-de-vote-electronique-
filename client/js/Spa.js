@@ -30,21 +30,26 @@ function show(hash) {
     switch (hash) {
         case "#monCompte":
             console.log("case \"#monCompte\"");
-            let userId = getUserId(token);
-            getUserInfos(userId);
-            $('#target-output').on('click', function (){
-                console.log("click1");
-                $('#nom').attr('contenteditable', 'true');
-                console.log("click2");
-            });
-            $('#target-output').on('keypress',function (e){
-                if(e.which == 13) {
-                    console.log('You pressed enter!');
-                    console.log("Blurrr1");
-                    putNom("nom");
-                    console.log("Blurrr2");
-                }
-            });
+            if (token != null){
+                let userId = getUserId(token);
+                getUserInfos(userId);
+                $('#target-output').on('click', function (){
+                    console.log("click1");
+                    $('#nom').attr('contenteditable', 'true');
+                    console.log("click2");
+                });
+                $('#target-output').on('keypress',function (e){
+                    if(e.which == 13) {
+                        console.log('You pressed enter!');
+                        console.log("Blurrr1");
+                        putNom("nom");
+                        console.log("Blurrr2");
+                    }
+                });
+
+             } else {
+                show("#index");
+            }
 
             break;
         // case "#connect" :
@@ -62,26 +67,35 @@ function show(hash) {
             console.log("Toc");
             break;
         case "#vote" :
-            getListCandidats();
+            if (token !=null){
+                getListCandidats();
+            }else {
+                show("#index")
+            }
+
             break;
         case "#ballot" :
-            getBallot();
+            if (token !=null) {
+                getBallot();
+            }else {
+                show("#index")
+            }
             break;
         case "#candidat":
-            console.log("token: " + token);
-            if (token == null){
-                console.log("ballotid: " + idCandiat);
-                console.log("If #candidat ");
-                const modale = {
-                    titre: "les informations des candidats ",
-                    msg: "Vous devez connectez pour voir"
-                };
-                showTemplateModal('mustacheTempalte_fenetre_modale', modale, 'target-output-modal',"mustacheTempalte_candidats", true,"candidats");
-            } else {
-                showTemplateModal('mustacheTempalte_fenetre_modale', "", 'target-output-modal',"target-output-candidat-info", false,"candidat");
+            // console.log("token: " + token);
+            // if (token == null){
+            //     console.log("ballotid: " + idCandiat);
+            //     console.log("If #candidat ");
+            //     const modale = {
+            //         titre: "les informations des candidats ",
+            //         msg: "Vous devez connectez pour voir"
+            //     };
+            //     showTemplateModal('mustacheTempalte_fenetre_modale', modale, 'target-output-modal',"mustacheTempalte_candidats", true,"candidats");
+            // } else {
+            //     showTemplateModal('mustacheTempalte_fenetre_modale', "", 'target-output-modal',"target-output-candidat-info", false,"candidat");
                 console.log("ballotid: " + idCandiat);
                 getCandidat(idCandiat);
-            }
+
             break;
         default:
             console.log("DEFAULT");

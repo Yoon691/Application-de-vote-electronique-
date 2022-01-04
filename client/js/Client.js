@@ -32,7 +32,8 @@ function login() {
                         event.stopPropagation()
                     } else {
                         console.log("If");
-
+                        event.preventDefault()
+                        event.stopPropagation()
                         userData = {
                             "login": $("#loginForm").val(),
                             "nom": $("#nomForm").val(),
@@ -71,53 +72,7 @@ function login() {
     console.log("Hello word");
     let userData;
 }
-    /*const forms = document.querySelectorAll('.needs-validation');
-    Array.prototype.slice.call(forms).forEach((form) => {
-        form.addEventListener('submit', (event) => {
-            if (!form.checkValidity()) {
-                event.preventDefault();
-                event.stopPropagation();
-            } else {
-                console.log("If");
 
-                 userData = {
-                    "login": $("#loginForm").val(),
-                    "nom": $("#nomForm").val(),
-                    "admin": $("#adminForm").get(0).checked
-                };
-            }},false);});
-        console.log(JSON.stringify(userData));
-        fetch(baseURL + '/users/login', {
-                method: "POST",
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(userData),
-                credentials: "same-origin",
-                mode: "cors"
-            })
-            .then(response => {
-                token = response.headers.get("Authorization")
-                console.log("reponse :  " + token);
-                console.log("userId: " + getUserId(token));
-                getUserInfos(getUserId(token));
-                window.location.hash = "#monCompte";
-                $("#connecte").hide();
-
-            })
-            .catch(error => console.log(error));
-    }*/
-            //}
-    // else {
-    //     console.log("else");
-    //     let modale = {
-    //         titre: "Informations connexion ",
-    //         msg: "Vous devrez remplir tous les champs obligatoires (*) "
-    //
-    //     }
-    //     // showTemplateModal('mustacheTempalte_fenetre_modale', modale, 'target-output-modal',"connexion", true,"#connect");
-    //
-    //     // alert("Vous devrez remplir tous les champs obligatoires (*)");
-    // }
-// }
 
 function putNom(balise) {
     console.log("token put: " + balise);
@@ -132,7 +87,6 @@ function putNom(balise) {
             "nom": $("#" + balise).val(),
         };
     }
-
     console.log("newNom: " + JSON.stringify(userNom));
     fetch(baseURL + '/users/' + userId + '/nom', {
             method: "PUT",
@@ -146,6 +100,7 @@ function putNom(balise) {
         })
         .then(response => {
             if (response.ok) {
+                $("#nomPut").val('');
                 currentUser.nom = userNom.nom;
                 getUserInfos(userId);
             }
@@ -190,6 +145,8 @@ function deco() {
         })
         .then(response => {
             console.log("FIN DE DECONNEXION");
+            $("#loginForm").val('') ;
+            $("#nomForm").val('') ;
             token = null;
             currentUser = {
                 login: "",
@@ -231,13 +188,19 @@ function getCandidat(candidatId) {
         .then(data => {
             if (data == null) {
                 const message = {
-                    nom: "les informations des candidats ",
-                    prenom: "Vous devez connectez pour voir"
+                    msg: "Vous devez connectez pour voir les informations de ce candidat",
                 };
-                console.log(JSON.stringify(message))
-                showTemplateData('mustacheTempalte_candidat_info', message, 'target-output-candidat-info');
+                $('#target-output-candidat-info').hide();
+                $('#target-output-candidat-non-connect').show();
+                showTemplateData('mustacheTempalte_candidat-non-connect', message, 'target-output-candidat-non-connect');
+
+                console.log("candidat non connecter")
+                // showTemplateData('mustacheTempalte_candidat_info', message, 'target-output-candidat-info');
                 // alert("Vous devez connectez pour voir les information des candidats");
             } else {
+
+                $('#target-output-candidat-non-connect').hide();
+                $('#target-output-candidat-info').show();
                 console.log("affiche candidat : " + JSON.stringify(data));
                 showTemplateData('mustacheTempalte_candidat_info', data, 'target-output-candidat-info');
 
@@ -357,23 +320,39 @@ function getBallot() {
             if (response.status === 200) {
                 return response.json();
             }
+            // else {
+            //     console.log("404");
+            // }
         })
         .then(data => {
             console.log("DATA : " + JSON.stringify(data));
             if (data == null) {
-                console.log("pas encore Voter 1 et " +"data ballot : " + ballot.id + " / " + ballot.votant);
+                console.log("pas encore Voter 1");
                 let modale = {
-                    titre: "Informations vote ",
                     msg: "Vous n'avez pas encore voté "
 
                 };
+                $('#target-output-ballot').hide();
+                $('#target-output-ballot-non-vote').show();
+                showTemplateData('mustacheTempalte_ballot-non-vote', modale, 'target-output-ballot-non-vote');
+                // showTemplateData('mustacheTempalte_ballot', "", 'target-output-ballot');
                 console.log("pas encore Voter 2");
-                showTemplateModal('mustacheTempalte_fenetre_modale', modale, 'target-output-modal');
-                // alert("Vous n'avez pas encore voté , Votez pour accéder a votre vote");
-                console.log("pas encore Voter 3");
+
+                // console.log("pas encore Voter 1 et " +"data ballot : " + ballot.id + " / " + ballot.votant);
+                // let modale = {
+                //     titre: "Informations vote ",
+                //     msg: "Vous n'avez pas encore voté "
+                //
+                // };
+                // console.log("pas encore Voter 2");
+                // showTemplateModal('mustacheTempalte_fenetre_modale', modale, 'target-output-modal');
+                // // alert("Vous n'avez pas encore voté , Votez pour accéder a votre vote");
+                // console.log("pas encore Voter 3");
             } else {
                 ballot = data;
                 console.log("data ballot : " + ballot.id + " / " + ballot.votant);
+                $('#target-output-ballot-non-vote').hide();
+                $('#target-output-ballot').show();
                 showTemplateData('mustacheTempalte_ballot', ballot.id.split("/ballots/")[1], 'target-output-ballot');
                 return ballot;
             }
@@ -402,7 +381,7 @@ function deleteVote() {
 
                 }
                 showTemplateData('mustacheTempalte_fenetre_modale', modale, 'target-output-modal');
-
+                show("#ballot");
             } else if (response.status === 404) {
                 let modale = {
                     titre: "Informations vote ",
