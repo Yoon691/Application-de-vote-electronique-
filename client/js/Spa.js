@@ -47,6 +47,9 @@ function show(hash) {
             });
 
             break;
+        // case "#connect" :
+        //     // showTemplateModal('mustacheTempalte_fenetre_modale', "", 'target-output-modal',"connexion", false,"#connect");
+        //     break;
         case "#candidats":
             getListCandidats();
             break;
@@ -65,8 +68,21 @@ function show(hash) {
             getBallot();
             break;
         case "#candidat":
-            console.log("ballotid: " + idCandiat);
-            getCandidat(idCandiat);
+            console.log("token: " + token);
+            if (token == null){
+                console.log("ballotid: " + idCandiat);
+                console.log("If #candidat ");
+                const modale = {
+                    titre: "les informations des candidats ",
+                    msg: "Vous devez connectez pour voir"
+                };
+                showTemplateModal('mustacheTempalte_fenetre_modale', modale, 'target-output-modal',"mustacheTempalte_candidats", true,"candidats");
+            } else {
+                showTemplateModal('mustacheTempalte_fenetre_modale', "", 'target-output-modal',"target-output-candidat-info", false,"candidat");
+                console.log("ballotid: " + idCandiat);
+                getCandidat(idCandiat);
+            }
+            break;
         default:
             console.log("DEFAULT");
             break;

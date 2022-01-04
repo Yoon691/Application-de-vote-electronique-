@@ -16,14 +16,76 @@ let token;
 
 
 function login() {
-    console.log("Hello word");
-    if ($("#loginForm").val() !== "") {
-        const userData = {
-            "login": $("#loginForm").val(),
-            "nom": $("#nomForm").val(),
-            "admin": $("#adminForm").get(0).checked
-        };
 
+    (function () {
+        console.log("enevnt");
+        'use strict'
+        var forms = document.querySelectorAll('.needs-validation')
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                console.log("If154$");
+                form.addEventListener('submit', function (event) {
+                    console.log("If154");
+                    if (!form.checkValidity()) {
+                        console.log("If8");
+                        event.preventDefault()
+                        event.stopPropagation()
+                    } else {
+                        console.log("If");
+
+                        userData = {
+                            "login": $("#loginForm").val(),
+                            "nom": $("#nomForm").val(),
+                            "admin": $("#adminForm").get(0).checked
+                        };
+                        fetch(baseURL + '/users/login', {
+                            method: "POST",
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(userData),
+                            credentials: "same-origin",
+                            mode: "cors"
+                        })
+                            .then(response => {
+                                token = response.headers.get("Authorization")
+                                console.log("reponse :  " + token);
+                                console.log("userId: " + getUserId(token));
+                                getUserInfos(getUserId(token));
+                                window.location.hash = "#monCompte";
+                                $("#connecte").hide();
+
+                            })
+                            .catch(error => console.log(error));
+
+
+
+
+
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+
+
+    console.log("Hello word");
+    let userData;
+}
+    /*const forms = document.querySelectorAll('.needs-validation');
+    Array.prototype.slice.call(forms).forEach((form) => {
+        form.addEventListener('submit', (event) => {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            } else {
+                console.log("If");
+
+                 userData = {
+                    "login": $("#loginForm").val(),
+                    "nom": $("#nomForm").val(),
+                    "admin": $("#adminForm").get(0).checked
+                };
+            }},false);});
         console.log(JSON.stringify(userData));
         fetch(baseURL + '/users/login', {
                 method: "POST",
@@ -42,17 +104,20 @@ function login() {
 
             })
             .catch(error => console.log(error));
-    } else {
-        let modale = {
-            titre: "Informations connexion ",
-            msg: "Vous devrez remplir tous les champs obligatoires (*) "
-
-        }
-        showTemplateData('mustacheTempalte_fenetre_modale', modale, 'target-output-modal')
-
-        // alert("Vous devrez remplir tous les champs obligatoires (*)");
-    }
-}
+    }*/
+            //}
+    // else {
+    //     console.log("else");
+    //     let modale = {
+    //         titre: "Informations connexion ",
+    //         msg: "Vous devrez remplir tous les champs obligatoires (*) "
+    //
+    //     }
+    //     // showTemplateModal('mustacheTempalte_fenetre_modale', modale, 'target-output-modal',"connexion", true,"#connect");
+    //
+    //     // alert("Vous devrez remplir tous les champs obligatoires (*)");
+    // }
+// }
 
 function putNom(balise) {
     console.log("token put: " + balise);
