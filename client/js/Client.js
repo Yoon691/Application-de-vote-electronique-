@@ -17,14 +17,14 @@ let token;
 
 function login() {
 
-    (function () {
+    (function() {
         console.log("enevnt");
         'use strict'
         var forms = document.querySelectorAll('.needs-validation')
         Array.prototype.slice.call(forms)
-            .forEach(function (form) {
+            .forEach(function(form) {
                 console.log("If154$");
-                form.addEventListener('submit', function (event) {
+                form.addEventListener('submit', function(event) {
                     console.log("If154");
                     if (!form.checkValidity()) {
                         console.log("If8");
@@ -40,12 +40,12 @@ function login() {
                             "admin": $("#adminForm").get(0).checked
                         };
                         fetch(baseURL + '/users/login', {
-                            method: "POST",
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(userData),
-                            credentials: "same-origin",
-                            mode: "cors"
-                        })
+                                method: "POST",
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify(userData),
+                                credentials: "same-origin",
+                                mode: "cors"
+                            })
                             .then(response => {
                                 token = response.headers.get("Authorization")
                                 console.log("reponse :  " + token);
@@ -145,8 +145,8 @@ function deco() {
         })
         .then(response => {
             console.log("FIN DE DECONNEXION");
-            $("#loginForm").val('') ;
-            $("#nomForm").val('') ;
+            $("#loginForm").val('');
+            $("#nomForm").val('');
             token = null;
             currentUser = {
                 login: "",
@@ -188,15 +188,15 @@ function getCandidat(candidatId) {
         .then(data => {
             if (data == null) {
                 const message = {
-                    msg: "Vous devez connectez pour voir les informations de ce candidat",
+                    msg: "Connectez-vous pour avoir accès aux informations de ce candidat.",
                 };
                 $('#target-output-candidat-info').hide();
                 $('#target-output-candidat-non-connect').show();
                 showTemplateData('mustacheTempalte_candidat-non-connect', message, 'target-output-candidat-non-connect');
 
                 console.log("candidat non connecter")
-                // showTemplateData('mustacheTempalte_candidat_info', message, 'target-output-candidat-info');
-                // alert("Vous devez connectez pour voir les information des candidats");
+                    // showTemplateData('mustacheTempalte_candidat_info', message, 'target-output-candidat-info');
+                    // alert("Vous devez connectez pour voir les information des candidats");
             } else {
 
                 $('#target-output-candidat-non-connect').hide();
@@ -329,7 +329,7 @@ function getBallot() {
             if (data == null) {
                 console.log("pas encore Voter 1");
                 let modale = {
-                    msg: "Vous n'avez pas encore voté "
+                    msg: "Vous n'avez pas encore voté ! "
 
                 };
                 $('#target-output-ballot').hide();
