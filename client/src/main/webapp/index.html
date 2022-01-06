@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <title>&Eacute;lection M1IF03</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/Style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.1.0/mustache.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script src="js/Spa.js"></script>
+    <script src="js/Client.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous"> https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js
+</head>
+
+<body id="body-pd">
+    <header class="header" id="header">
+        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+        <span class='title-style'>&Eacute;lection M1IF03</span>
+        <div id="errMsg"></div>
+        <div> <img src="im/logo.png" width="114" height="70" alt=""> </div>
+    </header>
+    <div class="l-navbar" id="nav-bar">
+        <nav class="nav">
+            <div>
+                <div class="nav_list">
+                    <aside id="menu">
+                        <ul id="menuA">
+                            <a href="#index" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Acceuil</span> </a>
+                            <a href="#candidats" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Candidats</span> </a>
+                            <div id="menuConnexion">
+                                <a href="#connect" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Connexion</span> </a>
+                            </div>
+                            <div id="menuConnecte">
+                                <a href="#monCompte" class="nav_link active"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Mon compte</span> </a>
+                                <a href="#vote" class="nav_link active"> <i class='bx bx-select-multiple nav_icon'></i> <span class="nav_name">Voter</span> </a>
+                                <a href="#ballot" class="nav_link active" id="bak"> <i class='bx bx-check-circle nav_icon'></i> <span class="nav_name">Verification vote</span> </a>
+                                <a href="#deco" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Déconnexion</span> </a>
+
+                            </div>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+            <!--            <div id="menuConnecte">-->
+            <!--                <a href="#deco" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Déconnexion</span> </a>-->
+            <!--            </div>-->
+        </nav>
+    </div>
+    <section id='index' class='active section-style'>
+        <h2 class="form-title h2-style"><strong>Bienvenue sur l'application Web de la grande élection de 2022 !</strong></h2>
+        <h2 class='h1-style'>Résultats courants de l'élection :</h2>
+
+        <script id="mustacheTempalte_resultats" type="text/template">
+            <div class="container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Votes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#.}}
+                        <tr>
+                            <td>{{nomCandidat}}</td>
+                            <td>{{votes}}</td>
+                        </tr>
+                        {{/.}}
+
+                    </tbody>
+                </table>
+            </div>
+        </script>
+        <div id="target-output-resultats"></div>
+    </section>
+    <section id='connect' class='inactive'>
+        <div class="main">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title h1-style">Connectez-vous pour pouvoir voter</h2>
+                        <div>
+                            <form class="row needs-validation" novalidate>
+                            <div class="mb-3 col-12">
+                                <label for="loginForm" class="form-label font-color">Entrez votre login</label>
+                                <input type="text" class="form-control" name="loginForm" id="loginForm" placeholder="Votre login" required/>
+                                <div class="invalid-feedback">Veuillez saisir un login</div>
+                            </div>
+                            <div class="mb-3 col-12">
+                                <label for="nomForm" class="form-label font-color">Entrez votre nom</label>
+                                <input type="text" class="form-control" name="nomForm" id="nomForm" placeholder="Votre nom" />
+                                <!--                                    <div class="invalid-feedback">Veuillez saisir un nom</div>-->
+                            </div>
+                            <div class="form-group">
+                                <label for="adminForm" class="label-agree-term font-color"><span><span></span></span>Êtes-vous administrateur ?</label>
+                                <input type="checkbox" name="adminForm" id="adminForm" class="agree-term" />
+                            </div>
+                            <div class="form-group form-button">
+                                <!-- <button type="submit" onclick="login()"> submit</button> -->
+                                <button class="form-submit"  id="connexion" value="Connexion" onclick="login()">Connexion</button>
+                            </div>
+                             </form>
+                        </div>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="im/im.png" alt="sing up image"></figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id='monCompte' class='inactive section-style'>
+
+        <h2 class="form-title fontColor">Mon compte</h2>
+        <script id="mustacheTempalte_a" type="text/template">
+            <div class="container d-flex justify-content-center">
+                <div class="text-center"> <img src="im/avatar.png" width="200" class="rounded-circle">
+                    <h3 class="mt-2"> <span id="login">{{login}}</span> <span></span><span id="nom">{{nom}}</span></h3>
+                    <span class="mt-1 clearfix font-color">Admin : <span id="admin">{{admin}}</span></span>
+                </div>
+            </div>
+        </script>
+        <div id="target-output"></div>
+        <h5 style="margin-top: 30px;">Modifier mon nom :</h5>
+        <div class="input-group">
+            <input type="text" class="form-control input-style" name="nom" id="nomPut" placeholder="Votre nouveau nom">
+            <span class="input-group-btn">
+                            <button type="button" class="button-style btn btn-primary" style="background:  #6dabe4;" onclick="putNom('nomPut')">Modifier</button>
+                        </span>
+        </div>
+
+        <p><a href='#deco'>Déconnexion</a></p>
+    </section>
+
+    <section id='deco' class='inactive section-style'>
+        <h2 class="form-title h2-style2">Déconnexion</h2>
+        <h5>Cliquez ici pour vous déconnecter :
+            <button type="button" class="btn btn-primary button-style2" style="background:  #6dabe4;" onclick="logout()">Déconnexion</button>
+        </h5>
+        <p><a href='#index'>Retour à la page d'accueil</a></p>
+    </section>
+
+    <section id='candidats' class='inactive section-style'>
+        <h2 class="h1-style">Voici la liste des différents candidats</h2>
+        <script id="mustacheTempalte_candidats" type="text/template">
+            <div class="container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#.}}
+                        <tr>
+                            <td><a id="cand" href="#candidat/{{.}}">{{.}}</a></td>
+                        </tr>
+                        {{/.}}
+
+                    </tbody>
+                </table>
+            </div>
+        </script>
+        <div id="target-output-candidats"></div>
+        <!--
+                    TODO: générer dynamiquement cette section pour qu'elle affiche les bonnes données.
+                -->
+    </section>
+    <section id='candidat' class='inactive section-style'>
+        <h2 class="h1-style">Informations sur un candidat</h2>
+        <script id="mustacheTempalte_candidat_info" type="text/template">
+            <div class="container bootstrap snippets bootdey">
+                <div class="panel-body inf-content">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img alt="" style="width:300px;" title="" class="img-circle img-thumbnail isTooltip" src="im/user.png" data-original-title="Usuario">
+                            <ul title="Ratings" class="list-inline ratings text-center">
+                                <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+                                <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-8">
+                            <strong>Information</strong><br>
+                            <div class="table-responsive">
+                                <table class="table table-user-information">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <strong>
+                                            <span class="glyphicon glyphicon-asterisk text-primary"></span>
+                                            Prénom                                                
+                                        </strong>
+                                            </td>
+                                            <td class="text-primary">
+                                                {{prenom}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>
+                                            <span class="glyphicon glyphicon-user  text-primary"></span>    
+                                            Nom                                                
+                                        </strong>
+                                            </td>
+                                            <td class="text-primary">
+                                                {{nom}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </script>
+        <div id="target-output-candidat-info"  ></div>
+        <script id="mustacheTempalte_candidat-non-connect" type="text/template">
+            <h4>{{msg}}</h4>
+        </script>
+        <div id="target-output-candidat-non-connect"></div>
+        <p><a href="#deco">Déconnexion</a></p>
+    </section>
+    <section id='vote' class='inactive section-style'>
+        <h2 class="h1-style">Voter !</h2>
+        <div class="container">
+            <div class="contact__wrapper shadow-lg mt-n9">
+                <div class="row no-gutters">
+                    <div class="col-lg-5 contact-info__wrapper gradient-brand-color p-5 order-lg-2">
+                        <h3 class="color--white mb-5" style="text-align:center; color: white;"><strong>Votre voix a un impact </strong></h3>
+                        <h3 class="color--white mb-5" style="text-align:center; color: white;"><strong>VOTEZ ! </strong></h3>
+                    </div>
+
+                    <div class="col-lg-7 contact-form__wrapper p-5 order-lg-1">
+                        <div class="row">
+                            <div class="col-sm-6 mb-3">
+                                <h1><label for="candidat-select">Sélectionnez un candidat :</label></h1>
+                                <script id="mustacheTempalte_candidat" type="text/template">
+                                    <select name="candidat" id="candidat-select">
+                                         <option value="">---votez BLANC----</option>
+                                             {{#.}}
+                                         <option value="">{{.}}</option>
+                                            {{/.}}
+                                    </select>
+                                </script>
+                                <div id="target-output-candidat"></div>
+                            </div>
+                            <div class="col-sm-12 mb-3">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="vote()" style="background:  #6dabe4; margin-top: 20px;">
+                                    Envoyer votre vote
+                                  </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p><a href="#deco">Déconnexion</a></p>
+    </section>
+    <section id='ballot' class='inactive section-style'>
+        <h2 class="h1-style">Ma preuve de vote</h2>
+        <script id="mustacheTempalte_ballot" type="text/template">
+            <div class="content">
+                <div class="card">
+                    <div class="firstinfo">
+                        <div style="float: right;"> <img src="im/vote.png" width="114" height="70" alt=""> </div>
+                        <div class="circle">
+                            <span id="voteBallot"  style="font-size:32px"><strong>N°{{.}}</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </script>
+        <div id="target-output-ballot"></div>
+        <script id="mustacheTempalte_ballot-non-vote" type="text/template">
+            <h4>{{msg}}</h4>
+        </script>
+        <div id="target-output-ballot-non-vote"></div>
+
+        <div class="profileinfo">
+            <p class="bio">Votre vote a bien été enrgistré.</p>
+            <button type="button" class="btn btn-primary" style="background:  #6dabe4;" data-toggle="modal" data-target="#exampleModal" onclick="deleteVote()">Supprimer votre vote</button>
+        </div>
+
+
+        <!--
+                    TODO : vérifier le ballot avant d'afficher ce contenu et le remplacer par un autre message si l'utilisateur n'a pas voté.
+                -->
+        <p><a href='#deco'>Déconnexion</a></p>
+    </section>
+    <!-- Modal  -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <script id="mustacheTempalte_fenetre_modale" type="text/template">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="voteModalLabel">{{titre}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body font-color">
+                        {{msg}}
+                    </div>
+                </script>
+                <div id="target-output-modal"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fin Modal-->
+
+    <script src="js/template.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+</body>
+
+</html>
