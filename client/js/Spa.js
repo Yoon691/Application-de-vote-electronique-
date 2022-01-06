@@ -1,14 +1,15 @@
-
 let idCandiat = null
+
 function displayNavbarConnection() {
 
-    $('#menu1').on("click", function () {
+    $('#menu1').on("click", function() {
         console.log("BOUTTON MENU FONCTIONELLE");
         $('#menuA').slideToggle('blink');
     });
     $('#nom').attr('contentEditable', 'true')
 
 }
+
 function showMenuConnecte() {
 
     if (currentUser.login !== "") {
@@ -23,6 +24,7 @@ function showMenuConnecte() {
     }
 
 }
+
 function show(hash) {
     $('.active').removeClass('active').addClass('inactive');
     $(hash).removeClass('inactive').addClass('active');
@@ -30,16 +32,16 @@ function show(hash) {
     switch (hash) {
         case "#monCompte":
             console.log("case \"#monCompte\"");
-            if (token != null){
+            if (token != null) {
                 let userId = getUserId(token);
                 getUserInfos(userId);
-                $('#target-output').on('click', function (){
+                $('#target-output').on('click', function() {
                     console.log("click1");
                     $('#nom').attr('contenteditable', 'true');
                     console.log("click2");
                 });
-                $('#target-output').on('keypress',function (e){
-                    if(e.which == 13) {
+                $('#target-output').on('keypress', function(e) {
+                    if (e.which == 13) {
                         console.log('You pressed enter!');
                         console.log("Blurrr1");
                         putNom("nom");
@@ -47,37 +49,38 @@ function show(hash) {
                     }
                 });
 
-             } else {
+            } else {
                 show("#index");
             }
 
             break;
-        // case "#connect" :
-        //     // showTemplateModal('mustacheTempalte_fenetre_modale', "", 'target-output-modal',"connexion", false,"#connect");
-        //     break;
+            // case "#connect" :
+            //     // showTemplateModal('mustacheTempalte_fenetre_modale', "", 'target-output-modal',"connexion", false,"#connect");
+            //     break;
         case "#candidats":
             getListCandidats();
             break;
-        case "#index" :
+        case "#index":
             console.log("Tic");
-            setTimeout( function (){
-                if (window.location.hash === '#index'){
+            setTimeout(function() {
+                if (window.location.hash === '#index') {
                     getResultats();
-                }},5000);
+                }
+            }, 5000);
             console.log("Toc");
             break;
-        case "#vote" :
-            if (token !=null){
+        case "#vote":
+            if (token != null) {
                 getListCandidats();
-            }else {
+            } else {
                 show("#index")
             }
 
             break;
-        case "#ballot" :
-            if (token !=null) {
+        case "#ballot":
+            if (token != null) {
                 getBallot();
-            }else {
+            } else {
                 show("#index")
             }
             break;
@@ -93,8 +96,8 @@ function show(hash) {
             //     showTemplateModal('mustacheTempalte_fenetre_modale', modale, 'target-output-modal',"mustacheTempalte_candidats", true,"candidats");
             // } else {
             //     showTemplateModal('mustacheTempalte_fenetre_modale', "", 'target-output-modal',"target-output-candidat-info", false,"candidat");
-                console.log("ballotid: " + idCandiat);
-                getCandidat(idCandiat);
+            console.log("ballotid: " + idCandiat);
+            getCandidat(idCandiat);
 
             break;
         default:
@@ -109,7 +112,7 @@ $(document).ready(function() {
 
     window.addEventListener('hashchange', () => {
         console.log("hash document ready: " + window.location.hash.split("/")[0]);
-        if (window.location.hash.split("/")[0] === "#candidat"){
+        if (window.location.hash.split("/")[0] === "#candidat") {
             console.log("J'y suis");
             idCandiat = window.location.hash.split("/")[1]
             show(window.location.hash.split("/")[0]);
@@ -117,6 +120,7 @@ $(document).ready(function() {
             show(window.location.hash);
         }
     });
+
     showMenuConnecte();
     getResultats();
 
@@ -124,3 +128,39 @@ $(document).ready(function() {
 
 });
 
+document.addEventListener("DOMContentLoaded", function(event) {
+
+    const showNavbar = (toggleId, navId, bodyId, headerId) => {
+        const toggle = document.getElementById(toggleId),
+            nav = document.getElementById(navId),
+            bodypd = document.getElementById(bodyId),
+            headerpd = document.getElementById(headerId)
+
+        // Validate that all variables exist
+        if (toggle && nav && bodypd && headerpd) {
+            toggle.addEventListener('click', () => {
+                // show navbar
+                nav.classList.toggle('show')
+                    // change icon
+                toggle.classList.toggle('bx-x')
+                    // add padding to body
+                bodypd.classList.toggle('body-pd')
+                    // add padding to header
+                headerpd.classList.toggle('body-pd')
+            })
+        }
+    }
+
+    showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
+
+    /*===== LINK ACTIVE =====*/
+    const linkColor = document.querySelectorAll('.nav_link')
+
+    function colorLink() {
+        if (linkColor) {
+            linkColor.forEach(l => l.classList.remove('active'))
+            this.classList.add('active')
+        }
+    }
+    linkColor.forEach(l => l.addEventListener('click', colorLink))
+});
