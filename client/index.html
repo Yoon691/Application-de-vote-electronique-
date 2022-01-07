@@ -135,10 +135,12 @@
     <section id='deco' class='inactive section-style'>
         <h2 class="form-title h2-style2">Déconnexion</h2>
         <h5>Cliquez ici pour vous déconnecter :
-            <button type="button" class="btn btn-primary button-style2" style="background:  #6dabe4;" onclick="deco()">Déconnexion</button>
+            <button type="button" class="btn btn-primary button-style2" style="background:  #6dabe4;" onclick="logout()">Déconnexion</button>
         </h5>
         <p><a href='#index'>Retour à la page d'accueil</a></p>
     </section>
+    <!-- Fin déconnexion -->
+    <!-- Début section candidats -->
     <section id='candidats' class='inactive section-style'>
         <h2 class="h1-style">Voici la liste des différents candidats</h2>
         <script id="mustacheTempalte_candidats" type="text/template">
@@ -162,7 +164,7 @@
         </script>
         <div id="target-output-candidats"></div>
     </section>
-    <!-- Fin déconnexion -->
+    <!-- Fin candidats -->
     <!-- Début section info candidat -->
     <section id='candidat' class='inactive section-style'>
         <h2 class="h1-style">Informations sur un candidat</h2>
@@ -219,7 +221,7 @@
 
                     <div> <img src="im/attention.png" width="80" height="70" alt=""> </div>
                     <span></span>
-                    <span id="voteBallot" class="font-color" style="font-size:18px; padding: 6% 0;"><strong><h3 style="font-size:24px;">{{msg}}</h3></strong></span>
+                    <span id="nonConnectCandidat" class="font-color" style="font-size:18px; padding: 6% 0;"><strong><h3 style="font-size:24px;">{{errorMessage}}</h3></strong></span>
 
                 </div>
             </div>
@@ -286,7 +288,7 @@
 
                     <div> <img src="im/attention.png" width="80" height="70" alt=""> </div>
                     <span></span>
-                    <span id="voteBallot" class="font-color" style="font-size:24px; padding: 6% 0;"><strong><h3>{{msg}}</h3></strong></span>
+                    <span id="NonvoteBallot" class="font-color" style="font-size:24px; padding: 6% 0;"><strong><h3>{{errorMessage}}</h3></strong></span>
 
                 </div>
             </div>
@@ -309,7 +311,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="modal-body font-color">
-                        {{msg}}
+                        {{messageModal}}
                     </div>
                 </script>
                 <div id="target-output-modal"></div>
