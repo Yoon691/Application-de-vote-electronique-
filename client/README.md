@@ -23,6 +23,9 @@
     - 2.4. Finalisation de votre application
 
 
+
+
+
 * Les différents choix d'implémentation :
 
     -  3 fichier JS :
@@ -37,7 +40,7 @@
     
 * URLs de TP :
     
-       Nous avons déployé directement notre application sur Nginx (proposition du prof).
+    Nous avons déployé directement notre application sur Nginx (proposition du prof).
   
   - https://192.168.75.70/client
     
