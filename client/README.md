@@ -20,22 +20,21 @@
 
     ***La dernière partie***  
 
-    - 2.4. Finalisation de votre application
-
-
+    - 2.4. Finalisation de votre application   
 
 
 
 * Les différents choix d'implémentation :
-
     -  3 fichier JS :
         - Client.js : contient le code de tout qui concerne les requêtes AJAX.
         - Spa.js : tout le code qui fait la gestion de la single-page-application.
         - template.js : contient la fonction de templeting.
-       
-    - Interdit l'accès a les opérations qui demandent une connexion à utilisateur non-connecter :
 
+   
+    - Interdit l'accès a les opérations qui demandent une connexion à utilisateur non-connecter :
         Si l'utilisateur est non authentifié et il essaye d'accéder à des parties demande une authentification en tapant le hash dans l'URL talque : #vote, #monCompte ..., il sera rédiger vers index.
+
+        
    
     
 * URLs de TP :
