@@ -4,12 +4,13 @@
 
  1. Analyse de l'état initial de l'application
 
-        ***Tomcat***
+    ***Tomcat***
 
     Déploiement sur Tomcat : https://192.168.75.70/api/client
     
 
-    a. VPN
+    - VPN
+
         - le temps de chargement de la page HTML initiale:
 
             - script: (performance.timing.responseEnd -performance.timeOrigin);
@@ -30,7 +31,8 @@
 
             - valeur: 682.5 ms
 
-    b. wifi depuis l'intérieur de la fac
+    - wifi depuis l'intérieur de la fac
+
         - le temps de chargement de la page HTML initiale:
 
             - script: (performance.timing.responseEnd -performance.timeOrigin);
@@ -50,7 +52,7 @@
             - script: (performance.timing.domComplete -performance.timeOrigin);
 
             - valeur: 682.5 ms
-    c. machines de TP
+    - machines de TP
         - le temps de chargement de la page HTML initiale:
 
             - script: (performance.timing.responseEnd -performance.timeOrigin);
@@ -75,7 +77,7 @@
 
     Déploiement sur Nginx : https://192.168.75.70/client
 
-    a. VPN
+    - VPN
 
         - le temps de chargement de la page HTML initiale:
 
@@ -94,7 +96,7 @@
             - valeur : 285.45 ms
 
             - pourcentage d'amélioration : 31% 
-    b. wifi depuis l'intérieur de la fac
+    - wifi depuis l'intérieur de la fac
 
         - le temps de chargement de la page HTML initiale:
 
@@ -114,7 +116,7 @@
 
             - pourcentage d'amélioration : 31% 
 
-    c. machines de TP
+    - machines de TP
 
         - le temps de chargement de la page HTML initiale:
 
