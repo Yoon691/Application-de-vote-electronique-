@@ -2,53 +2,138 @@
 
 ***TP7***
 
- 1. Analyse de l'état initial de votre application
+ 1. Analyse de l'état initial de l'application
+
+        ***Tomcat***
 
     Déploiement sur Tomcat : https://192.168.75.70/api/client
-    Déploiement sur Nginx : https://192.168.75.70/client
+    
 
-    - le temps de chargement de la page HTML initiale:
+    a. VPN
+        - le temps de chargement de la page HTML initiale:
 
-        - script: (performance.timing.responseEnd -performance.timeOrigin);
+            - script: (performance.timing.responseEnd -performance.timeOrigin);
         
-        - valeur: 111.78 ms
+            - valeur: 156.80 ms
 
-    - le temps d'affichage de l'app shell:
+        - le temps d'affichage de l'app shell:
         
-        - script: (performance.getEntries().filter(x =>
+            - script: (performance.getEntries().filter(x =>
                     x.name.endsWith('.js'))[performance.getEntries().filter(x =>
                         x.name.endsWith('.js')).length - 1].responseEnd) 
         
-        - valeur: 151.58 ms
+            - valeur: 415.35 ms
 
-    - le temps d'affichage du chemin critique de rendu (CRP):
+        - le temps d'affichage du chemin critique de rendu (CRP):
 
-        - script: (performance.timing.domComplete -performance.timeOrigin);
+            - script: (performance.timing.domComplete -performance.timeOrigin);
 
-        - valeur: 251.78 ms
+            - valeur: 682.5 ms
 
+    b. wifi depuis l'intérieur de la fac
+        - le temps de chargement de la page HTML initiale:
+
+            - script: (performance.timing.responseEnd -performance.timeOrigin);
+        
+            - valeur: 156.80 ms
+
+        - le temps d'affichage de l'app shell:
+        
+            - script: (performance.getEntries().filter(x =>
+                    x.name.endsWith('.js'))[performance.getEntries().filter(x =>
+                        x.name.endsWith('.js')).length - 1].responseEnd) 
+        
+            - valeur: 415.35 ms
+
+        - le temps d'affichage du chemin critique de rendu (CRP):
+
+            - script: (performance.timing.domComplete -performance.timeOrigin);
+
+            - valeur: 682.5 ms
+    c. machines de TP
+        - le temps de chargement de la page HTML initiale:
+
+            - script: (performance.timing.responseEnd -performance.timeOrigin);
+        
+            - valeur: 156.80 ms
+
+        - le temps d'affichage de l'app shell:
+        
+            - script: (performance.getEntries().filter(x =>
+                    x.name.endsWith('.js'))[performance.getEntries().filter(x =>
+                        x.name.endsWith('.js')).length - 1].responseEnd) 
+        
+            - valeur: 415.35 ms
+
+        - le temps d'affichage du chemin critique de rendu (CRP):
+
+            - script: (performance.timing.domComplete -performance.timeOrigin);
+
+            - valeur: 682.5 ms        
 
 2. Déploiement des fichiers statiques sur nginx
 
-    Déploiement sur nginx https://192.168.75.96/client/
+    Déploiement sur Nginx : https://192.168.75.70/client
 
-    - le temps de chargement de la page HTML initiale:
+    a. VPN
 
-        - valeur :  24.45 ms
+        - le temps de chargement de la page HTML initiale:
 
-        - pourcentage d'amélioration : 78%
+            - valeur :  22.10 ms
 
-    - le temps d'affichage de l'app shell:
+            - pourcentage d'amélioration : 78%
 
-        - valeur : 92.45 ms
+        - le temps d'affichage de l'app shell:
 
-        - pourcentage d'amélioration : 39%
+            - valeur : 128.10 ms
 
-    - le temps d'affichage du chemin critique de rendu (CRP):
+            - pourcentage d'amélioration : 39%
 
-        - valeur : 173.45 ms
+        - le temps d'affichage du chemin critique de rendu (CRP):
 
-        - pourcentage d'amélioration : 31% 
+            - valeur : 285.45 ms
+
+            - pourcentage d'amélioration : 31% 
+    b. wifi depuis l'intérieur de la fac
+
+        - le temps de chargement de la page HTML initiale:
+
+            - valeur :  22.10 ms
+
+            - pourcentage d'amélioration : 78%
+
+        - le temps d'affichage de l'app shell:
+
+            - valeur : 128.10 ms
+
+            - pourcentage d'amélioration : 39%
+
+        - le temps d'affichage du chemin critique de rendu (CRP):
+
+            - valeur : 285.45 ms
+
+            - pourcentage d'amélioration : 31% 
+
+    c. machines de TP
+
+        - le temps de chargement de la page HTML initiale:
+
+            - valeur :  22.10 ms
+
+            - pourcentage d'amélioration : 78%
+
+        - le temps d'affichage de l'app shell:
+
+            - valeur : 128.10 ms
+
+            - pourcentage d'amélioration : 39%
+
+        - le temps d'affichage du chemin critique de rendu (CRP):
+
+            - valeur : 285.45 ms
+
+            - pourcentage d'amélioration : 31% 
+
 
 
 3. Optimisation de votre application
