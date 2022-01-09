@@ -1,45 +1,67 @@
 # Mif03_TP
 
-***TP5***
+***TP7***
 
-* Les parties traiter :
+ 1. Analyse de l'état initial de votre application
 
-***Nous avons traité toutes les parties demandé dans ce TP5 :***
+    Déploiement sur Tomcat : https://192.168.75.70/api/client
+    Déploiement sur Nginx : https://192.168.75.70/client
 
-- les suivants : 
-    - SPA fonctionnelle avec toutes les parties demander.
-    - Menu différent entre utilisateur connecter et non connecter.
-    - Menu déplier / replier, mécanisme de routage.
-    - Édition du nom de l'utilisateur depuis l'interface.
-    - Moteur de templating avec Mustache.
-    - Requêtes AJAX en utilisant fetch.
-    - Actualisation de résultats chaque 5 s.
-    - Gestion des événements et des erreurs en utilisant des fenêtres modale.
+    - le temps de chargement de la page HTML initiale:
 
-* Dernière partie traiter : 
-
-    ***La dernière partie***  
-
-    - 2.4. Finalisation de votre application   
-
-
-
-* Les différents choix d'implémentation :
-    -  3 fichier JS :
-        - Client.js : contient le code de tout qui concerne les requêtes AJAX.
-        - Spa.js : tout le code qui fait la gestion de la single-page-application.
-        - template.js : contient la fonction de templeting.
-
-   
-    - Interdit l'accès a les opérations qui demandent une connexion à utilisateur non-connecter :
-        Si l'utilisateur est non authentifié et il essaye d'accéder à des parties demande une authentification en tapant le hash dans l'URL talque : #vote, #monCompte ..., il sera rédiger vers index.
-
+        - script: (performance.timing.responseEnd -performance.timeOrigin);
         
-   
-    
-* URLs de TP :
-    
-    Nous avons déployé directement notre application sur Nginx (proposition du prof).
-  
-  - https://192.168.75.70/client
-    
+        - valeur: 111.78 ms
+
+    - le temps d'affichage de l'app shell:
+        
+        - script: (performance.getEntries().filter(x =>
+                    x.name.endsWith('.js'))[performance.getEntries().filter(x =>
+                        x.name.endsWith('.js')).length - 1].responseEnd) 
+        
+        - valeur: 151.58 ms
+
+    - le temps d'affichage du chemin critique de rendu (CRP):
+
+        - script: (performance.timing.domComplete -performance.timeOrigin);
+
+        - valeur: 251.78 ms
+
+
+2. Déploiement des fichiers statiques sur nginx
+
+    Déploiement sur nginx https://192.168.75.96/client/
+
+    - le temps de chargement de la page HTML initiale:
+
+        - valeur :  24.45 ms
+
+        - pourcentage d'amélioration : 78%
+
+    - le temps d'affichage de l'app shell:
+
+        - valeur : 92.45 ms
+
+        - pourcentage d'amélioration : 39%
+
+    - le temps d'affichage du chemin critique de rendu (CRP):
+
+        - valeur : 173.45 ms
+
+        - pourcentage d'amélioration : 31% 
+
+
+3. Optimisation de votre application
+
+    Utilisation de CDN:
+        
+        Déja fait dans le TP d'avant, Aucune amélioration dans les valeurs en essayent des liens differentes 
+    pour inclure  differentes versions de Jquery en utilisant la CDN.
+
+![Refactor](./Refactor.PNG)
+
+![Async](./Async.PNG)
+
+![Minification](./Minification.PNG)
+
+
