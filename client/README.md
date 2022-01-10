@@ -19,9 +19,7 @@
 
         - le temps d'affichage de l'app shell:
         
-            - script: (performance.getEntries().filter(x =>
-                    x.name.endsWith('.js'))[performance.getEntries().filter(x =>
-                        x.name.endsWith('.js')).length - 1].responseEnd) 
+            - script: (performance.getEntries().filter(x => (x.name == "first-paint"))[0].startTime); 
         
             - valeur: 415.35 ms
 
@@ -37,21 +35,19 @@
 
             - script: (performance.timing.responseEnd -performance.timeOrigin);
         
-            - valeur: 156.80 ms
+            - valeur: 33.52 ms  53.62
 
         - le temps d'affichage de l'app shell:
         
-            - script: (performance.getEntries().filter(x =>
-                    x.name.endsWith('.js'))[performance.getEntries().filter(x =>
-                        x.name.endsWith('.js')).length - 1].responseEnd) 
+            - script: (performance.getEntries().filter(x => (x.name == "first-paint"))[0].startTime) + ' ms');
         
-            - valeur: 415.35 ms
+            - valeur: 225.24 ms    505.16
 
         - le temps d'affichage du chemin critique de rendu (CRP):
 
             - script: (performance.timing.domComplete -performance.timeOrigin);
 
-            - valeur: 682.5 ms
+            - valeur: 521.58 ms    782.04
     - machines de TP
         - le temps de chargement de la page HTML initiale:
 
@@ -100,19 +96,19 @@
 
         - le temps de chargement de la page HTML initiale:
 
-            - valeur :  22.10 ms
+            - valeur :  22.10 ms  46.65
 
             - pourcentage d'amélioration : 78%
 
         - le temps d'affichage de l'app shell:
 
-            - valeur : 128.10 ms
+            - valeur : 128.10 ms 397.4
 
             - pourcentage d'amélioration : 39%
 
         - le temps d'affichage du chemin critique de rendu (CRP):
 
-            - valeur : 285.45 ms
+            - valeur : 285.45 ms 645,55
 
             - pourcentage d'amélioration : 31% 
 
