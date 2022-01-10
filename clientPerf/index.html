@@ -7,10 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/Style.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.1.0/mustache.js"></script>
-    <script src="js/Spa.js"></script>
-    <script src="js/Client.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous"> https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js
 </head>
@@ -50,7 +46,7 @@
     <section id='index' class='active section-style'>
         <h2 class="form-title h2-style"><strong>Bienvenue sur l'application Web de la grande élection de 2022 !</strong></h2>
         <h2 class='h1-style'>Résultats courants de l'élection :</h2>
-        <script id="mustacheTempalte_resultats" type="text/template">
+        <script id="mustacheTempalte_resultats" type="text/template" async>
             <div class="container">
                 <table class="table">
                     <thead>
@@ -113,7 +109,7 @@
     <!-- Début section mon compte -->
     <section id='monCompte' class='inactive section-style'>
         <h2 class="form-title fontColor">Mon compte</h2>
-        <script id="mustacheTempalte_a" type="text/template">
+        <script id="mustacheTempalte_a" type="text/template" async>
             <div class="container d-flex justify-content-center">
                 <div class="text-center"> <img src="im/avatar.png" width="200" class="rounded-circle">
                     <h3 class="mt-2"> <span id="login">{{login}}</span> <span></span><span id="nom">{{nom}}</span></h3>
@@ -143,7 +139,7 @@
     <!-- Début section candidats -->
     <section id='candidats' class='inactive section-style'>
         <h2 class="h1-style">Voici la liste des différents candidats</h2>
-        <script id="mustacheTempalte_candidats" type="text/template">
+        <script id="mustacheTempalte_candidats" type="text/template" async>
             <div class="container">
                 <table class="table">
                     <thead>
@@ -168,7 +164,7 @@
     <!-- Début section info candidat -->
     <section id='candidat' class='inactive section-style'>
         <h2 class="h1-style">Informations sur un candidat</h2>
-        <script id="mustacheTempalte_candidat_info" type="text/template">
+        <script id="mustacheTempalte_candidat_info" type="text/template" async>
             <div class="container bootstrap snippets bootdey">
                 <div class="panel-body inf-content">
                     <div class="row">
@@ -215,7 +211,7 @@
             </div>
         </script>
         <div id="target-output-candidat-info"></div>
-        <script id="mustacheTempalte_candidat-non-connect" type="text/template">
+        <script id="mustacheTempalte_candidat-non-connect" type="text/template" async>
             <div class="content">
                 <div class="card">
 
@@ -244,7 +240,7 @@
                         <div class="row">
                             <div class="col-sm-6 mb-3">
                                 <h1><label for="candidat-select" style="font-size:30px;">Sélectionnez un candidat</label></h1>
-                                <script id="mustacheTempalte_candidat" type="text/template">
+                                <script id="mustacheTempalte_candidat" type="text/template" async>
                                     <select name="candidat" id="candidat-select">
                                          <option value="">---votez BLANC----</option>
                                              {{#.}}
@@ -269,7 +265,7 @@
     <!-- Début section preuve de vote -->
     <section id='ballot' class='inactive section-style'>
         <h2 class="h1-style">Ma preuve de vote</h2>
-        <script id="mustacheTempalte_ballot" type="text/template">
+        <script id="mustacheTempalte_ballot" type="text/template" async>
             <div class="content">
                 <div class="card">
                     <div class="firstinfo">
@@ -282,7 +278,7 @@
             </div>
         </script>
         <div id="target-output-ballot"></div>
-        <script id="mustacheTempalte_ballot-non-vote" type="text/template">
+        <script id="mustacheTempalte_ballot-non-vote" type="text/template" async>
             <div class="content">
                 <div class="card">
 
@@ -305,7 +301,7 @@
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <script id="mustacheTempalte_fenetre_modale" type="text/template">
+                <script id="mustacheTempalte_fenetre_modale" type="text/template" async>
                     <div class="modal-header">
                         <h5 class="modal-title" id="voteModalLabel">{{titre}}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -322,9 +318,13 @@
         </div>
     </div>
     <!-- Fin Modal-->
-    <script src="js/template.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous" async></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.1.0/mustache.js" async></script>
+    <script src="js/Spa.js" async></script>
+    <script src="js/Client.js" async></script>
+    <script src="js/template.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous" async></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous" async></script>
 </body>
 
 </html>
