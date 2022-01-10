@@ -1,12 +1,23 @@
 # Mif03_TP
 
 ***TP7***
-- section procédure d'installation correspondant aux optimisations réalisées :
+I - Section procédure d'installation correspondant aux optimisations réalisées :
     
     - utilisation d'un wifi (Edurom) depuis l'intérieur de la fac.
-    -
-    -
-- Section les mesures de performance :
+    - Utilisation les bibliothèques de code avec CDN pour : Jquery,Mustache,popper,boostrap.
+    - les modifs fait pour l'amélioration : 
+        - CDN fait depuis TP5.
+        - async/defer pour les scripts.
+        - Minification des resources.
+        - Refactoring de l'application
+        - deployement : 
+            - Tomcat : 192.168.75.70/api/client.
+            - Nginix : 
+                    - avant Optimisation : 192.168.75.70/client
+                    - apres optimisations : 192.168.75.70/clientPerf
+    - les scriptes sont requéter asynchronement.
+
+II - Section les mesures de performance :
 
      1. Analyse de l'état initial de l'application
 
@@ -20,19 +31,19 @@
 
             - script: (performance.timing.responseEnd -performance.timeOrigin);
         
-            - valeur: 33.52 ms  53.62
+            - valeur: 63.62 ms
 
         - le temps d'affichage de l'app shell:
         
             - script: (performance.getEntries().filter(x => (x.name == "first-paint"))[0].startTime);
         
-            - valeur: 225.24 ms    505.16
+            - valeur:  305.16 ms 
 
         - le temps d'affichage du chemin critique de rendu (CRP):
 
             - script: (performance.timing.domComplete -performance.timeOrigin);
 
-            - valeur: 521.58 ms    782.04
+            - valeur: 482.04 ms 
     
 2. Déploiement des fichiers statiques sur nginx
 
@@ -42,33 +53,89 @@
     
         - le temps de chargement de la page HTML initiale:
 
-            - valeur :  22.10 ms  46.65
+            - valeur :  32.10 ms 
 
-            - pourcentage d'amélioration : 78%
+            - pourcentage d'amélioration : 49%
 
         - le temps d'affichage de l'app shell:
 
-            - valeur : 128.10 ms 397.4
+            - valeur : 197.4 ms
 
-            - pourcentage d'amélioration : 39%
+            - pourcentage d'amélioration : 35%
 
         - le temps d'affichage du chemin critique de rendu (CRP):
 
-            - valeur : 285.45 ms 645,55
+            - valeur : 245,55 ms 
 
-            - pourcentage d'amélioration : 31% 
+            - pourcentage d'amélioration : 49%  
 
     
 
 
 3. Optimisation de votre application
+    ![rapport d'audit LightHouse de notre SPA avant l'Optimisation](./Capture.PNG)
 
-    Utilisation de CDN:
+    - Utilisation de CDN:
         
-        Déja fait dans le TP d'avant, Aucune amélioration dans les valeurs en essayent des liens differentes 
-    pour inclure  differentes versions de Jquery en utilisant la CDN.
+        Nous avons utiliser les CDN pour les differentes  bibliothèques de code dans le TP d'avant (TP5), donc Aucune amélioration dans les valeurs en essayent des liens differentes pour inclure  differentes versions des  bibliothèques utiliser en utilisant la CDN.
 
-![Refactor](./Refactor.PNG)
+    - Utilisation d'attributs async et/ou defer :   
+
+        ***déploiement sur Tomcat***
+    Déploiement sur Tomcat : https://192.168.75.70/api/client
+         - le temps de chargement de la page HTML initiale:
+
+            - avant :  63.62 ms
+
+            - apres : 
+
+            - pourcentage d'amélioration : 78%
+
+        - le temps d'affichage de l'app shell:
+
+            - avant : 305.16 ms 
+
+            - apres :
+
+            - pourcentage d'amélioration : 39%
+
+        - le temps d'affichage du chemin critique de rendu (CRP):
+
+            - avant : 482.04 ms
+
+            - apres : 
+
+            - pourcentage d'amélioration : 31% 
+
+
+        ***déploiement sur nginx***
+    Déploiement sur Nginx : https://192.168.75.70/clientPerf
+
+       - le temps de chargement de la page HTML initiale:
+
+            - avant :  32.10 ms
+
+            - apres : 
+
+            - pourcentage d'amélioration : 49%
+
+        - le temps d'affichage de l'app shell:
+
+            - avant : 197.4 ms
+
+            - apres :
+
+            - pourcentage d'amélioration : 35%
+
+        - le temps d'affichage du chemin critique de rendu (CRP):
+
+            - avant : 245,55 ms
+
+            - apres : 
+
+            - pourcentage d'amélioration : 49% 
+
+
 
 ![Async](./Async.PNG)
 
