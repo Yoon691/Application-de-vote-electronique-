@@ -3,5 +3,4 @@ function showTemplateData(templateID, data, idRes) {
     Mustache.parse(template);
     let html = Mustache.render(template, data);
     $('#' + idRes).html(html);
-    console.log("fin de template");
 }
