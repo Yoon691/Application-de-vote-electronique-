@@ -19,5 +19,5 @@ deploy:
 
 
   script:
-    - scp -r -v -o StrictHostKeyChecking=no -i $CI_SSH_KEY /builds/p1809208/mif03_tp/client/* gitlabci@192.168.75.70:/var/www/html/client
+    - scp -r -v -o StrictHostKeyChecking=no -i $CI_SSH_KEY /builds/p1809208/mif03_tp/clientPerf/* gitlabci@192.168.75.70:/var/www/html/clientPerf
 
