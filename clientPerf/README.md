@@ -79,6 +79,63 @@ II - Section les mesures de performance :
         
         Nous avons utiliser les CDN pour les differentes  bibliothèques de code dans le TP d'avant (TP5), donc Aucune amélioration dans les valeurs en essayent des liens differentes pour inclure  differentes versions des  bibliothèques utiliser en utilisant la CDN.
 
+- Refactoring de l'application :   
+
+        ***déploiement sur Tomcat***
+    Déploiement sur Tomcat : https://192.168.75.70/api/client
+         - le temps de chargement de la page HTML initiale:
+
+            - avant :  63.62 ms
+
+            - apres : 45.23 ms
+
+            - pourcentage d'amélioration : 28%
+
+        - le temps d'affichage de l'app shell:
+
+            - avant : 305.16 ms 
+
+            - apres : 268.63 ms
+
+            - pourcentage d'amélioration : 11%
+
+        - le temps d'affichage du chemin critique de rendu (CRP):
+
+            - avant : 482.04 ms
+
+            - apres : 352.27 
+
+            - pourcentage d'amélioration : 27% 
+
+
+        ***déploiement sur nginx***
+    Déploiement sur Nginx : https://192.168.75.70/clientPerf
+
+       - le temps de chargement de la page HTML initiale:
+
+            - avant :  32.10 ms
+
+            - apres : 23.56 ms
+
+            - pourcentage d'amélioration : 26%
+
+        - le temps d'affichage de l'app shell:
+
+            - avant : 197.4 ms
+
+            - apres : 139.96 ms
+
+            - pourcentage d'amélioration : 35%
+
+        - le temps d'affichage du chemin critique de rendu (CRP):
+
+            - avant : 245,55 ms
+
+            - apres : 192.85
+
+            - pourcentage d'amélioration : 49% 
+    
+    
     - Utilisation d'attributs async et/ou defer :   
 
         ***déploiement sur Tomcat***
