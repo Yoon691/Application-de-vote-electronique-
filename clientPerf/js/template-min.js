@@ -1,0 +1,1 @@
+function showTemplateData(b,c,a){let template=$("#"+b).html();Mustache.parse(template);let html=Mustache.render(template,c);$("#"+a).html(html)};
