@@ -103,7 +103,7 @@ II - Section les mesures de performance :
 
             - avant : 482.04 ms
 
-            - apres : 352.27 
+            - apres : 352.27 ms 
 
             - pourcentage d'amélioration : 27% 
 
@@ -131,7 +131,7 @@ II - Section les mesures de performance :
 
             - avant : 245,55 ms
 
-            - apres : 192.85
+            - apres : 192.85 ms
 
             - pourcentage d'amélioration : 49% 
     
@@ -142,25 +142,25 @@ II - Section les mesures de performance :
     Déploiement sur Tomcat : https://192.168.75.70/api/client
          - le temps de chargement de la page HTML initiale:
 
-            - avant :  63.62 ms
+            - avant :  45.23 ms
 
-            - apres : 
+            - apres :  33.21 ms
 
             - pourcentage d'amélioration : 78%
 
         - le temps d'affichage de l'app shell:
 
-            - avant : 305.16 ms 
+            - avant : 268.63 ms 
 
-            - apres :
+            - apres : 185.26 ms
 
             - pourcentage d'amélioration : 39%
 
         - le temps d'affichage du chemin critique de rendu (CRP):
 
-            - avant : 482.04 ms
+            - avant : 352.27 ms
 
-            - apres : 
+            - apres : 248.06 ms
 
             - pourcentage d'amélioration : 31% 
 
@@ -170,29 +170,84 @@ II - Section les mesures de performance :
 
        - le temps de chargement de la page HTML initiale:
 
-            - avant :  32.10 ms
+            - avant :  23.56 ms
 
-            - apres : 
+            - apres :  19.92 ms
 
             - pourcentage d'amélioration : 49%
 
         - le temps d'affichage de l'app shell:
 
-            - avant : 197.4 ms
+            - avant : 139.96 ms
 
-            - apres :
+            - apres : 114.36 ms
 
             - pourcentage d'amélioration : 35%
 
         - le temps d'affichage du chemin critique de rendu (CRP):
 
-            - avant : 245,55 ms
+            - avant : 192.85 ms
 
-            - apres : 
+            - apres : 155,96 ms
 
             - pourcentage d'amélioration : 49% 
 
 
+    - Minification réduction du nombre de ressources critiques :
+        
+        ***déploiement sur Tomcat***
+    Déploiement sur Tomcat : https://192.168.75.70/api/client
+         - le temps de chargement de la page HTML initiale:
+
+            - avant :  33.21 ms
+
+            - apres :  22.35 ms
+
+            - pourcentage d'amélioration : 78%
+
+        - le temps d'affichage de l'app shell:
+
+            - avant : 185.26 ms 
+
+            - apres : 132.48 ms
+
+            - pourcentage d'amélioration : 39%
+
+        - le temps d'affichage du chemin critique de rendu (CRP):
+
+            - avant : 248.06 ms
+
+            - apres : 168.15 ms
+
+            - pourcentage d'amélioration : 31% 
+
+
+        ***déploiement sur nginx***
+    Déploiement sur Nginx : https://192.168.75.70/clientPerf
+
+       - le temps de chargement de la page HTML initiale:
+
+            - avant :  19.92 ms
+
+            - apres :  17.1 ms
+
+            - pourcentage d'amélioration : 49%
+
+        - le temps d'affichage de l'app shell:
+
+            - avant : 114.36 ms
+
+            - apres : 82.17 ms
+
+            - pourcentage d'amélioration : 35%
+
+        - le temps d'affichage du chemin critique de rendu (CRP):
+
+            - avant : 155,96 ms
+
+            - apres : 129.35 ms
+
+            - pourcentage d'amélioration : 49% 
 
 ![Async](./Async.PNG)
 
