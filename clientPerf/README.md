@@ -53,27 +53,26 @@ II - Section les mesures de performance :
     
 2. Déploiement des fichiers statiques sur nginx
 
-        ***déploiement sur nginx***
-    Déploiement sur Nginx : https://192.168.75.70/client
+    ***déploiement sur nginx***: https://192.168.75.70/client
 
     
-        - le temps de chargement de la page HTML initiale:
+    - le temps de chargement de la page HTML initiale:
 
-            - valeur :  32.10 ms 
+        - valeur :  32.10 ms 
 
-            - pourcentage d'amélioration : 49%
+        - pourcentage d'amélioration : 49%
 
-        - le temps d'affichage de l'app shell:
+    - le temps d'affichage de l'app shell:
 
-            - valeur : 197.4 ms
+        - valeur : 197.4 ms
 
-            - pourcentage d'amélioration : 35%
+        - pourcentage d'amélioration : 35%
 
-        - le temps d'affichage du chemin critique de rendu (CRP):
+    - le temps d'affichage du chemin critique de rendu (CRP):
 
-            - valeur : 245,55 ms 
+        - valeur : 245,55 ms 
 
-            - pourcentage d'amélioration : 49%  
+        - pourcentage d'amélioration : 49%  
 
     
 
