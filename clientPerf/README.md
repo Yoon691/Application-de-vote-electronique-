@@ -33,6 +33,7 @@ II - Section les mesures de performance :
 ***déploiement sur Tomcat***
 
 Déploiement sur Tomcat : https://192.168.75.70/api/client
+
     
     - le temps de chargement de la page HTML initiale:
 
