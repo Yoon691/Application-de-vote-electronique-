@@ -13,21 +13,21 @@
         - [Readme-TP2](https://forge.univ-lyon1.fr/p1809208/mif03_tp/-/blob/TP2/server/README.md)
 
     - TP3 : 
-            - Branche TP3 
-            - [Readme-TP3](https://forge.univ-lyon1.fr/p1809208/mif03_tp/-/blob/TP3/serverMVC/README.md)
+        - Branche TP3 
+        - [Readme-TP3](https://forge.univ-lyon1.fr/p1809208/mif03_tp/-/blob/TP3/serverMVC/README.md)
     
     - TP4 : 
-            - Branche TP4 
-            - [Readme-TP4](https://forge.univ-lyon1.fr/p1809208/mif03_tp/-/blob/TP4/API/README.md)
+        - Branche TP4 
+        - [Readme-TP4](https://forge.univ-lyon1.fr/p1809208/mif03_tp/-/blob/TP4/API/README.md)
     
     - TP5 : 
-            - Branche TP5 
-            - [Readme-TP5](https://forge.univ-lyon1.fr/p1809208/mif03_tp/-/blob/TP5/client/README.md)
+        - Branche TP5 
+        - [Readme-TP5](https://forge.univ-lyon1.fr/p1809208/mif03_tp/-/blob/TP5/client/README.md)
 
     - TP7 : 
-            - Branche TP7 ***déploiement sur nginx***
-            - Branche TP7-Alpha ***déploiement sur Tomcat***
-            - [Readme-TP7](https://forge.univ-lyon1.fr/p1809208/mif03_tp/-/blob/TP7/clientPerf/README.md)
+        - Branche TP7 ***déploiement sur nginx***
+        - Branche TP7-Alpha ***déploiement sur Tomcat***
+        - [Readme-TP7](https://forge.univ-lyon1.fr/p1809208/mif03_tp/-/blob/TP7/clientPerf/README.md)
      
 
      
