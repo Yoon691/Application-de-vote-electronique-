@@ -2,10 +2,13 @@
 ***TP7***
 
 I - Section procédure d'installation correspondant aux optimisations réalisées :
+
          ***déploiement sur Tomcat***
     Déploiement sur Tomcat : https://192.168.75.70/api/client
+
          ***déploiement sur nginx avant Optimisation***
     Déploiement sur Nginx : https://192.168.75.70/client
+    
          ***déploiement sur nginx aprés optimisation***
     Déploiement sur Nginx : https://192.168.75.70/clientPerf
     
