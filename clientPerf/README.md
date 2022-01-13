@@ -78,6 +78,9 @@ II - Section les mesures de performance :
 
 
 3. Optimisation de votre application
+
+        -rapport d'audit LightHouse de notre SPA avant l'Optimisation:
+
     ![rapport d'audit LightHouse de notre SPA avant l'Optimisation](../Capture.PNG)
 
     - Utilisation de CDN:
@@ -86,176 +89,170 @@ II - Section les mesures de performance :
 
 - Refactoring de l'application :   
 
-        ***déploiement sur Tomcat***
-    Déploiement sur Tomcat : https://192.168.75.70/api/client
-         - le temps de chargement de la page HTML initiale:
+    ***déploiement sur Tomcat*** https://192.168.75.70/api/client
 
-            - avant :  63.62 ms
+    - le temps de chargement de la page HTML initiale:
 
-            - apres : 45.23 ms
+        - avant :  63.62 ms
 
-            - pourcentage d'amélioration : 28%
+        - apres : 45.23 ms
 
-        - le temps d'affichage de l'app shell:
+        - pourcentage d'amélioration : 28%
 
-            - avant : 305.16 ms 
+    - le temps d'affichage de l'app shell:
 
-            - apres : 268.63 ms
+        - avant : 305.16 ms 
 
-            - pourcentage d'amélioration : 11%
+        - apres : 268.63 ms
 
-        - le temps d'affichage du chemin critique de rendu (CRP):
+        - pourcentage d'amélioration : 11%
 
-            - avant : 482.04 ms
+    - le temps d'affichage du chemin critique de rendu (CRP):
 
-            - apres : 352.27 ms 
+        - avant : 482.04 ms
 
-            - pourcentage d'amélioration : 27% 
+        - apres : 352.27 ms 
+
+        - pourcentage d'amélioration : 27% 
 
 
-        ***déploiement sur nginx***
-    Déploiement sur Nginx : https://192.168.75.70/clientPerf
+    ***déploiement sur nginx*** : https://192.168.75.70/clientPerf
 
-       - le temps de chargement de la page HTML initiale:
+    - le temps de chargement de la page HTML initiale:
 
-            - avant :  32.10 ms
+        - avant :  32.10 ms
 
-            - apres : 23.56 ms
+        - apres : 23.56 ms
 
-            - pourcentage d'amélioration : 26%
+        - pourcentage d'amélioration : 26%
 
-        - le temps d'affichage de l'app shell:
+    - le temps d'affichage de l'app shell:
 
-            - avant : 197.4 ms
+        - avant : 197.4 ms
 
-            - apres : 139.96 ms
+        - apres : 139.96 ms
 
-            - pourcentage d'amélioration : 35%
+        - pourcentage d'amélioration : 35%
 
-        - le temps d'affichage du chemin critique de rendu (CRP):
+    - le temps d'affichage du chemin critique de rendu (CRP):
 
-            - avant : 245,55 ms
+        - avant : 245,55 ms
 
-            - apres : 192.85 ms
+        - apres : 192.85 ms
 
-            - pourcentage d'amélioration : 49% 
+        - pourcentage d'amélioration : 49% 
     
     
-    - Utilisation d'attributs async et/ou defer :   
+- Utilisation d'attributs async et/ou defer :   
 
-        ***déploiement sur Tomcat***
-    Déploiement sur Tomcat : https://192.168.75.70/api/client
-         - le temps de chargement de la page HTML initiale:
+    ***déploiement sur Tomcat***: https://192.168.75.70/api/client
 
-            - avant :  45.23 ms
+    - le temps de chargement de la page HTML initiale:
 
-            - apres :  33.21 ms
+        - avant :  45.23 ms
 
-            - pourcentage d'amélioration : 26%
+        - apres :  33.21 ms
 
-        - le temps d'affichage de l'app shell:
+        - pourcentage d'amélioration : 26%
 
-            - avant : 268.63 ms 
+    - le temps d'affichage de l'app shell:
 
-            - apres : 185.26 ms
+        - avant : 268.63 ms 
 
-            - pourcentage d'amélioration : 31%
+        - apres : 185.26 ms
 
-        - le temps d'affichage du chemin critique de rendu (CRP):
+        - pourcentage d'amélioration : 31%
 
-            - avant : 352.27 ms
+    - le temps d'affichage du chemin critique de rendu (CRP):
 
-            - apres : 248.06 ms
+        - avant : 352.27 ms
 
-            - pourcentage d'amélioration : 29% 
+        - apres : 248.06 ms
 
-
-        ***déploiement sur nginx***
-    Déploiement sur Nginx : https://192.168.75.70/clientPerf
-
-       - le temps de chargement de la page HTML initiale:
-
-            - avant :  23.56 ms
-
-            - apres :  19.92 ms
-
-            - pourcentage d'amélioration : 15%
-
-        - le temps d'affichage de l'app shell:
-
-            - avant : 139.96 ms
-
-            - apres : 114.36 ms
-
-            - pourcentage d'amélioration : 18%
-
-        - le temps d'affichage du chemin critique de rendu (CRP):
-
-            - avant : 192.85 ms
-
-            - apres : 155,96 ms
-
-            - pourcentage d'amélioration : 19% 
+        - pourcentage d'amélioration : 29% 
 
 
-    - Minification réduction du nombre de ressources critiques :
+    ***déploiement sur nginx***: https://192.168.75.70/clientPerf
+
+    - le temps de chargement de la page HTML initiale:
+
+        - avant :  23.56 ms
+
+        - apres :  19.92 ms
+
+        - pourcentage d'amélioration : 15%
+
+    - le temps d'affichage de l'app shell:
+
+        - avant : 139.96 ms
+
+        - apres : 114.36 ms
+
+        - pourcentage d'amélioration : 18%
+
+    - le temps d'affichage du chemin critique de rendu (CRP):
+
+        - avant : 192.85 ms
+
+        - apres : 155,96 ms
+
+        - pourcentage d'amélioration : 19% 
+
+
+- Minification réduction du nombre de ressources critiques :
         
-        ***déploiement sur Tomcat***
-    Déploiement sur Tomcat : https://192.168.75.70/api/client
-         - le temps de chargement de la page HTML initiale:
+    ***déploiement sur Tomcat*** : https://192.168.75.70/api/client
+    - le temps de chargement de la page HTML initiale:
 
-            - avant :  33.21 ms
+        - avant :  33.21 ms
 
-            - apres :  22.35 ms
+        - apres :  22.35 ms
 
-            - pourcentage d'amélioration : 32%
+        - pourcentage d'amélioration : 32%
 
-        - le temps d'affichage de l'app shell:
+    - le temps d'affichage de l'app shell:
 
-            - avant : 185.26 ms 
+        - avant : 185.26 ms 
 
-            - apres : 132.48 ms
+        - apres : 132.48 ms
 
-            - pourcentage d'amélioration : 28%
+        - pourcentage d'amélioration : 28%
 
-        - le temps d'affichage du chemin critique de rendu (CRP):
+    - le temps d'affichage du chemin critique de rendu (CRP):
 
-            - avant : 248.06 ms
+        - avant : 248.06 ms
 
-            - apres : 168.15 ms
+        - apres : 168.15 ms
 
-            - pourcentage d'amélioration : 32% 
+        - pourcentage d'amélioration : 32% 
 
 
-        ***déploiement sur nginx***
-    Déploiement sur Nginx : https://192.168.75.70/clientPerf
+    ***déploiement sur nginx***: https://192.168.75.70/clientPerf
 
-       - le temps de chargement de la page HTML initiale:
+    - le temps de chargement de la page HTML initiale:
 
-            - avant :  19.92 ms
+        - avant :  19.92 ms
 
-            - apres :  17.1 ms
+        - apres :  17.1 ms
 
-            - pourcentage d'amélioration : 14%
+        - pourcentage d'amélioration : 14%
 
-        - le temps d'affichage de l'app shell:
+    - le temps d'affichage de l'app shell:
 
-            - avant : 114.36 ms
+        - avant : 114.36 ms
 
-            - apres : 82.17 ms
+        - apres : 82.17 ms
 
-            - pourcentage d'amélioration : 28%
+        - pourcentage d'amélioration : 28%
 
-        - le temps d'affichage du chemin critique de rendu (CRP):
+    - le temps d'affichage du chemin critique de rendu (CRP):
 
-            - avant : 155,96 ms
+        - avant : 155,96 ms
 
-            - apres : 129.35 ms
+        - apres : 129.35 ms
 
-            - pourcentage d'amélioration : 17% 
+        - pourcentage d'amélioration : 17% 
 
-![Async](./Async.PNG)
 
-![Minification](./Minification.PNG)
 
 
