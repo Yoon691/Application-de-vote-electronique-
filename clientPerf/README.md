@@ -255,7 +255,7 @@ II - Section les mesures de performance :
 
 -rapport d'audit LightHouse de notre SPA aprés l'Optimisation:
 
-![rapport d'audit LightHouse de notre SPA apres l'Optimisation](./rapport_LightHouse_apres_Optimisation.PNG)
+![rapport d'audit LightHouse de notre SPA apres l'Optimisation](./rapport_LightHouse_apres_Optimisation.png)
 
 
 
