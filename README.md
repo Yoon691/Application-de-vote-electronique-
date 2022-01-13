@@ -9,8 +9,8 @@
     Vous trouvez les Readmes de chaque TPs dans les liens au-dessous
 
     - TP2 : 
-    - Branche TP2
-    - [Readme-TP2](https://forge.univ-lyon1.fr/p1809208/mif03_tp/-/blob/TP2/server/README.md)
+        - Branche TP2
+        - [Readme-TP2](https://forge.univ-lyon1.fr/p1809208/mif03_tp/-/blob/TP2/server/README.md)
 
     - TP3 : 
         - Branche TP3 
