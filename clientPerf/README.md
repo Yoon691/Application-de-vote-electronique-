@@ -2,6 +2,13 @@
 ***TP7***
 
 I - Section procédure d'installation correspondant aux optimisations réalisées :
+         ***déploiement sur Tomcat***
+    Déploiement sur Tomcat : https://192.168.75.70/api/client
+         ***déploiement sur nginx avant Optimisation***
+    Déploiement sur Nginx : https://192.168.75.70/client
+         ***déploiement sur nginx aprés optimisation***
+    Déploiement sur Nginx : https://192.168.75.70/clientPerf
+    
 
     - utilisation d'un wifi (Edurom) depuis l'intérieur de la fac.
     - Utilisation les bibliothèques de code avec CDN pour : Jquery,Mustache,popper,boostrap.
@@ -10,11 +17,6 @@ I - Section procédure d'installation correspondant aux optimisations réalisée
         - async/defer pour les scripts.
         - Minification des resources.
         - Refactoring de l'application
-        - deployement : 
-            - Tomcat : 192.168.75.70/api/client.
-            - Nginix : 
-                    - avant Optimisation : 192.168.75.70/client
-                    - apres optimisations : 192.168.75.70/clientPerf
     - les scriptes sont requéter asynchronement.
 
 II - Section les mesures de performance :
