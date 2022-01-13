@@ -28,31 +28,31 @@ Déploiement sur Nginx : https://192.168.75.70/clientPerf
 
 II - Section les mesures de performance :
 
-     1. Analyse de l'état initial de l'application
+ 1. Analyse de l'état initial de l'application
 
         ***déploiement sur Tomcat***
-    Déploiement sur Tomcat : https://192.168.75.70/api/client
+Déploiement sur Tomcat : https://192.168.75.70/api/client
     
 
 
 
-        - le temps de chargement de la page HTML initiale:
+    - le temps de chargement de la page HTML initiale:
 
-            - script: (performance.timing.responseEnd -performance.timeOrigin);
+        - script: (performance.timing.responseEnd -performance.timeOrigin);
         
-            - valeur: 63.62 ms
+        - valeur: 63.62 ms
 
-        - le temps d'affichage de l'app shell:
+    - le temps d'affichage de l'app shell:
         
-            - script: (performance.getEntries().filter(x => (x.name == "first-paint"))[0].startTime);
+        - script: (performance.getEntries().filter(x => (x.name == "first-paint"))[0].startTime);
         
-            - valeur:  305.16 ms 
+        - valeur:  305.16 ms 
 
-        - le temps d'affichage du chemin critique de rendu (CRP):
+    - le temps d'affichage du chemin critique de rendu (CRP):
 
-            - script: (performance.timing.domComplete -performance.timeOrigin);
+        - script: (performance.timing.domComplete -performance.timeOrigin);
 
-            - valeur: 482.04 ms 
+        - valeur: 482.04 ms 
     
 2. Déploiement des fichiers statiques sur nginx
 
