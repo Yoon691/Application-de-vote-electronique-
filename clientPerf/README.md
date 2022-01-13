@@ -16,14 +16,14 @@ Déploiement sur Nginx : https://192.168.75.70/client
 Déploiement sur Nginx : https://192.168.75.70/clientPerf
 
 
-- utilisation d'un wifi (Edurom) depuis l'intérieur de la fac.
+- Utilisation d'un wifi (Eduroam) depuis l'intérieur de la fac.
 - Utilisation les bibliothèques de code avec CDN pour : Jquery,Mustache,popper,boostrap.
-- les modifs fait pour l'amélioration : 
+- Les modifs faites pour l'optimisation : 
     - CDN fait depuis TP5.
     - async/defer pour les scripts.
     - Minification des resources.
     - Refactoring de l'application
-- les scriptes sont requéter asynchronement.
+- Utilisation du rapport d'audit LightHouse pour l'optimisation.
 
 
 II - Section les mesures de performance :
@@ -85,7 +85,7 @@ II - Section les mesures de performance :
 
 - Utilisation de CDN:
         
-    Nous avons utiliser les CDN pour les differentes  bibliothèques de code dans le TP d'avant (TP5), donc Aucune amélioration dans les valeurs en essayent des liens differentes pour inclure  differentes versions des  bibliothèques utiliser en utilisant la CDN.
+    Nous avons utilisé les CDN pour les différentes bibliothèques de code dans le TP d'avant (TP5), donc Aucune amélioration dans les valeurs en essayent des CDN différents pour inclure différentes versions de ces bibliothèques.
 
 - Refactoring de l'application :   
 
