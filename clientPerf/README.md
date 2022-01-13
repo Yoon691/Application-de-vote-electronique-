@@ -14,7 +14,7 @@ Déploiement sur Nginx : https://192.168.75.70/client
     ***déploiement sur nginx aprés optimisation***
          
 Déploiement sur Nginx : https://192.168.75.70/clientPerf
-    
+    ***  ***
 
         - utilisation d'un wifi (Edurom) depuis l'intérieur de la fac.
         - Utilisation les bibliothèques de code avec CDN pour : Jquery,Mustache,popper,boostrap.
