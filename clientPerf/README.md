@@ -73,7 +73,7 @@ II - Section les mesures de performance :
 
 
 3. Optimisation de votre application
-    ![rapport d'audit LightHouse de notre SPA avant l'Optimisation](./Capture.PNG)
+    ![rapport d'audit LightHouse de notre SPA avant l'Optimisation](../Capture.PNG)
 
     - Utilisation de CDN:
         
@@ -146,7 +146,7 @@ II - Section les mesures de performance :
 
             - apres :  33.21 ms
 
-            - pourcentage d'amélioration : 78%
+            - pourcentage d'amélioration : 26%
 
         - le temps d'affichage de l'app shell:
 
@@ -154,7 +154,7 @@ II - Section les mesures de performance :
 
             - apres : 185.26 ms
 
-            - pourcentage d'amélioration : 39%
+            - pourcentage d'amélioration : 31%
 
         - le temps d'affichage du chemin critique de rendu (CRP):
 
@@ -162,7 +162,7 @@ II - Section les mesures de performance :
 
             - apres : 248.06 ms
 
-            - pourcentage d'amélioration : 31% 
+            - pourcentage d'amélioration : 29% 
 
 
         ***déploiement sur nginx***
@@ -174,7 +174,7 @@ II - Section les mesures de performance :
 
             - apres :  19.92 ms
 
-            - pourcentage d'amélioration : 49%
+            - pourcentage d'amélioration : 15%
 
         - le temps d'affichage de l'app shell:
 
@@ -182,7 +182,7 @@ II - Section les mesures de performance :
 
             - apres : 114.36 ms
 
-            - pourcentage d'amélioration : 35%
+            - pourcentage d'amélioration : 18%
 
         - le temps d'affichage du chemin critique de rendu (CRP):
 
@@ -190,7 +190,7 @@ II - Section les mesures de performance :
 
             - apres : 155,96 ms
 
-            - pourcentage d'amélioration : 49% 
+            - pourcentage d'amélioration : 19% 
 
 
     - Minification réduction du nombre de ressources critiques :
@@ -203,7 +203,7 @@ II - Section les mesures de performance :
 
             - apres :  22.35 ms
 
-            - pourcentage d'amélioration : 78%
+            - pourcentage d'amélioration : 32%
 
         - le temps d'affichage de l'app shell:
 
@@ -211,7 +211,7 @@ II - Section les mesures de performance :
 
             - apres : 132.48 ms
 
-            - pourcentage d'amélioration : 39%
+            - pourcentage d'amélioration : 28%
 
         - le temps d'affichage du chemin critique de rendu (CRP):
 
@@ -219,7 +219,7 @@ II - Section les mesures de performance :
 
             - apres : 168.15 ms
 
-            - pourcentage d'amélioration : 31% 
+            - pourcentage d'amélioration : 32% 
 
 
         ***déploiement sur nginx***
@@ -231,7 +231,7 @@ II - Section les mesures de performance :
 
             - apres :  17.1 ms
 
-            - pourcentage d'amélioration : 49%
+            - pourcentage d'amélioration : 14%
 
         - le temps d'affichage de l'app shell:
 
@@ -239,7 +239,7 @@ II - Section les mesures de performance :
 
             - apres : 82.17 ms
 
-            - pourcentage d'amélioration : 35%
+            - pourcentage d'amélioration : 28%
 
         - le temps d'affichage du chemin critique de rendu (CRP):
 
@@ -247,7 +247,7 @@ II - Section les mesures de performance :
 
             - apres : 129.35 ms
 
-            - pourcentage d'amélioration : 49% 
+            - pourcentage d'amélioration : 17% 
 
 ![Async](./Async.PNG)
 
