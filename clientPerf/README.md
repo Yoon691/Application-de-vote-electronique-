@@ -1,6 +1,7 @@
 # Mif03_TP
 
-***TP7***
+    ***TP7***
+
 I - Section procédure d'installation correspondant aux optimisations réalisées :
     
     - utilisation d'un wifi (Edurom) depuis l'intérieur de la fac.
