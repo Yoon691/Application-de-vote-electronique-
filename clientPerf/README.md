@@ -81,7 +81,7 @@ II - Section les mesures de performance :
 
 -rapport d'audit LightHouse de notre SPA avant l'Optimisation:
 
-![rapport d'audit LightHouse de notre SPA avant l'Optimisation](../Capture.PNG)
+![rapport d'audit LightHouse de notre SPA avant l'Optimisation](./rapport_LightHouse_avant_Optimisation.PNG)
 
 - Utilisation de CDN:
         
@@ -251,7 +251,11 @@ II - Section les mesures de performance :
 
         - apres : 129.35 ms
 
-        - pourcentage d'amélioration : 17% 
+        - pourcentage d'amélioration : 17%
+
+-rapport d'audit LightHouse de notre SPA aprés l'Optimisation:
+
+![rapport d'audit LightHouse de notre SPA apres l'Optimisation](./rapport_LightHouse_apres_Optimisation.PNG)
 
 
 
