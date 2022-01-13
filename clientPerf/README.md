@@ -16,14 +16,14 @@ I - Section procédure d'installation correspondant aux optimisations réalisée
     Déploiement sur Nginx : https://192.168.75.70/clientPerf
     
 
-    - utilisation d'un wifi (Edurom) depuis l'intérieur de la fac.
-    - Utilisation les bibliothèques de code avec CDN pour : Jquery,Mustache,popper,boostrap.
-    - les modifs fait pour l'amélioration : 
-        - CDN fait depuis TP5.
-        - async/defer pour les scripts.
-        - Minification des resources.
-        - Refactoring de l'application
-    - les scriptes sont requéter asynchronement.
+        - utilisation d'un wifi (Edurom) depuis l'intérieur de la fac.
+        - Utilisation les bibliothèques de code avec CDN pour : Jquery,Mustache,popper,boostrap.
+        - les modifs fait pour l'amélioration : 
+            - CDN fait depuis TP5.
+            - async/defer pour les scripts.
+            - Minification des resources.
+            - Refactoring de l'application
+        - les scriptes sont requéter asynchronement.
 
 II - Section les mesures de performance :
 
