@@ -1,6 +1,5 @@
 # Mif03_TP
-
-        ***TP7***
+***TP7***
 
 I - Section procédure d'installation correspondant aux optimisations réalisées :
     
