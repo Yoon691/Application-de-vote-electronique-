@@ -2,6 +2,7 @@
 ***TP7***
 
 I - Section procédure d'installation correspondant aux optimisations réalisées :
+
     - utilisation d'un wifi (Edurom) depuis l'intérieur de la fac.
     - Utilisation les bibliothèques de code avec CDN pour : Jquery,Mustache,popper,boostrap.
     - les modifs fait pour l'amélioration : 
