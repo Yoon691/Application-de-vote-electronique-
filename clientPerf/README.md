@@ -79,13 +79,13 @@ II - Section les mesures de performance :
 
 3. Optimisation de votre application
 
-        -rapport d'audit LightHouse de notre SPA avant l'Optimisation:
+-rapport d'audit LightHouse de notre SPA avant l'Optimisation:
 
     ![rapport d'audit LightHouse de notre SPA avant l'Optimisation](../Capture.PNG)
 
-    - Utilisation de CDN:
+- Utilisation de CDN:
         
-        Nous avons utiliser les CDN pour les differentes  bibliothèques de code dans le TP d'avant (TP5), donc Aucune amélioration dans les valeurs en essayent des liens differentes pour inclure  differentes versions des  bibliothèques utiliser en utilisant la CDN.
+    Nous avons utiliser les CDN pour les differentes  bibliothèques de code dans le TP d'avant (TP5), donc Aucune amélioration dans les valeurs en essayent des liens differentes pour inclure  differentes versions des  bibliothèques utiliser en utilisant la CDN.
 
 - Refactoring de l'application :   
 
