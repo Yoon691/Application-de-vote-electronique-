@@ -3,17 +3,17 @@
 
 I - Section procédure d'installation correspondant aux optimisations réalisées :
 
-         ***déploiement sur Tomcat***
+    ***déploiement sur Tomcat***
 
-    Déploiement sur Tomcat : https://192.168.75.70/api/client
+Déploiement sur Tomcat : https://192.168.75.70/api/client
 
-         ***déploiement sur nginx avant Optimisation***
+    ***déploiement sur nginx avant Optimisation***
 
-    Déploiement sur Nginx : https://192.168.75.70/client
+Déploiement sur Nginx : https://192.168.75.70/client
     
-         ***déploiement sur nginx aprés optimisation***
+    ***déploiement sur nginx aprés optimisation***
          
-    Déploiement sur Nginx : https://192.168.75.70/clientPerf
+Déploiement sur Nginx : https://192.168.75.70/clientPerf
     
 
         - utilisation d'un wifi (Edurom) depuis l'intérieur de la fac.
